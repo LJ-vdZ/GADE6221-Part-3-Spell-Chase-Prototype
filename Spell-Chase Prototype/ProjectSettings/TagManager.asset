@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GreenPotion
   - Destroyable
+  - Trigger
+  - Destroyer
   layers:
   - Default
   - TransparentFX

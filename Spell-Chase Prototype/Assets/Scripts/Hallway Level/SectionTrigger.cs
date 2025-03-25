@@ -13,7 +13,7 @@ public class SectionTrigger : MonoBehaviour
         {
             //spawn new section of hallway
             //indicate where to spawn new hallway
-            Instantiate(hallwaySection, new Vector3(-50, 2, 2), Quaternion.identity);   //there is no rotation
+            Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);   //there is no rotation
         }
     }
 }

@@ -17,12 +17,12 @@ public class MoveHallway : MonoBehaviour
     void Update()
     {
         //move platform bit by bit along the x-axis at set speed
-        transform.position += new Vector3(hallwaySpeed, 0, 0) * Time.deltaTime;
+        transform.position += new Vector3(0, 0, -hallwaySpeed) * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Destroy"))
+        if (other.gameObject.CompareTag("Destroyer"))
         {
             Destroy(gameObject);    //destroy hallway and everything in it when it collides with invisible destroy wall
         }
