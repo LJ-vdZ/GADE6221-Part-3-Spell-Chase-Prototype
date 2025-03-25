@@ -26,7 +26,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
         if (other.CompareTag("Player")) //if player collides with pickup
         {
             //check which pickup tag it is
-            if (thisPickup.CompareTag("GreenPickup"))   //green pickup tag
+            if (thisPickup.CompareTag("GreenPotion"))   //green pickup tag
             {
                 ObstaclePassedScore.score = score + 10; //boost player score
 
