@@ -31,7 +31,7 @@ public class spawner2 : MonoBehaviour
             var position = new Vector3( wanted, transform.position.y);
             GameObject game = Instantiate(prefabs[Random.Range(0, prefabs.Length)], position, Quaternion.identity );
             yield return new WaitForSeconds( timeSpawn );
-            Destroy(gameObject, 5f);
+            //Destroy(gameObject, 5f);     Laz solved the mystery to the disappearing spawners XD
         }
     }
 }
