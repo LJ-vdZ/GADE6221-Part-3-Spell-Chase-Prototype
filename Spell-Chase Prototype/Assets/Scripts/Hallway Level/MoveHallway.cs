@@ -22,9 +22,14 @@ public class MoveHallway : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Destroyer"))
+        if (other.gameObject.CompareTag("Destroyable")) //anything that is not the player must be destroyed
         {
+
             Destroy(gameObject);    //destroy hallway and everything in it when it collides with invisible destroy wall
         }
+
+        
+
+
     }
 }

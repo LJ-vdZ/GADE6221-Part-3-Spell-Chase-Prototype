@@ -8,6 +8,7 @@ TagManager:
   - Destroyable
   - Trigger
   - Destroyer
+  - Hallway
   layers:
   - Default
   - TransparentFX
