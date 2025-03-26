@@ -26,6 +26,6 @@ public class FlyingBook : MonoBehaviour
         Vector3 direction = forward * speed;
 
         //take our direction / speed and actually move our object
-        transform.position += direction * Time.deltaTime;
+        transform.position += direction * -1 * Time.deltaTime;
     }
 }

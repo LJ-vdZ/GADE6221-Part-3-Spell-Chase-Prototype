@@ -25,6 +25,7 @@ public class Spawner : MonoBehaviour
         {
             spawning = true;
             Create();
+            
         }
         else
         {
