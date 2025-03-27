@@ -11,12 +11,12 @@ public class ObstaclePassedScore : MonoBehaviour
     //to display score in UI
     private Text scoreText;
 
-    //check if player passed the object, aka went through the trigger collider
+    //check if obstacle passed the player, aka went through the trigger collider
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Obstacle"))
         {
-            score = score + 1;  //increase score if player passed obstacle
+            score = score + 1;  //increase score if obastacle passed player
 
             UpdateScoreInUI();  //every time player passes object, update UI
 

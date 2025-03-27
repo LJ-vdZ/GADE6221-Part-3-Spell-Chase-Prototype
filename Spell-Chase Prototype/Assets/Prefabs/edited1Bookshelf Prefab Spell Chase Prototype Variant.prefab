@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: edited1Bookshelf Prefab Spell Chase Prototype Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8570210837416094814, guid: 5ae7866f1b0d49940ae28d7b9cb84c9c, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 9053451264114030308, guid: 5ae7866f1b0d49940ae28d7b9cb84c9c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.50542
@@ -93,7 +97,7 @@ PrefabInstance:
       addedObject: {fileID: -4204691533993111630}
     - targetCorrespondingSourceObject: {fileID: 8570210837416094814, guid: 5ae7866f1b0d49940ae28d7b9cb84c9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1462585219256363027}
+      addedObject: {fileID: -3292372182088103601}
   m_SourcePrefab: {fileID: 100100000, guid: 5ae7866f1b0d49940ae28d7b9cb84c9c, type: 3}
 --- !u!1 &389764567720368199 stripped
 GameObject:
@@ -119,8 +123,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.5623217, y: 1, z: 2.685347}
+  m_Center: {x: -0.025314813, y: 4.4875806e-16, z: -0.8426699}
 --- !u!114 &-4204691533993111630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3918164875805998979, guid: 4957037690ec74f4bba389282dbf388d, type: 3}
---- !u!114 &-1462585219256363027
+--- !u!114 &-3292372182088103601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +147,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 389764567720368199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39af105ac09dcb4aafe3a77c3d601e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e086f96e34943d4cb7d4952eb87ea79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hallwaySpeed: 5

@@ -51,10 +51,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //calculate target position
-        //player only moves about y-axis(up and down) or z-axis(left or right)
-        float targetZ = (targetLane - 1) * laneDistance;
-        float currentZ = Mathf.MoveTowards(transform.position.z, targetZ, Time.deltaTime * moveSpeed);
-        moveDirection.z = (targetZ - transform.position.z) * moveSpeed;
+        //player only moves about y-axis(up and down) or x-axis(left or right)
+        float targetX = (targetLane - 1) * laneDistance;
+        float currentX = Mathf.MoveTowards(transform.position.x, targetX, Time.deltaTime * moveSpeed);
+        moveDirection.x = (targetX - transform.position.x) * moveSpeed;
 
         //Jumping Movement
         //check if player is on the ground. Game does not have double jumps :)

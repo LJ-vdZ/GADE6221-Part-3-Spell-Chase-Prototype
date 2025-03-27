@@ -9,6 +9,7 @@ TagManager:
   - Trigger
   - Destroyer
   - Hallway
+  - Obstacle
   layers:
   - Default
   - TransparentFX
