@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Animator playerAnim;
     private CharacterController controller;
 
     //set distance between lanes
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerAnim = GetComponent<Animator>();
         //control of character from the start
         controller = GetComponent<CharacterController>();
     }
@@ -60,21 +62,27 @@ public class PlayerMovement : MonoBehaviour
         //check if player is on the ground. Game does not have double jumps :)
         if (controller.isGrounded)
         {
+            playerAnim.SetBool("Jump", false);
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 verticalVelocity = jumpForce;
+                playerAnim.SetBool("Jump", true);
+                
             }
         }
         else //not on ground
         {
             verticalVelocity -= gravity * Time.deltaTime;   //bring player back down to the ground
+            
         }
 
         //Crouching Movement
+        playerAnim.SetBool("Roll", false);
         if (Input.GetKey(KeyCode.DownArrow))
         {
             //reduce player height
             controller.height = 1f;
+            playerAnim.SetBool("Roll", true);
         }
         else
         {

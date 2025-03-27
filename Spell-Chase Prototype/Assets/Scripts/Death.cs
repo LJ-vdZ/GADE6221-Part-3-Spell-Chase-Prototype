@@ -6,7 +6,8 @@ public class Death : MonoBehaviour
     
     [SerializeField] GameObject player;
 
-    //public GameManager GameManager;
+    //public GameObject EndScreenUI;
+    public GameManager GameManager;
     private bool deathStatus = false;
     // Start is called before the first frame update
     void Start()
@@ -20,28 +21,29 @@ public class Death : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    /*if (collision != null && deathStatus == false)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+    if ( deathStatus == false)
+    {
+        if (gameObject.GetComponent<PlayerMovement>() != null)
         {
             player.GetComponent<PlayerMovement>().enabled = false;
 
             deathStatus = true;
             GameManager.endGame();
         }
-    }*/
+    }
     //player.GetComponent<PlayerMovement>().enabled = false;
 
 
-    //}
-    void OnCollisionEnter(Collision collision)
+    }
+    /*void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))  // Check if colliding object has the "Player" tag
         {
             Debug.Log("Object hit the player!");
             player.GetComponent<PlayerMovement>().enabled = false;
+            EndScreenUI.SetActive(true);
         }
-    }
+    }*/
 }

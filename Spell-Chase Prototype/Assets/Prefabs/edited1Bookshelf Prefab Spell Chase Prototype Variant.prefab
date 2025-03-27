@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6344353774579378631, guid: 5ae7866f1b0d49940ae28d7b9cb84c9c, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6344353774579378631, guid: 5ae7866f1b0d49940ae28d7b9cb84c9c, type: 3}
       propertyPath: m_CollisionDetection
@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ddb2c73269be045a5a0b10dcb10f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3918164875805998979, guid: 4957037690ec74f4bba389282dbf388d, type: 3}
+  player: {fileID: 7854745119575173662, guid: d968ff529f598c8449388d11ffee28cb, type: 3}
+  GameManager: {fileID: 2265532245110196163, guid: ab55dd319ebd9914abade93a285605b7, type: 3}
 --- !u!114 &-3292372182088103601
 MonoBehaviour:
   m_ObjectHideFlags: 0
