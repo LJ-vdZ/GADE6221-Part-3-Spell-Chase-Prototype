@@ -1162,6 +1162,7 @@ GameObject:
   - component: {fileID: 721354331408519112}
   - component: {fileID: 6480415611255852060}
   - component: {fileID: 8488238149794522081}
+  - component: {fileID: 7126563902056830988}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -1178,7 +1179,7 @@ Transform:
   m_GameObject: {fileID: 4225577808960285013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: 0.401, z: -6.89}
+  m_LocalPosition: {x: -0.28, y: 0.401, z: -6.861}
   m_LocalScale: {x: 0.8014276, y: 0.8014276, z: 0.8014276}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1275,8 +1276,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.1
-  m_Radius: 0.3
+  m_Height: 1.2
+  m_Radius: 0.04
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1328,6 +1329,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.6977985, y: 1.5386504, z: 0.9999999}
   m_Center: {x: 0.018071573, y: 0.78278506, z: 0}
+--- !u!114 &7126563902056830988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225577808960285013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddb2c73269be045a5a0b10dcb10f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4225577808960285013}
+  GameManager: {fileID: 0}
+  deathStatus: 0
 --- !u!1 &4397076360616678384
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,12 +12,8 @@ public class Death : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ensuring player has a tage
-        if (player == null)
-        {
-            player = GameObject.FindWithTag("Player");
-            
-        }
+        
+        
     }
 
     // Update is called once per frame
@@ -26,7 +22,8 @@ public class Death : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)   
+    //when character's Character Controller hits obstacle. Not when Box Collider hits obstacles.
+    private void OnControllerColliderHit(ControllerColliderHit collision)   
     {
         //Debug.Log("Collision detected");
 
@@ -39,16 +36,12 @@ public class Death : MonoBehaviour
         //}
 
         //destroy player on collision
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit
         {
             Debug.Log("Collision set to true");
             deathStatus = true;
-
-            Destroy(collision.gameObject); //----> this works
-        }
-        else 
-        {
-            Debug.Log("Not player. Tag is: " + collision.gameObject.tag);
+            
+            Destroy(player); 
         }
     
         //player.GetComponent<PlayerMovement>().enabled = false;

@@ -81,7 +81,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 verticalVelocity = jumpForce;
                 playerAnim.SetBool("Jump", true);
-                
+                //playerAnim.SetBool("TTB_run", false);  //running animation might be clashing with other animations. Disable when other animation takes plave.
+
             }
             
         }
@@ -92,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
             if (verticalVelocity <= 0)
             {
                 playerAnim.SetBool("Jump", false);  //key is released
+                //playerAnim.SetBool("TTB_run", true);
             }
         }
 
@@ -102,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
             //reduce player height
             controller.height = 1f;
             playerAnim.SetBool("Roll", true);
+            //playerAnim.SetBool("TTB_run", false);
             rollTimer = rollDuration;
         }
         else if (rollTimer > 0) //if player is already rolling
@@ -115,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 //bring back to normal height
                 controller.height = 2f;
                 playerAnim.SetBool("Roll", false); //stop roll when back to normal height
+                //playerAnim.SetBool("TTB_run", true);
             }
 
            

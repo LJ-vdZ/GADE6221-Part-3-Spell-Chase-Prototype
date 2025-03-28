@@ -36,6 +36,4 @@ public class MoveHallway : Death        ////need to check if player death is tru
         }
 
     }
-
-    
 }
