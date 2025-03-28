@@ -123,8 +123,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.5623217, y: 1, z: 2.685347}
-  m_Center: {x: -0.025314813, y: 4.4875806e-16, z: -0.8426699}
+  m_Size: {x: 2.5294497, y: 1.4374672, z: 4.306319}
+  m_Center: {x: -0.008879254, y: -0.010572132, z: -0.00079818495}
 --- !u!114 &-4204691533993111630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ddb2c73269be045a5a0b10dcb10f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7854745119575173662, guid: d968ff529f598c8449388d11ffee28cb, type: 3}
+  player: {fileID: 4225577808960285013, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
   GameManager: {fileID: 2265532245110196163, guid: ab55dd319ebd9914abade93a285605b7, type: 3}
+  deathStatus: 0
 --- !u!114 &-3292372182088103601
 MonoBehaviour:
   m_ObjectHideFlags: 0

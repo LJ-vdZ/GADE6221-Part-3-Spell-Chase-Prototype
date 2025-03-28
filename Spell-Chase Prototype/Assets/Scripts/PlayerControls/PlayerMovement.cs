@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
 
     //set distance between lanes
-    public float laneDistance = 3f;
+    public float laneDistance = 1.5f;
 
     //set speed of movement
     public float moveSpeed = 10f;
@@ -25,17 +25,30 @@ public class PlayerMovement : MonoBehaviour
     //starting lane is Middle lane --> Lane 1
     private int targetLane = 1;
 
+    private float startingXPos; //store starting X position
+    private float startingYPos;     //store starting X position
+
+    //timer for rolling movement on click. Roll will last 0.5 seconds
+    private float rollDuration = 0.1f; 
+    private float rollTimer = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         playerAnim = GetComponent<Animator>();
         //control of character from the start
         controller = GetComponent<CharacterController>();
+
+        //initial X and Y is set as the x and y positions of the character in the scene
+        startingXPos = transform.position.x;
+        startingYPos = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         //player has not moved yet. Set moveDirection to Vector3.zero
         Vector3 moveDirection = Vector3.zero;
 
@@ -43,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         //target lane can't be smaller than 0 or bigger than 2
         //there are only 3 lanes --> Lane 0, Lane 1, and Lane 2
         //left and right movements
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && targetLane > 0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow)  && targetLane > 0)
         {
             targetLane = targetLane - 1;    //move to left. Left = 0
         }
@@ -54,45 +67,68 @@ public class PlayerMovement : MonoBehaviour
 
         //calculate target position
         //player only moves about y-axis(up and down) or x-axis(left or right)
-        float targetX = (targetLane - 1) * laneDistance;
+        float targetX = startingXPos + (targetLane - 1) * laneDistance;             //startingXPos ensures player is centred with middle lane
         float currentX = Mathf.MoveTowards(transform.position.x, targetX, Time.deltaTime * moveSpeed);
         moveDirection.x = (targetX - transform.position.x) * moveSpeed;
 
         //Jumping Movement
-        //check if player is on the ground. Game does not have double jumps :)
+        //check if player is on the ground. 
         if (controller.isGrounded)
         {
-            playerAnim.SetBool("Jump", false);
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            
+            //playerAnim.SetBool("Jump", false);
+            if (Input.GetKeyDown(KeyCode.UpArrow))  //key is clicked    
             {
                 verticalVelocity = jumpForce;
                 playerAnim.SetBool("Jump", true);
                 
             }
+            
         }
         else //not on ground
         {
             verticalVelocity -= gravity * Time.deltaTime;   //bring player back down to the ground
-            
+
+            if (verticalVelocity <= 0)
+            {
+                playerAnim.SetBool("Jump", false);  //key is released
+            }
         }
 
         //Crouching Movement
-        playerAnim.SetBool("Roll", false);
-        if (Input.GetKey(KeyCode.DownArrow))
+        //playerAnim.SetBool("Roll", false);
+        if (Input.GetKeyDown(KeyCode.DownArrow) && controller.isGrounded)    //when key is clicked
         {
             //reduce player height
             controller.height = 1f;
             playerAnim.SetBool("Roll", true);
+            rollTimer = rollDuration;
         }
-        else
+        else if (rollTimer > 0) //if player is already rolling
         {
-            //bring back to normal height
-            controller.height = 2f;
+            //start count down for roll
+            rollTimer -= Time.deltaTime;
+            
+            //if the timer has reached 0 and player is on the ground, stop roll
+            if (rollTimer <= 0 && controller.isGrounded)
+            {
+                //bring back to normal height
+                controller.height = 2f;
+                playerAnim.SetBool("Roll", false); //stop roll when back to normal height
+            }
+
+           
         }
 
         //assign movement to variable and perform movement
         moveDirection.y = verticalVelocity;
         controller.Move(moveDirection * Time.deltaTime);
+
+        //ensure player is at correct y-position when not jumping
+        if (controller.isGrounded && verticalVelocity <= 0)
+        {
+            transform.position = new Vector3(transform.position.x, startingYPos, transform.position.z);
+        }
 
     }
 }
