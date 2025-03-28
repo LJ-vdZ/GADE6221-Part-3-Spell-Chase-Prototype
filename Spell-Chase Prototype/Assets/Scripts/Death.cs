@@ -21,18 +21,19 @@ public class Death : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-    if ( deathStatus == false)
-    {
-        if (gameObject.GetComponent<PlayerMovement>() != null)
+        Debug.Log("Collision detected");
+    
+    
+        if (/*gameObject.GetComponent<PlayerMovement>() != null*/ collision.gameObject.tag == "Player")
         {
             player.GetComponent<PlayerMovement>().enabled = false;
 
             deathStatus = true;
             GameManager.endGame();
         }
-    }
+    
     //player.GetComponent<PlayerMovement>().enabled = false;
 
 

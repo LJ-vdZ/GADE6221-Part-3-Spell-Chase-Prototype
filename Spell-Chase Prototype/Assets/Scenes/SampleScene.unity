@@ -1906,7 +1906,7 @@ MonoBehaviour:
   - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
-  timeSpawn: 2
+  timeSpawn: 7
   Min: 0.6
   Max: 0.6
 --- !u!1 &859908448
@@ -2868,7 +2868,7 @@ MonoBehaviour:
   - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
-  timeSpawn: 2
+  timeSpawn: 3
   Min: -0.023
   Max: -0.023
 --- !u!1 &1180845726
@@ -2972,7 +2972,7 @@ MonoBehaviour:
   - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
-  timeSpawn: 2
+  timeSpawn: 5
   Min: -0.5
   Max: -0.5
 --- !u!1 &1234783298

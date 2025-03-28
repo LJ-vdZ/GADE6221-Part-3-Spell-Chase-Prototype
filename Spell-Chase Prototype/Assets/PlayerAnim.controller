@@ -117,7 +117,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Roll
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8492002815393770024}
@@ -130,7 +130,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 20a12fd006698454ea3108700035bbd2, type: 2}
+  m_Motion: {fileID: 7400000, guid: 55247b272ea4b4547bc59b3ea911cbc7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -185,7 +185,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 409125161c601f34aa8b8cf9df403de8, type: 2}
+  m_Motion: {fileID: 7400000, guid: 542202478b3709749912b010af3e8760, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
