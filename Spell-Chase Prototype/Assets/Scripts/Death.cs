@@ -5,6 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hallway movement if player death is true. Set hallwayspeed to 0.
 {   
     [SerializeField] GameObject player;
+    Animator playerAnim;
 
     //public GameObject EndScreenUI;
     public GameManager GameManager;
@@ -15,7 +16,8 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
     // Start is called before the first frame update
     void Start()
     {
-
+        playerAnim = GetComponent<Animator>();
+        hallwaySpeed = 5;
     }
 
     // Update is called once per frame
@@ -43,13 +45,14 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
             Debug.Log("Collision set to true");
             deathStatus = true;
 
-            MoveHallway.hallwaySpeed = 0;   //hallay stops moving. Giving illusion that player stopped moving forward on collision
+            playerAnim.SetBool("Die", true);
+            hallwaySpeed = 0;   //hallay stops moving. Giving illusion that player stopped moving forward on collision
 
             player.GetComponent<PlayerMovement>().enabled = false;
 
            
 
-            //GameManager.endGame();
+            GameManager.endGame();
 
             //Destroy(player); //----> this works
         }

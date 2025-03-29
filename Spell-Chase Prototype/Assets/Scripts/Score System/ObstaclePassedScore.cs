@@ -9,8 +9,8 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
     public static int score = 0;   //use static so that this applies to all other triggers
 
     //to display score in UI
-    private Text scoreText;
-
+    public Text scoreText;
+   
     //check if obstacle passed the player, aka went through the trigger collider
     private void OnTriggerEnter(Collider other)
     {
@@ -31,6 +31,7 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+       
         //don't include collision with obstacle in score
         if (Death.deathStatus == true)  
         {
@@ -38,6 +39,7 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
             score = score - 1;
 
             UpdateScoreInUI();
+            
         }
     }
 
@@ -47,6 +49,7 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
         if (scoreText != null)
         {
             scoreText.text = "Score: " + score;
+            
             Debug.Log("Score Updated: " + score); //check if it works
         }
         else
@@ -58,13 +61,16 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
     // Start is called before the first frame update
     protected void Start()      //changed to protected to allow inheritance
     {
+        score = 0;
         //select ScoreText UI to display score in
         GameObject scoreTextObj = GameObject.Find("ScoreText");
+        
 
         if (scoreTextObj != null)   //check if UI was found
         {
             scoreText = scoreTextObj.GetComponent<Text>();
         }
+       
 
         UpdateScoreInUI();
 

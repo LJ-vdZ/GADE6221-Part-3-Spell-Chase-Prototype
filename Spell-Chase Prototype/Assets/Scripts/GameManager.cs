@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : Death
 {
     public GameObject EndScreenUI;
+    public bool reset = false;
+    public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +21,23 @@ public class GameManager : Death
         {
             endGame();
         }
+        if(reset == true)
+        {
+            EndScreenUI.SetActive(false);
+            reset = false;
+            deathStatus = false;
+        }
     }
 
     public void endGame()
     {
-        EndScreenUI.SetActive(true);
+        scoreText.enabled = false;
+        EndScreenUI.SetActive(true); 
     }
 
     public void restartGame()
     {
+        reset = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
