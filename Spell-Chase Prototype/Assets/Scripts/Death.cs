@@ -1,19 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
-public class Death : MonoBehaviour    
+public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hallway movement if player death is true. Set hallwayspeed to 0.
 {   
     [SerializeField] GameObject player;
 
     //public GameObject EndScreenUI;
     public GameManager GameManager;
-    public bool deathStatus = false;
+    protected static bool deathStatus = false;
+
+    private float startingYPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
     }
 
     // Update is called once per frame
@@ -40,8 +42,16 @@ public class Death : MonoBehaviour
         {
             Debug.Log("Collision set to true");
             deathStatus = true;
-            
-            Destroy(player); 
+
+            MoveHallway.hallwaySpeed = 0;   //hallay stops moving. Giving illusion that player stopped moving forward on collision
+
+            player.GetComponent<PlayerMovement>().enabled = false;
+
+           
+
+            //GameManager.endGame();
+
+            //Destroy(player); //----> this works
         }
     
         //player.GetComponent<PlayerMovement>().enabled = false;

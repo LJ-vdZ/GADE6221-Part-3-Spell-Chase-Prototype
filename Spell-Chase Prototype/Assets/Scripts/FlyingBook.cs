@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingBook : MonoBehaviour
+public class FlyingBook : Death     //need to check if death is true. if true, books stop flying
 {
 
     [SerializeField]
@@ -27,5 +27,10 @@ public class FlyingBook : MonoBehaviour
 
         //take our direction / speed and actually move our object
         transform.position += direction * -1 * Time.deltaTime;
+
+        if(Death.deathStatus == true) 
+        {
+            speed = 0;
+        }
     }
 }

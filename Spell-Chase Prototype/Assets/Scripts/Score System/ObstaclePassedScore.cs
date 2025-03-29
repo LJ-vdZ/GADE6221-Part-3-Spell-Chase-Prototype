@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;   //added for UI Text
 
-public class ObstaclePassedScore : MonoBehaviour
+public class ObstaclePassedScore : Death    //need to check if player died on collision. Must not include score of obstacle player collides with. 
 {
     //set starting score to zero
     public static int score = 0;   //use static so that this applies to all other triggers
@@ -22,6 +22,22 @@ public class ObstaclePassedScore : MonoBehaviour
 
             Debug.Log("Score: " + score);
 
+
+
+        }
+    }
+
+    
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        //don't include collision with obstacle in score
+        if (Death.deathStatus == true)  
+        {
+            Debug.Log("Player die");
+            score = score - 1;
+
+            UpdateScoreInUI();
         }
     }
 
@@ -57,7 +73,7 @@ public class ObstaclePassedScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     //return current score to track bookshelf spawning

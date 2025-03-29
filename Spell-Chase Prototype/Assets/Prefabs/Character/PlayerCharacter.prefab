@@ -1179,8 +1179,8 @@ Transform:
   m_GameObject: {fileID: 4225577808960285013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: 0.401, z: -6.861}
-  m_LocalScale: {x: 0.8014276, y: 0.8014276, z: 0.8014276}
+  m_LocalPosition: {x: -0.26427, y: 0.33726, z: -6.8265}
+  m_LocalScale: {x: 0.95877844, y: 0.95877844, z: 0.95877844}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5770012824887599391}
@@ -1222,7 +1222,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4225577808960285013}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1276,13 +1276,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.2
-  m_Radius: 0.04
+  m_Height: 1.18
+  m_Radius: 0
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.008
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Center: {x: 0, y: 0.6, z: -0.19}
 --- !u!114 &721354331408519112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,6 +1295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de64c6763644d04caed3bfa20e9cd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  GameManager: {fileID: 0}
 --- !u!114 &6480415611255852060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,8 +1329,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.6977985, y: 1.5386504, z: 0.9999999}
-  m_Center: {x: 0.018071573, y: 0.78278506, z: 0}
+  m_Size: {x: 4.185369, y: 4.32379, z: 0.43284255}
+  m_Center: {x: -0.09986743, y: 0.6738567, z: -0.4024014}
 --- !u!114 &7126563902056830988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,7 +1345,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4225577808960285013}
   GameManager: {fileID: 0}
-  deathStatus: 0
 --- !u!1 &4397076360616678384
 GameObject:
   m_ObjectHideFlags: 0
