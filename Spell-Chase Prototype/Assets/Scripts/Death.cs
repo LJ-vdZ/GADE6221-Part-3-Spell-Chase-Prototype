@@ -55,6 +55,8 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
             playerAnim.SetBool("Die", true);
             hallwaySpeed = 0;   //hallay stops moving. Giving illusion that player stopped moving forward on collision
 
+
+
             player.GetComponent<PlayerMovement>().enabled = false;
 
 

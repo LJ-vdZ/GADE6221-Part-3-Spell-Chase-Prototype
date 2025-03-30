@@ -49,14 +49,14 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
             
             Debug.Log("Score Updated: " + score); //check if it works
         }
-        else
-        {
-            Debug.LogError("ScoreText UI not working");
-        }
+        //else
+        //{
+        //    Debug.LogError("ScoreText UI not working");
+        //}
     }
 
     // Start is called before the first frame update
-    protected void Start()      //changed to protected to allow inheritance
+    private void Start()      //changed to protected to allow inheritance
     {
         score = 0;
         //select ScoreText UI to display score in
@@ -74,9 +74,9 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-       
+        UpdateScoreInUI();
     }
 
    

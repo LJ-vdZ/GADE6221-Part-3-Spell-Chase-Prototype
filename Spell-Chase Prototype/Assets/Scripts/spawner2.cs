@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawner2 : MonoBehaviour
+public class spawner2 : Death
 {
     [SerializeField] GameObject[] prefabs;
 
@@ -18,7 +18,9 @@ public class spawner2 : MonoBehaviour
 
     //Spawn chance for pickup. 20% chance.
     [SerializeField] 
-    float pickupSpawnChance = 0.2f; 
+    float pickupSpawnChance = 0.2f;
+
+    bool spawnObastcle = true;
 
 
     // Start is called before the first frame update
@@ -35,7 +37,7 @@ public class spawner2 : MonoBehaviour
 
     IEnumerator PrefabSpawn()
     {
-        while( true)
+        while(spawnObastcle == true)
         {
             float wantedX = transform.position.x + Random.Range( Min, Max );    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
             Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
@@ -51,6 +53,13 @@ public class spawner2 : MonoBehaviour
                 //select random pickup and spawn in game
                 GameObject pickup = Instantiate(Pickups[Random.Range(0, Pickups.Length)], pickupPosition, Quaternion.identity);
 
+            }
+
+            if (Death.deathStatus == true)
+            {
+                spawnObastcle = false;
+
+                yield return null;
             }
 
 

@@ -5935,7 +5935,7 @@ GameObject:
   - component: {fileID: 9119183347442723753}
   m_Layer: 0
   m_Name: floor2 (33)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6164,7 +6164,7 @@ GameObject:
   - component: {fileID: 4522404602814720285}
   m_Layer: 0
   m_Name: floor2 (27)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6340,6 +6340,7 @@ Transform:
   - {fileID: 5418564691981271947}
   - {fileID: 3183087821348221751}
   - {fileID: 1734475076663312497}
+  - {fileID: 6882034038597334346}
   m_Father: {fileID: 4938939208420266548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3159485657435956684
@@ -6824,7 +6825,7 @@ Transform:
   m_GameObject: {fileID: 1206624044343414811}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3.2450418, y: -12.96, z: -9.29}
+  m_LocalPosition: {x: 3.2450418, y: -5.13, z: -9.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6849,8 +6850,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 13.330854, y: 29.461376, z: 0.29769796}
-  m_Center: {x: -0.5248766, y: -23.923792, z: 0.351151}
+  m_Size: {x: 4.5647373, y: 14.417339, z: 0.29769796}
+  m_Center: {x: -1.0277948, y: -28.397045, z: 0.351151}
 --- !u!114 &5498854922731192347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9724,7 +9725,7 @@ GameObject:
   - component: {fileID: 7549381904201523931}
   m_Layer: 0
   m_Name: floor2 (11)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11904,7 +11905,7 @@ GameObject:
   - component: {fileID: 5424511495265939668}
   m_Layer: 0
   m_Name: floor2 (8)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12548,7 +12549,7 @@ GameObject:
   - component: {fileID: 463533698743314975}
   m_Layer: 0
   m_Name: floor2 (26)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13819,7 +13820,7 @@ GameObject:
   - component: {fileID: 2358760276299195837}
   m_Layer: 0
   m_Name: floor2 (34)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19795,7 +19796,7 @@ GameObject:
   - component: {fileID: 892308048329339149}
   m_Layer: 0
   m_Name: floor2 (9)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20107,7 +20108,7 @@ GameObject:
   - component: {fileID: 832318486526195720}
   m_Layer: 0
   m_Name: floor2 (12)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20917,7 +20918,7 @@ GameObject:
   - component: {fileID: 488896980991808320}
   m_Layer: 0
   m_Name: floor2 (7)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35456,6 +35457,72 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &6780157477606531390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6882034038597334346}
+  - component: {fileID: 4278858135312970574}
+  - component: {fileID: 8062599840326280325}
+  m_Layer: 0
+  m_Name: PlayerDeathByFall
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6882034038597334346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780157477606531390}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 3.2450418, y: -6.23, z: 1.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4574121102699732225}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!65 &4278858135312970574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780157477606531390}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.330854, y: 29.461376, z: 0.29769796}
+  m_Center: {x: -0.5248766, y: -23.923792, z: 0.351151}
+--- !u!114 &8062599840326280325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780157477606531390}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099b87ed87f431147be1b72084657cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6828222810021247604
 GameObject:
   m_ObjectHideFlags: 0
@@ -36252,7 +36319,7 @@ GameObject:
   - component: {fileID: 5491821073849768105}
   m_Layer: 0
   m_Name: floor2 (10)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36979,7 +37046,7 @@ GameObject:
   - component: {fileID: 3454207067344031947}
   m_Layer: 0
   m_Name: floor2 (45)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37291,7 +37358,7 @@ GameObject:
   - component: {fileID: 4557227762693528775}
   m_Layer: 0
   m_Name: floor2 (44)
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

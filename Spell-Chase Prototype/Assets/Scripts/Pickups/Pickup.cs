@@ -8,7 +8,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
     // Start is called before the first frame update
     //change to new void Start(). Hiding/overriding base method. 
-    new void Start()
+    void Start()
     {
         //call Start method from ObstaclePassedScore script to update UI
         //base.Start();   //base refers to ObstaclePassedScore class
@@ -16,9 +16,9 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
-        
+        base.Update();   //base refers to ObstaclePassedScore class
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,8 +36,6 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
             }
         }
-        
-
     }
 }
 //REFERENCES
