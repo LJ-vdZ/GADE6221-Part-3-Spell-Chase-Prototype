@@ -6,6 +6,10 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
 {   
     [SerializeField] GameObject player;
     Animator playerAnim;
+    public static int newScore;
+    [SerializeField] GameObject spawner1;
+    [SerializeField] GameObject spawner2;
+    [SerializeField] GameObject spawner3;
 
     //public GameObject EndScreenUI;
     public GameManager GameManager;
@@ -42,6 +46,9 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
         //destroy player on collision
         if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit 
         {
+            spawner1.GetComponent<spawner2>().enabled = false;
+            spawner2.GetComponent<spawner2>().enabled = false;
+            spawner3.GetComponent<spawner2>().enabled = false;
             Debug.Log("Collision set to true");
             deathStatus = true;
 

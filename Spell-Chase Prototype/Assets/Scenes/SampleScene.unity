@@ -20696,10 +20696,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
   GameManager: {fileID: 0}
+  scoreText: {fileID: 569598117}
   EndScreenUI: {fileID: 1330105523}
   reset: 0
-  scoreText: {fileID: 569598117}
+  finalScore: {fileID: 349266205}
+  ScoreText: {fileID: 569598117}
 --- !u!4 &1062678390
 Transform:
   m_ObjectHideFlags: 0
@@ -20921,6 +20926,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   scoreText: {fileID: 0}
 --- !u!65 &1130099704
@@ -23472,6 +23480,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   scoreText: {fileID: 0}
 --- !u!1 &1657361882
@@ -30898,6 +30909,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 7126563902056830988, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
+      propertyPath: spawner1
+      value: 
+      objectReference: {fileID: 1141819892}
+    - target: {fileID: 7126563902056830988, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
+      propertyPath: spawner2
+      value: 
+      objectReference: {fileID: 1225511254}
+    - target: {fileID: 7126563902056830988, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
+      propertyPath: spawner3
+      value: 
+      objectReference: {fileID: 846722325}
     - target: {fileID: 7126563902056830988, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
       propertyPath: GameManager
       value: 

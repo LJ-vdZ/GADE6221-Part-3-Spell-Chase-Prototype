@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-public class GameManager : Death
+public class GameManager : ObstaclePassedScore
 {
     public GameObject EndScreenUI;
     public bool reset = false;
-    public Text scoreText;
+    public Text finalScore;
+    public Text ScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class GameManager : Death
         if(Death.deathStatus == true) 
         {
             endGame();
+            finalScore.text = "Score: " + score;
         }
         if(reset == true)
         {
@@ -32,7 +36,7 @@ public class GameManager : Death
 
     public void endGame()
     {
-        scoreText.enabled = false;
+        ScoreText.enabled = false;
         EndScreenUI.SetActive(true); 
     }
 
