@@ -10,6 +10,8 @@ TagManager:
   - Destroyer
   - Hallway
   - Obstacle
+  - Waypoint
+  - TrenchDestroyer
   layers:
   - Default
   - TransparentFX

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
-    [SerializeField]
-    public GameObject thisPickup;
+    
 
     // Start is called before the first frame update
     //change to new void Start(). Hiding/overriding base method. 
@@ -23,19 +22,21 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) //if player collides with pickup
+        if (other.gameObject.CompareTag("Player")) //if player collides with pickup
         {
-            //check which pickup tag it is
-            if (thisPickup.CompareTag("GreenPotion"))   //green pickup tag
+            //check which pickup tag player collided with
+            if (this.gameObject.CompareTag("GreenPotion"))   //green pickup tag
             {
                 ObstaclePassedScore.score = score + 10; //boost player score
 
                 UpdateScoreInUI();
 
-                Destroy(thisPickup);    
+                Destroy(gameObject);    
 
             }
         }
+        
+
     }
 }
 //REFERENCES

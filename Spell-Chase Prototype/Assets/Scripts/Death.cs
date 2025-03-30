@@ -40,7 +40,7 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
         //}
 
         //destroy player on collision
-        if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit
+        if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit 
         {
             Debug.Log("Collision set to true");
             deathStatus = true;
@@ -50,11 +50,23 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
 
             player.GetComponent<PlayerMovement>().enabled = false;
 
-           
+
 
             GameManager.endGame();
+        }
+        else if (collision.gameObject.CompareTag("TrenchDestroyer"))   //if player fell into the trench
+        {
+            Debug.Log("Collision set to true");
+            deathStatus = true;
 
-            //Destroy(player); //----> this works
+            playerAnim.SetBool("Die", true);
+            hallwaySpeed = 0;   //hallay stops moving. Giving illusion that player stopped moving forward on collision
+
+            player.GetComponent<PlayerMovement>().enabled = false;
+
+
+
+            GameManager.endGame();
         }
     
         //player.GetComponent<PlayerMovement>().enabled = false;

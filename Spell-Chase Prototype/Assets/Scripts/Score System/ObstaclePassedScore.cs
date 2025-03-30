@@ -21,9 +21,6 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
             UpdateScoreInUI();  //every time player passes object, update UI
 
             Debug.Log("Score: " + score);
-
-
-
         }
     }
 
@@ -35,7 +32,7 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
         //don't include collision with obstacle in score
         if (Death.deathStatus == true)  
         {
-            Debug.Log("Player die");
+            Debug.Log("Player died");
             score = score - 1;
 
             UpdateScoreInUI();
@@ -82,9 +79,5 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
        
     }
 
-    //return current score to track bookshelf spawning
-    public static int GetScore()       //not sure if we're gonna use this. Use time to control when bookshelves spawn instead of score?
-    {
-        return score;
-    }
+   
 }

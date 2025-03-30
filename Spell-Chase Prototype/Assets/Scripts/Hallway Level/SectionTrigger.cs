@@ -5,6 +5,7 @@ using UnityEngine;
 public class SectionTrigger : MonoBehaviour
 {
     public GameObject hallwaySection;
+    public GameObject[] floatingPlatforms;
 
     private bool hasTriggered = false;
 

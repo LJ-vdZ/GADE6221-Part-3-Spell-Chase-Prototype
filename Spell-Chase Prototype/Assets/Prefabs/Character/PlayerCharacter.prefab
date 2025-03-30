@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 6480415611255852060}
   - component: {fileID: 8488238149794522081}
   - component: {fileID: 7126563902056830988}
+  - component: {fileID: 2528691036322373571}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -1297,6 +1298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   GameManager: {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!114 &6480415611255852060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,6 +1312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallwaySection: {fileID: 2272564380150809160, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+  floatingPlatforms:
+  - {fileID: 0}
 --- !u!65 &8488238149794522081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1345,6 +1349,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4225577808960285013}
   GameManager: {fileID: 0}
+--- !u!114 &2528691036322373571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225577808960285013}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ebb8a965810894a94dba0c95acc74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  GameManager: {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!1 &4397076360616678384
 GameObject:
   m_ObjectHideFlags: 0

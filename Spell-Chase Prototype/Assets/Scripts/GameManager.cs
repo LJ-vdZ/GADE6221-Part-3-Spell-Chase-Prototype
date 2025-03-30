@@ -8,6 +8,7 @@ public class GameManager : Death
     public GameObject EndScreenUI;
     public bool reset = false;
     public Text scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
