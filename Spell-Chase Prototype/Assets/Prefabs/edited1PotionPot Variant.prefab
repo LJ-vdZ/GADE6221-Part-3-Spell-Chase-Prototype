@@ -122,6 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4225577808960285013, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
   GameManager: {fileID: 2265532245110196163, guid: ab55dd319ebd9914abade93a285605b7, type: 3}
 --- !u!114 &5593344826486022039
 MonoBehaviour:
@@ -154,5 +157,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5231146, y: 0.8518156, z: 1.2851933}
-  m_Center: {x: -0.032008704, y: 0.644192, z: -0.0005513597}
+  m_Size: {x: 1.5231146, y: 0.8518156, z: 1.0279809}
+  m_Center: {x: -0.032008704, y: 0.644192, z: -0.12915777}
