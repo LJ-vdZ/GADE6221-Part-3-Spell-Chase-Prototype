@@ -35,14 +35,6 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
     {
         //Debug.Log("Collision detected");
 
-        //if (/*gameObject.GetComponent<PlayerMovement>() != null*/ collision.gameObject.tag == "Player")
-        //{
-        //    player.GetComponent<PlayerMovement>().enabled = false;
-
-        //    deathStatus = true;
-        //    GameManager.endGame();
-        //}
-
         //destroy player on collision
         if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit 
         {
@@ -77,18 +69,7 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
 
             GameManager.endGame();
         }
-    
-        //player.GetComponent<PlayerMovement>().enabled = false;
 
 
     }
-    /*void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))  // Check if colliding object has the "Player" tag
-        {
-            Debug.Log("Object hit the player!");
-            player.GetComponent<PlayerMovement>().enabled = false;
-            EndScreenUI.SetActive(true);
-        }
-    }*/
 }

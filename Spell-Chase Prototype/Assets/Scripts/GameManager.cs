@@ -19,7 +19,7 @@ public class GameManager : ObstaclePassedScore
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() // Checks for death and shows final score
     {
         if(Death.deathStatus == true) 
         {
@@ -34,19 +34,19 @@ public class GameManager : ObstaclePassedScore
         }
     }
 
-    public void endGame()
+    public void endGame() //Brings up end game screen
     {
         ScoreText.enabled = false;
         EndScreenUI.SetActive(true); 
     }
 
-    public void restartGame()
+    public void restartGame() //Function to reset entire level of game
     {
         reset = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void quit()
+    public void quit() //Function to exit the application
     {
         Application.Quit();
     }

@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2413098380981595518, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f11e7703b5307e94e93464a12c96b887, type: 2}
+    - target: {fileID: 3056822526350054417, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f11e7703b5307e94e93464a12c96b887, type: 2}
     - target: {fileID: 6111393967046008657, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -84,6 +92,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7377132242929788907, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd9ac052c21e5bf4d8e76eea47522ebb, type: 2}
+    - target: {fileID: 8828679297313401767, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f11e7703b5307e94e93464a12c96b887, type: 2}
     - target: {fileID: 9150013513788751460, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
       propertyPath: m_Enabled
       value: 0
