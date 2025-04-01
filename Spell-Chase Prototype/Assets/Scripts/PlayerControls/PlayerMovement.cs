@@ -75,14 +75,10 @@ public class PlayerMovement : MonoBehaviour
         //check if player is on the ground. 
         if (controller.isGrounded)
         {
-            
-            //playerAnim.SetBool("Jump", false);
             if (Input.GetKeyDown(KeyCode.UpArrow))  //key is clicked    
             {
                 verticalVelocity = jumpForce;
                 playerAnim.SetBool("Jump", true);
-                
-
             }
 
             
@@ -99,13 +95,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Crouching Movement
-        //playerAnim.SetBool("Roll", false);
         if (Input.GetKeyDown(KeyCode.DownArrow) && controller.isGrounded)    //when key is clicked
         {
             //reduce player height
             controller.height = 1f;
             playerAnim.SetBool("Roll", true);
-            //playerAnim.SetBool("TTB_run", false);
+            
             rollTimer = rollDuration;
         }
         else if (rollTimer > 0) //if player is already rolling
@@ -119,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
                 //bring back to normal height
                 controller.height = 2f;
                 playerAnim.SetBool("Roll", false); //stop roll when back to normal height
-                //playerAnim.SetBool("TTB_run", true);
+                
             }
 
            
@@ -140,3 +135,4 @@ public class PlayerMovement : MonoBehaviour
 //REFERENCING
 //Little, M., 2024. Utilizing Mathf.Lerp in Unity. [online] Available at: <https://medium.com/@little_michael101/utilizing-mathf-lerp-in-unity-8085a1dddd3c#:~:text=Long%20story%20short%2C%20Mathf.,typically%20done%20inside%20a%20coroutine.> [Accessed 22 March 2025].
 //Unity, [s.a.]. Mathf.MoveTowards. [online] Available at: <https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Mathf.MoveTowards.html> [Accessed 23 March 2025].
+//Unity Document,[s.a.]. CharacterController.Move. [online] Available at: <https://docs.unity3d.com/6000.0/Documentation/ScriptReference/CharacterController.Move.html> [Accessed 22 March 2025].
