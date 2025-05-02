@@ -56,13 +56,19 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             }
 
             //player collides with speed potion
-            if (this.gameObject.CompareTag("Speed Pickup"))
+            if (this.gameObject.CompareTag("BluePotion"))   //speed boost
             {
                 Destroy(gameObject);
 
                 MoveHallway.hallwaySpeed *= increaseSpeed;  //boost "player" forward speed by increasing hallway speed 
 
                 isSpeeding = true;  //need boolean check for cooldown
+            }
+
+            //player collides with immunity potion
+            if(this.gameObject.CompareTag("RedPotion")) //immunity against obstacles, destroy obstacle
+            {
+
             }
 
 
