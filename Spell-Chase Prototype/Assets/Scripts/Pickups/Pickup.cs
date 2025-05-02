@@ -35,6 +35,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 Destroy(gameObject);    
 
             }
+
+
         }
     }
 }
