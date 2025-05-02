@@ -12,6 +12,8 @@ TagManager:
   - Obstacle
   - Waypoint
   - TrenchDestroyer
+  - RedPotion
+  - BluePotion
   layers:
   - Default
   - TransparentFX
