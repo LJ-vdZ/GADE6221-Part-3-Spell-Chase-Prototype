@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
-    
+    public int increaseSpeed = 8;
+    private float speedCooldownTime = 10f;
+    public bool isSpeeding = false;
 
     // Start is called before the first frame update
     //change to new void Start(). Hiding/overriding base method. 
@@ -19,6 +21,23 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     new void Update()
     {
         base.Update();   //base refers to ObstaclePassedScore class
+
+
+        //check if player is using speedup
+        if (isSpeeding == true)
+        {
+            speedCooldownTime -= Time.deltaTime;    //use count down to end pickup effect
+
+            //if count down reaches zero, stop effect of pickup, speed set back to normal
+            if (speedCooldownTime <= 0f)
+            {
+                isSpeeding = false;
+
+                MoveHallway.hallwaySpeed = 5;
+
+                speedCooldownTime = 10f;    //set count down back to 10s
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,6 +53,16 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                 Destroy(gameObject);    
 
+            }
+
+            //player collides with speed potion
+            if (this.gameObject.CompareTag("Speed Pickup"))
+            {
+                Destroy(gameObject);
+
+                MoveHallway.hallwaySpeed *= increaseSpeed;  //boost "player" forward speed by increasing hallway speed 
+
+                isSpeeding = true;  //need boolean check for cooldown
             }
 
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveHallway : MonoBehaviour        
 {
     //[SerializeField]
-    protected static int hallwaySpeed = 5;
+    public static int hallwaySpeed = 5;
 
     // Start is called before the first frame update
     void Start()

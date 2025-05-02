@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawner2 : Death
+public class spawner2 : MonoBehaviour
 {
     [SerializeField] GameObject[] prefabs;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hallway movement if player death is true. Set hallwayspeed to 0.
+public class Death : MonoBehaviour    
 {   
     [SerializeField] GameObject player;
     Animator playerAnim;
@@ -13,7 +13,7 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
 
     //public GameObject EndScreenUI;
     public GameManager GameManager;
-    protected static bool deathStatus = false;
+    public static bool deathStatus = false;
 
     private float startingYPos;
 
@@ -21,7 +21,9 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
     void Start()
     {
         playerAnim = GetComponent<Animator>();
-        hallwaySpeed = 5;
+
+        //Need to stop hallway movement if player death is true. Set hallwayspeed to 0.
+        MoveHallway.hallwaySpeed = 5;
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
             deathStatus = true;
 
             playerAnim.SetBool("Die", true);
-            hallwaySpeed = 0;   //hallay stops moving. Giving illusion that player stopped moving forward on collision
+            MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
 
 
 
@@ -61,7 +63,7 @@ public class Death : MoveHallway    //Inherit from MoveHallway. Need to stop hal
             deathStatus = true;
 
             playerAnim.SetBool("Die", true);
-            hallwaySpeed = 0;   //hallay stops moving. Giving illusion that player stopped moving forward on collision
+            MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
 
             player.GetComponent<PlayerMovement>().enabled = false;
 
