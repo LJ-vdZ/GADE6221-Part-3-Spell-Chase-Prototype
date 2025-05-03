@@ -1297,6 +1297,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   scoreText: {fileID: 0}
 --- !u!114 &6480415611255852060
@@ -1312,6 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hallwaySection: {fileID: 2272564380150809160, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+  bossHallway: {fileID: 3595676116555251688, guid: 8cb0ef5c8e9efc64eaeb5bb3fe56351b, type: 3}
   floatingPlatforms:
   - {fileID: 0}
 --- !u!65 &8488238149794522081
@@ -1348,6 +1352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4225577808960285013}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
   GameManager: {fileID: 0}
 --- !u!114 &2528691036322373571
 MonoBehaviour:
@@ -1362,8 +1369,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   scoreText: {fileID: 0}
+  increaseSpeed: 8
+  isSpeeding: 0
 --- !u!1 &4397076360616678384
 GameObject:
   m_ObjectHideFlags: 0

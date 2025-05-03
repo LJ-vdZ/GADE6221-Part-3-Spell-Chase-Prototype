@@ -44,10 +44,11 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     {
         if (other.gameObject.CompareTag("Player")) //if player collides with pickup
         {
+            
             //check which pickup tag player collided with
-            if (this.gameObject.CompareTag("GreenPotion"))   //green pickup tag
+            if (gameObject.CompareTag("GreenPotion"))   //green pickup tag
             {
-                ObstaclePassedScore.score = score + 10; //boost player score
+                score = score + 10; //boost player score
 
                 UpdateScoreInUI();
 
@@ -56,17 +57,27 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             }
 
             //player collides with speed potion
-            if (this.gameObject.CompareTag("BluePotion"))   //speed boost
+            if (gameObject.CompareTag("BluePotion"))   //speed boost
             {
-                Destroy(gameObject);
+                //make sure player can't pickup another speed potion while one is already active
 
-                MoveHallway.hallwaySpeed *= increaseSpeed;  //boost "player" forward speed by increasing hallway speed 
+                if(isSpeeding == false) 
+                {
+                    Destroy(gameObject);
 
-                isSpeeding = true;  //need boolean check for cooldown
+                    MoveHallway.hallwaySpeed *= increaseSpeed;  //boost "player" forward speed by increasing hallway speed 
+
+                    isSpeeding = true;  //need boolean check for cooldown
+                }
+                else //is already speeding, just destroy pickup, do not activate effect
+                {
+                    Destroy(gameObject);
+                }
+
             }
 
             //player collides with immunity potion
-            if(this.gameObject.CompareTag("RedPotion")) //immunity against obstacles, destroy obstacle
+            if(gameObject.CompareTag("RedPotion")) //immunity against obstacles, destroy obstacle
             {
 
             }
