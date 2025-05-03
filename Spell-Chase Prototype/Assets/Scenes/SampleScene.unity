@@ -18953,11 +18953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c6aafa3f7a09d479c7d44d6400e6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
   prefabs:
   - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
@@ -21182,11 +21177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c6aafa3f7a09d479c7d44d6400e6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
   prefabs:
   - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
@@ -22041,11 +22031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c6aafa3f7a09d479c7d44d6400e6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
   prefabs:
   - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
@@ -23500,6 +23485,8 @@ MonoBehaviour:
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   scoreText: {fileID: 0}
+  increaseSpeed: 8
+  isSpeeding: 0
 --- !u!1 &1657361882
 GameObject:
   m_ObjectHideFlags: 0
@@ -30924,6 +30911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 6480415611255852060, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
+      propertyPath: bossHallway
+      value: 
+      objectReference: {fileID: 3595676116555251688, guid: 8cb0ef5c8e9efc64eaeb5bb3fe56351b, type: 3}
     - target: {fileID: 7126563902056830988, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
       propertyPath: spawner1
       value: 

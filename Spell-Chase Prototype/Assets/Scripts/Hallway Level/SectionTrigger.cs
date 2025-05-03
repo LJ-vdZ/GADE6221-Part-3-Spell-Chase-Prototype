@@ -7,9 +7,12 @@ public class SectionTrigger : MonoBehaviour
     public GameObject hallwaySection;
     public GameObject bossHallway;
 
-    private float bossBattleTime = 0f;
+    //check player score
+    private int playerScore;
 
-    private float bossBattleDuration = 10f;
+    //private float bossBattleTime = 0f; //when player reaches a certain score before boss battle
+
+    //private float bossBattleDuration; //when player reaches a certain score during boss battle
 
     private bool isBossBattle = false;
 
@@ -20,34 +23,37 @@ public class SectionTrigger : MonoBehaviour
     private void Start()
     {
         //set boss battle to false and boss battle time to zero at start of game
-        bossBattleTime = 0f;
-        isBossBattle = false;
+        //bossBattleTime = 0f;
+        //isBossBattle = false;
     }
 
     private void Update()
     {
-        //if the boss battle is not happening yet, increase time(will change this to score later)
+        //get player's score from ObstaclePassScore
+        playerScore = ObstaclePassedScore.score;
+        
+        //if the boss battle is not happening yet, check player score
         if (isBossBattle == false)
         {
-            bossBattleTime += Time.deltaTime;
-
-            if (bossBattleTime >= 5f)   //if player reached a certain time (score), initiate boss battle
+            if (playerScore >= 2)   //if player score reaches or bigger than 30, initiate boss battle
             {
                 //boss battle is true
                 isBossBattle = true;
 
+                Debug.Log("isBossBattle is set to true");
+
                 //assign duration to boss battle time so it can be decreased (will change this so it score is checked)
-                bossBattleTime = bossBattleDuration;
+                //bossBattleTime = bossBattleDuration;
             }
         }
-        else  //boss battle is happening
+
+        //boss battle is happening
+        if(isBossBattle == true && playerScore >= 100)
         {
-            bossBattleTime -= Time.deltaTime;   //decrease time (check player score)
-            if (bossBattleTime <= 0f)
-            {
-                isBossBattle = false;
-                bossBattleTime = 0f;
-            }
+            //if player score reaches or bigger than 100, stop generating boss battle hallway
+            isBossBattle = false;
+            //bossBattleTime = 0f;
+            
         }
 
     }
@@ -57,22 +63,27 @@ public class SectionTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Trigger"))
         {
+            
+            
             //collision of both Box Collider and Character Controls are detected. Two hallway sections are generated as a result.
             //make sure only one trigger happens, not two. We only want to generate one hallway
-            if (other.gameObject.CompareTag("Trigger") && !hasTriggered && isBossBattle == false)
+            if (!hasTriggered && isBossBattle == false)
             {
                 hasTriggered = true;    //a trigger occured
-
+                
                 //spawn new section of hallway
                 //indicate where to spawn new hallway
                 Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);   //there is no rotation
             
             }
-            else //spawn boss hallway
+            
+            if (!hasTriggered && isBossBattle == true) //spawn boss hallway
             {
-                hasTriggered = true;    //a trigger occured
+                Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
+                
+                Debug.Log("Boss hallway generated");
 
-                Instantiate(bossHallway, new Vector3(-50, 2, 2), Quaternion.identity);
+                hasTriggered = true;    //a trigger occured
             }
         }
     }

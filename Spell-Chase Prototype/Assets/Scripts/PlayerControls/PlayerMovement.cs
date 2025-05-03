@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         //player has not moved yet. Set moveDirection to Vector3.zero
         Vector3 moveDirection = Vector3.zero;
 
-        //check if player stayes within available lanes
+        //check if player stays within available lanes
         //target lane can't be smaller than 0 or bigger than 2
         //there are only 3 lanes --> Lane 0, Lane 1, and Lane 2
         //left and right movements

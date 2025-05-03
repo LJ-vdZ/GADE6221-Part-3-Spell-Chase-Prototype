@@ -17,9 +17,9 @@ public class MoveHallway : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //move platform bit by bit along the x-axis at set speed
+        //move hallways bit by bit along x-axis at set speed
         transform.position += new Vector3(0, 0, -hallwaySpeed) * Time.deltaTime;
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
