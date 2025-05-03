@@ -35,7 +35,7 @@ public class SectionTrigger : MonoBehaviour
         //if the boss battle is not happening yet, check player score
         if (isBossBattle == false)
         {
-            if (playerScore >= 2)   //if player score reaches or bigger than 30, initiate boss battle
+            if (playerScore >= 1)   //if player score reaches or bigger than 30, initiate boss battle
             {
                 //boss battle is true
                 isBossBattle = true;
