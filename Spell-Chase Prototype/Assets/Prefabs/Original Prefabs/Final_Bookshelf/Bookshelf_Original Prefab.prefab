@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5188200609740554889
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6234257
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.84568
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.20931
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.2387
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.0872889
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_Name
+      value: Bookshelf_Original Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5582076860376534552}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5482645854460796639}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6460024616908094428}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7094420004434930981}
+  m_SourcePrefab: {fileID: 100100000, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+--- !u!1 &4954339087965241304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e62868d72f507449a5e0dda52315e8d, type: 3}
+  m_PrefabInstance: {fileID: 5188200609740554889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-5582076860376534552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4954339087965241304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e086f96e34943d4cb7d4952eb87ea79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5482645854460796639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4954339087965241304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39af105ac09dcb4aafe3a77c3d601e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6460024616908094428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4954339087965241304}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.588884, y: 1.7419416, z: 1.701404}
+  m_Center: {x: 0.01668995, y: -0.005622238, z: -1.2990004}
+--- !u!54 &7094420004434930981
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4954339087965241304}
+  serializedVersion: 4
+  m_Mass: 2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3

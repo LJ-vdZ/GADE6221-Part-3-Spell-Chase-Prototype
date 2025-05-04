@@ -18959,7 +18959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
+  - {fileID: 4954339087965241304, guid: 908656ca9f225a348aa2cfc792d0bbd8, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   timeSpawn: 7
@@ -21183,7 +21183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
+  - {fileID: 4954339087965241304, guid: 908656ca9f225a348aa2cfc792d0bbd8, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   timeSpawn: 3
@@ -22037,7 +22037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 389764567720368199, guid: d70e8fb41cb20fc4aa76b7703912dc3a, type: 3}
+  - {fileID: 4954339087965241304, guid: 908656ca9f225a348aa2cfc792d0bbd8, type: 3}
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   timeSpawn: 5
