@@ -4,114 +4,94 @@ using UnityEngine;
 
 public class HatchController : MonoBehaviour
 {
-    //get pivot point of hinge
-    [SerializeField] 
-    private Vector3 hingeOffset = new Vector3(-1f, 0f, 0f);
+    [SerializeField]
+    private float openAngle = 90f; //angle to open downwards
     
-    //private Transform hatchMesh; //hatch to rotate
+    [SerializeField]
+    private float openSpeed = 4f;   //speed of opening/closing
 
-    [SerializeField] 
-    private float openAngle = 90f; //angle to rotate when opening downward
+    [SerializeField]
+    private Vector3 rotationAxis = Vector3.left; //rotate about x-axis. same as (x, y, z). 
 
-    [SerializeField] 
-    private float openDuration = 2f; //time taken to open
+    [SerializeField]
+    private float minDelay = 1f;   //min delay before open/close
 
-    [SerializeField] 
-    private float closeDuration = 2f; //time taken to close
+    [SerializeField]
+    private float maxDelay = 4f;   //max delay before open/close
 
-    [SerializeField] 
-    private Vector2 randomTimeRange = new Vector2(3f, 10f); //random wait time between opening and closing
-
+    //rotation variables
     private Quaternion closedRotation;
-
-    //
     private Quaternion openRotation;
 
-    //check if hatch is open or not
-    //private bool isOpen = false;
+    //bool it check if hatch is open or closed
+    private bool isOpen = false;
 
-    private Vector3 hingePoint;
-
-
-    // Start is called before the first frame update
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //store initial rotation of closed hatch
+        // starting rotation of closed hatch
         closedRotation = transform.rotation;
 
-        //rotate around local X-axis to open
-        openRotation = Quaternion.Euler(openAngle, 0f, 0f) * closedRotation;
+        //rotation of open hatch
+        openRotation = closedRotation * Quaternion.Euler(rotationAxis * openAngle); //rotate 90 degrees about rotationAxis (x) from starting rotation in unity
 
-        //get hinge point in world to prevent it changing position
-        hingePoint = transform.position + transform.TransformDirection(hingeOffset);
-
-
-        // Start the random open/close cycle
+        //start hatch open and close cycle
         StartCoroutine(HatchCycle());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private IEnumerator HatchCycle()
     {
         while (true)
         {
-            //wait for random time before starting opena and close cycle for hatch
-            float waitTime = Random.Range(randomTimeRange.x, randomTimeRange.y);
-            yield return new WaitForSeconds(waitTime);
+            //delay cycle for random amount of time before opening/closing hatch
+            yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
 
-            //open hatch
-            yield return StartCoroutine(RotateHatch(closedRotation, openRotation, openDuration));
-            //isOpen = true;
 
-            //delay to close hatch again
-            yield return new WaitForSeconds(2f);
+            if (!isOpen)    //if the hatch is not open, then open the hatch
+            {
+                yield return StartCoroutine(RotateHatch(closedRotation, openRotation));
 
-            //close hatch
-            yield return StartCoroutine(RotateHatch(openRotation, closedRotation, closeDuration));
-            //isOpen = false;
+                //hatch is open
+                isOpen = true;
+            }
+            else    //hatch is open, close hatch
+            {
+                yield return StartCoroutine(RotateHatch(openRotation, closedRotation));
+
+                //hatch is not open
+                isOpen = false;
+            }
         }
     }
 
-    private IEnumerator RotateHatch(Quaternion from, Quaternion to, float duration)
+    private IEnumerator RotateHatch(Quaternion startingPos, Quaternion endPos)
     {
-        float timeDelayed = 0f;
+        float timePassed = 0f;
 
-        //keep hatch in position while rotating
-        Vector3 initialPosition = transform.position;
+        float duration = openAngle / (openSpeed * 90f); //how long it will take for hatch to close based on hatch angle and closing/opening speed
 
-
-        while (timeDelayed < duration)
+        while (timePassed < duration)
         {
-            //get current angle
-            float currentAngle = timeDelayed / duration;
+            transform.rotation = Quaternion.Slerp(startingPos, endPos, timePassed / duration);
 
-            Quaternion currentRotation = Quaternion.Slerp(from, to, currentAngle);
-            
-            //get angle difference for RotateAround
-            float angle = Quaternion.Angle(from, currentRotation);
-            
-            if (angle > 0.001f) //avoid small numerical errors
-            {
-                //rotate around hinge point
-                transform.RotateAround(hingePoint, transform.forward, angle);
+            //increase time passed
+            timePassed += Time.deltaTime;
 
-                //prevent change in position
-                transform.position = initialPosition + transform.TransformDirection(hingeOffset);
-            }
-
-            timeDelayed += Time.deltaTime;
             yield return null;
         }
-        //ensure final rotation and position
-        transform.rotation = to;
-        transform.position = initialPosition + transform.TransformDirection(hingeOffset);
+
+        //final end rotation position
+        transform.rotation = endPos;
     }
 }
-//Unity Documentation, [s.a.]. Transform.RorateAround. [online] Available at: <https://docs.unity3d.com/6000.1/Documentation/ScriptReference/Transform.RotateAround.html>[Accessed 03 May 2025].
-//Unity Documentation, [s.a.]. Vector3.Slerp. [online] Available at: <https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Vector3.Slerp.html>[Accessed 03 May 2025].
-//Unity Discussions, [s.a.]. IEnumerator. [online] Available at: <https://discussions.unity.com/t/ienumerator/892998>[Accessed 03 May 2025].
+//Unity Documentation, [s.a.]. Vector3.left. [online] Available at: <https://docs.unity3d.com/530/Documentation/ScriptReference/Vector3-left.html>[Accessed 05 May 2025].
+//Unity Documentation, [s.a.]. Quaternion.Euler. [online] Available at: <https://docs.unity3d.com/6000.1/Documentation/ScriptReference/Quaternion.Euler.html>[Accessed 05 May 2025].
+//https://youtu.be/g_HaeU8SJd0
+//https://stackoverflow.com/questions/64258574/what-is-an-ienumerator-in-c-sharp-and-what-is-it-used-for-in-unity
+//https://docs.unity3d.com/6000.1/Documentation/ScriptReference/MonoBehaviour.StartCoroutine.html

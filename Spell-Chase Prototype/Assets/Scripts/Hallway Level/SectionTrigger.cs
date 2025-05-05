@@ -48,7 +48,7 @@ public class SectionTrigger : MonoBehaviour
         }
 
         //boss battle is happening
-        if(isBossBattle == true && playerScore >= 100)
+        if(isBossBattle == true && playerScore >= 50)
         {
             //if player score reaches or bigger than 100, stop generating boss battle hallway
             isBossBattle = false;
