@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 8;
     private float speedCooldownTime = 10f;
     public bool isSpeeding = false;
+    public bool isImmune = false;
+    private float immunityTimer = 10f;
+
+    public Death death;
+
+    public VisualEffect poof;
 
     // Start is called before the first frame update
     //change to new void Start(). Hiding/overriding base method. 
@@ -36,6 +43,20 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 MoveHallway.hallwaySpeed = 5;
 
                 speedCooldownTime = 10f;    //set count down back to 10s
+            }
+        }
+
+        //check if player is immune
+        if (isImmune == true)
+        {
+            immunityTimer -= Time.deltaTime;    //use count down to end pickup effect
+
+            //if count down reaches zero, stop effect of pickup, get rid of immunity
+            if (immunityTimer <= 0f)
+            {
+                isImmune = false;
+                death.enabled = true;
+                immunityTimer = 10f;    //set count down back to 10s
             }
         }
     }
@@ -79,7 +100,20 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //player collides with immunity potion
             if(gameObject.CompareTag("RedPotion")) //immunity against obstacles, destroy obstacle
             {
+                death.enabled = false;
+                void OnControllerColliderHit(ControllerColliderHit collision)
+                {
+                    if (collision.gameObject.CompareTag("Obstacle")) //when "Obstacle" hit 
+                    {
+                        Destroy(collision.gameObject);
 
+                       
+                        if (poof != null)
+                        {
+                            poof.Play();
+                        }
+                    }    
+                }
             }
 
 

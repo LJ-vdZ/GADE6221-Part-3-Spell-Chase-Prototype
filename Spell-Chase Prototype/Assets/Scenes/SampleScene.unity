@@ -23524,6 +23524,9 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   increaseSpeed: 8
   isSpeeding: 0
+  isImmune: 0
+  death: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!1 &1657361882
 GameObject:
   m_ObjectHideFlags: 0
