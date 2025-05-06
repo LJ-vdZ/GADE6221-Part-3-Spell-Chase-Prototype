@@ -20,12 +20,13 @@ public class spawner2 : MonoBehaviour
     [SerializeField] 
     float pickupSpawnChance = 0.2f;
 
-    bool spawnObastcle = true;
+    public static bool spawnObstacle = true;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnObstacle = true;
         StartCoroutine(PrefabSpawn() );
     }
 
@@ -37,7 +38,7 @@ public class spawner2 : MonoBehaviour
 
     IEnumerator PrefabSpawn()
     {
-        while(spawnObastcle == true)
+        while(spawnObstacle == true)
         {
             float wantedX = transform.position.x + Random.Range( Min, Max );    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
             Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
@@ -45,7 +46,7 @@ public class spawner2 : MonoBehaviour
             GameObject game = Instantiate(prefabs[Random.Range(0, prefabs.Length)], position, Quaternion.identity );
 
             //if random value is smaller or equal to than 20%, spawn pickup. Random.value is the same as Random.Range(0.0f, 1.0f).
-            if (Random.value < pickupSpawnChance)
+            if (Random.value < pickupSpawnChance && SectionTrigger.isBossBattle == false)
             {
                 //pickup at position of spawner
                 Vector3 pickupPosition = new Vector3(wantedX, transform.position.y - 1f, transform.position.z + 2f);
@@ -55,12 +56,13 @@ public class spawner2 : MonoBehaviour
 
             }
 
-            if (Death.deathStatus == true)
+            if (Death.deathStatus == true || SectionTrigger.isBossBattle == true)
             {
-                spawnObastcle = false;
+                spawnObstacle = false;
 
                 yield return null;
             }
+            
 
 
             yield return new WaitForSeconds( timeSpawn );

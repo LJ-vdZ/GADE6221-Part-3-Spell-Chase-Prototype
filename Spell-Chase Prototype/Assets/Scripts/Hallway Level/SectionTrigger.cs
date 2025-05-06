@@ -14,7 +14,7 @@ public class SectionTrigger : MonoBehaviour
 
     //private float bossBattleDuration; //when player reaches a certain score during boss battle
 
-    private bool isBossBattle = false;
+    public static bool isBossBattle = false;
 
     public GameObject[] floatingPlatforms;
 
@@ -24,7 +24,7 @@ public class SectionTrigger : MonoBehaviour
     {
         //set boss battle to false and boss battle time to zero at start of game
         //bossBattleTime = 0f;
-        //isBossBattle = false;
+        isBossBattle = false;
     }
 
     private void Update()
@@ -35,10 +35,11 @@ public class SectionTrigger : MonoBehaviour
         //if the boss battle is not happening yet, check player score
         if (isBossBattle == false)
         {
-            if (playerScore >= 1)   //if player score reaches or bigger than 30, initiate boss battle
+            if (playerScore >= 5)   //if player score reaches or bigger than 30, initiate boss battle
             {
                 //boss battle is true
                 isBossBattle = true;
+
 
                 Debug.Log("isBossBattle is set to true");
 
@@ -48,12 +49,14 @@ public class SectionTrigger : MonoBehaviour
         }
 
         //boss battle is happening
-        if(isBossBattle == true && playerScore >= 50)
+        if(isBossBattle == true && playerScore >= 30)
         {
             //if player score reaches or bigger than 100, stop generating boss battle hallway
             isBossBattle = false;
-            //bossBattleTime = 0f;
-            
+
+            //start spawning obstacles again
+            spawner2.spawnObstacle = true;
+
         }
 
     }

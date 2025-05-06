@@ -14,6 +14,7 @@ TagManager:
   - TrenchDestroyer
   - RedPotion
   - BluePotion
+  - FloorTrap
   layers:
   - Default
   - TransparentFX

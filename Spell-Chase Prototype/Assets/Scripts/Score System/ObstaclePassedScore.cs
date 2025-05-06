@@ -14,7 +14,7 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
     //check if obstacle passed the player, aka went through the trigger collider
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
+        if (other.CompareTag("Obstacle") || other.CompareTag("FloorTrap"))
         {
             score = score + 1;  //increase score if obastacle passed player
 
