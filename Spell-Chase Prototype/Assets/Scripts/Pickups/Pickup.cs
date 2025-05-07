@@ -5,11 +5,13 @@ using UnityEngine.VFX;
 
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
-    public int increaseSpeed = 8;
-    private float speedCooldownTime = 10f;
+    public int increaseSpeed = 2;
+    private float speedCooldownTime = 3f;
     public bool isSpeeding = false;
     public bool isImmune = false;
     private float immunityTimer = 10f;
+    private float originalSpeed = 5f;
+    public float DontIncreaseSpeed = 1f;
 
     public Death death;
 
@@ -18,10 +20,17 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     // Start is called before the first frame update
     //change to new void Start(). Hiding/overriding base method. 
     void Start()
+
     {
         //call Start method from ObstaclePassedScore script to update UI
         //base.Start();   //base refers to ObstaclePassedScore class
         UpdateScoreInUI();
+
+        //GetComponent<MoveHallway>();
+
+        originalSpeed = MoveHallway.hallwaySpeed;
+
+        isSpeeding = false;
     }
 
     // Update is called once per frame
@@ -31,20 +40,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
 
         //check if player is using speedup
-        if (isSpeeding == true)
-        {
-            speedCooldownTime -= Time.deltaTime;    //use count down to end pickup effect
-
-            //if count down reaches zero, stop effect of pickup, speed set back to normal
-            if (speedCooldownTime <= 0f)
-            {
-                isSpeeding = false;
-
-                MoveHallway.hallwaySpeed = 5;
-
-                speedCooldownTime = 10f;    //set count down back to 10s
-            }
-        }
+        StopSpeedEffect();
 
         //check if player is immune
         if (isImmune == true)
@@ -80,46 +76,66 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //player collides with speed potion
             if (gameObject.CompareTag("BluePotion"))   //speed boost
             {
+                MoveHallway moveHallway = GetComponent<MoveHallway>();  //use GetComponent() functionality
                 //make sure player can't pickup another speed potion while one is already active
 
                 if(isSpeeding == false) 
                 {
                     Destroy(gameObject);
 
-                    MoveHallway.hallwaySpeed *= increaseSpeed;  //boost "player" forward speed by increasing hallway speed 
+                    moveHallway.ApplySpeed(increaseSpeed);//boost "player" forward speed by increasing hallway speed
 
                     isSpeeding = true;  //need boolean check for cooldown
+
                 }
                 else //is already speeding, just destroy pickup, do not activate effect
                 {
                     Destroy(gameObject);
+
+                    moveHallway.ApplySpeed(DontIncreaseSpeed);
+
                 }
 
             }
 
             //player collides with immunity potion
-            if(gameObject.CompareTag("RedPotion")) //immunity against obstacles, destroy obstacle
+            if(gameObject.CompareTag("RedPotion")) ////when "Obstacle" hit, destroy obstacle
             {
                 death.enabled = false;
-                void OnControllerColliderHit(ControllerColliderHit collision)
+                
+                Destroy(gameObject);
+                if (poof != null)
                 {
-                    if (collision.gameObject.CompareTag("Obstacle")) //when "Obstacle" hit 
-                    {
-                        Destroy(collision.gameObject);
-
-                       
-                        if (poof != null)
-                        {
-                            poof.Play();
-                        }
-                    }    
+                    poof.Play();
                 }
             }
 
 
         }
     }
+
+    public void StopSpeedEffect()
+    {
+        if (isSpeeding == true)
+        {
+            speedCooldownTime -= Time.deltaTime;
+
+            Debug.Log("Speed Cooldown count down started");
+
+            if (speedCooldownTime <= 0f)
+            {
+                isSpeeding = false;
+
+                GetComponent<MoveHallway>().EndSpeedBoost(originalSpeed);
+
+                //moveHallway.hallwaySpeed = originalSpeed;
+
+                speedCooldownTime = 3f;
+            }
+        }
+    }
 }
 //REFERENCES
-//Microfsoft Learn, 2023. new modifier (C# Reference). [online] Available at: <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/new-modifier> [Accessed 21 March 2025].
+//Microsoft Learn, 2023. new modifier (C# Reference). [online] Available at: <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/new-modifier> [Accessed 21 March 2025].
 //Geeks for Geeks, 2025. C# Method Overriding. [online] Available at: <https://www.geeksforgeeks.org/c-sharp-method-overriding/>[Accessed 21 March 2025].
+//https://youtu.be/n-bA2jUTW8k

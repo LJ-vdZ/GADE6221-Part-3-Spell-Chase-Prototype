@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 2476416210870298010}
   m_Layer: 0
   m_Name: Bottle_Endurance
-  m_TagString: GreenPotion
+  m_TagString: BluePotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4909,8 +4909,11 @@ MonoBehaviour:
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   scoreText: {fileID: 0}
-  increaseSpeed: 8
+  increaseSpeed: 2
   isSpeeding: 0
+  isImmune: 0
+  death: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!114 &2476416210870298010
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class MoveHallway : MonoBehaviour        
 {
-    //[SerializeField]
-    public static int hallwaySpeed = 5;
+    [SerializeField]
+    public static float hallwaySpeed = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,8 @@ public class MoveHallway : MonoBehaviour
         //move hallways bit by bit along x-axis at set speed
         transform.position += new Vector3(0, 0, -hallwaySpeed) * Time.deltaTime;
 
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,5 +32,18 @@ public class MoveHallway : MonoBehaviour
             Destroy(gameObject);    //destroy hallway and everything in it when it collides with invisible destroy wall
         }
 
+    }
+
+    public void ApplySpeed(float increaseSpeed)
+    {
+
+        hallwaySpeed = hallwaySpeed * increaseSpeed;
+
+        Debug.Log("Hallway Speed increased to " + hallwaySpeed);
+    }
+
+    public void EndSpeedBoost(float originalSpeed) 
+    {
+        hallwaySpeed = originalSpeed;
     }
 }
