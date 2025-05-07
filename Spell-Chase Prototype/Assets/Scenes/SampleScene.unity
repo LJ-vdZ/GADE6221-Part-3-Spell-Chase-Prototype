@@ -23525,6 +23525,7 @@ MonoBehaviour:
   increaseSpeed: 8
   isSpeeding: 0
   isImmune: 0
+  DontIncreaseSpeed: 1
   death: {fileID: 0}
   poof: {fileID: 0}
 --- !u!1 &1657361882

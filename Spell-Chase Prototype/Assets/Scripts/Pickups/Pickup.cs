@@ -94,6 +94,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                     moveHallway.ApplySpeed(DontIncreaseSpeed);
 
+                    //isSpeeding = false;
+
                 }
 
             }
