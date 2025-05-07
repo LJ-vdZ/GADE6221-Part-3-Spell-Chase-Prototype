@@ -6,8 +6,8 @@ using UnityEngine.VFX;
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
-    private float speedCooldownTime = 3f;
-    public bool isSpeeding = false;
+    private float speedCooldownTime = 10f;
+    public bool isSpeeding;
     public bool isImmune = false;
     private float immunityTimer = 10f;
     private float originalSpeed = 5f;
@@ -28,7 +28,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
         //GetComponent<MoveHallway>();
 
-        originalSpeed = MoveHallway.hallwaySpeed;
+        //originalSpeed = GetComponent<MoveHallway>.hallwaySpeed;
 
         isSpeeding = false;
     }
@@ -69,6 +69,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                 UpdateScoreInUI();
 
+                PickupUI.Instance.ShowPickupUI("GreenPotion", "Bonus Points!");
+
                 Destroy(gameObject);    
 
             }
@@ -76,23 +78,27 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //player collides with speed potion
             if (gameObject.CompareTag("BluePotion"))   //speed boost
             {
-                MoveHallway moveHallway = GetComponent<MoveHallway>();  //use GetComponent() functionality
+                
                 //make sure player can't pickup another speed potion while one is already active
 
                 if(isSpeeding == false) 
                 {
+                    MoveHallway moveHallway = GetComponent<MoveHallway>();  //use GetComponent() functionality
+                    
                     Destroy(gameObject);
 
                     moveHallway.ApplySpeed(increaseSpeed);//boost "player" forward speed by increasing hallway speed
 
                     isSpeeding = true;  //need boolean check for cooldown
 
+                    PickupUI.Instance.ShowPickupUI("Blue Potion", "Bonus Points!", 5f);
+
                 }
                 else //is already speeding, just destroy pickup, do not activate effect
                 {
                     Destroy(gameObject);
 
-                    moveHallway.ApplySpeed(DontIncreaseSpeed);
+                    //moveHallway.ApplySpeed(DontIncreaseSpeed);
 
                     //isSpeeding = false;
 
@@ -125,14 +131,16 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             Debug.Log("Speed Cooldown count down started");
 
             if (speedCooldownTime <= 0f)
-            {
+            {   
+                MoveHallway moveHallway = GetComponent<MoveHallway>();
+                moveHallway.EndSpeedBoost(originalSpeed);
+                
                 isSpeeding = false;
+                Debug.Log("Speed set to false");
 
-                GetComponent<MoveHallway>().EndSpeedBoost(originalSpeed);
+                //MoveHallway.hallwaySpeed = originalSpeed;
 
-                //moveHallway.hallwaySpeed = originalSpeed;
-
-                speedCooldownTime = 3f;
+                speedCooldownTime = 5f;
             }
         }
     }

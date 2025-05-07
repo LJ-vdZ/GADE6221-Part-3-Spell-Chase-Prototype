@@ -1337,8 +1337,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.185369, y: 4.32379, z: 0.43284255}
-  m_Center: {x: -0.09986743, y: 0.6738567, z: -0.4024014}
+  m_Size: {x: 0.6417713, y: 4.32379, z: 0.43284214}
+  m_Center: {x: 0.0042078695, y: 0.6738567, z: -0.40240106}
 --- !u!114 &7126563902056830988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,6 +1376,10 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   increaseSpeed: 8
   isSpeeding: 0
+  isImmune: 0
+  DontIncreaseSpeed: 1
+  death: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!1 &4397076360616678384
 GameObject:
   m_ObjectHideFlags: 0

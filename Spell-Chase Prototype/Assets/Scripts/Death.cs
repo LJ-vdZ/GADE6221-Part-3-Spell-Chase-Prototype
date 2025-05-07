@@ -23,7 +23,7 @@ public class Death : MonoBehaviour
         playerAnim = GetComponent<Animator>();
 
         //Need to stop hallway movement if player death is true. Set hallwayspeed to 0.
-        MoveHallway.hallwaySpeed = 5;
+        //MoveHallway.hallwaySpeed = 5;
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class Death : MonoBehaviour
             deathStatus = true;
 
             playerAnim.SetBool("Die", true);
-            MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
+            //MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
 
 
 
@@ -63,7 +63,7 @@ public class Death : MonoBehaviour
             deathStatus = true;
 
             playerAnim.SetBool("Die", true);
-            MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
+            //MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
 
             player.GetComponent<PlayerMovement>().enabled = false;
 

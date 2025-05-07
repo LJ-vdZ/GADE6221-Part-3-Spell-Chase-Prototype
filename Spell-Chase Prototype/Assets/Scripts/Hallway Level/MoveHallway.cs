@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MoveHallway : MonoBehaviour        
 {
-    [SerializeField]
+    //[SerializeField]
     public static float hallwaySpeed = 5;
 
     // Start is called before the first frame update
@@ -20,7 +20,11 @@ public class MoveHallway : MonoBehaviour
         //move hallways bit by bit along x-axis at set speed
         transform.position += new Vector3(0, 0, -hallwaySpeed) * Time.deltaTime;
 
-
+        //stop hallway when death is true
+        if(Death.deathStatus == true) 
+        {
+            hallwaySpeed = 0;
+        }
 
     }
 
