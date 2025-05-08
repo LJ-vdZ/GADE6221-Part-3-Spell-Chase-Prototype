@@ -4912,8 +4912,10 @@ MonoBehaviour:
   increaseSpeed: 2
   isSpeeding: 0
   isImmune: 0
+  DontIncreaseSpeed: 1
   death: {fileID: 0}
   poof: {fileID: 0}
+  pickupBar: {fileID: 4163395194182266907, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
 --- !u!114 &2476416210870298010
 MonoBehaviour:
   m_ObjectHideFlags: 0

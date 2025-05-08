@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
@@ -12,16 +13,24 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     private float immunityTimer = 10f;
     private float originalSpeed = 5f;
     public float DontIncreaseSpeed = 1f;
+    
 
     public Death death;
 
     public VisualEffect poof;
 
+    [SerializeField]
+    public PickupBar pickupBar;
+
+    //to display pickup type in UI
+    public Text pickupText;
+
     // Start is called before the first frame update
     //change to new void Start(). Hiding/overriding base method. 
     void Start()
-
     {
+        pickupBar = FindObjectOfType<PickupBar>();
+
         //call Start method from ObstaclePassedScore script to update UI
         //base.Start();   //base refers to ObstaclePassedScore class
         UpdateScoreInUI();
@@ -31,6 +40,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
         //originalSpeed = GetComponent<MoveHallway>.hallwaySpeed;
 
         isSpeeding = false;
+
+        pickupBar.setMaxSlider(speedCooldownTime);
     }
 
     // Update is called once per frame
@@ -47,6 +58,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
         {
             immunityTimer -= Time.deltaTime;    //use count down to end pickup effect
 
+            pickupBar.sliderValue(immunityTimer);
+
             //if count down reaches zero, stop effect of pickup, get rid of immunity
             if (immunityTimer <= 0f)
             {
@@ -55,6 +68,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 immunityTimer = 10f;    //set count down back to 10s
             }
         }
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,9 +84,9 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                 UpdateScoreInUI();
 
-                PickupUI.Instance.ShowPickupUI("GreenPotion", "Bonus Points!");
+                Destroy(gameObject);
 
-                Destroy(gameObject);    
+                pickupText.text = "Score Booster!";
 
             }
 
@@ -91,7 +106,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                     isSpeeding = true;  //need boolean check for cooldown
 
-                    PickupUI.Instance.ShowPickupUI("Blue Potion", "Bonus Points!", 5f);
+                    pickupText.text = "Super Speed!";
 
                 }
                 else //is already speeding, just destroy pickup, do not activate effect
@@ -116,6 +131,9 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 {
                     poof.Play();
                 }
+
+                pickupText.text = "Immunity!";
+
             }
 
 
@@ -129,6 +147,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             speedCooldownTime -= Time.deltaTime;
 
             Debug.Log("Speed Cooldown count down started");
+
+            pickupBar.sliderValue(speedCooldownTime);
 
             if (speedCooldownTime <= 0f)
             {   
