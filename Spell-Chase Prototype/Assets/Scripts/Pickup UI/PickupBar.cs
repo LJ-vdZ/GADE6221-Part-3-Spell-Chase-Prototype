@@ -18,5 +18,10 @@ public class PickupBar : MonoBehaviour
     {
         slider.value = value;
     }
+
+    public void Start()
+    {
+        
+    }
 }
 //https://youtu.be/BLfNP4Sc_iA?si=EsXPTGAxHK9He-DQ

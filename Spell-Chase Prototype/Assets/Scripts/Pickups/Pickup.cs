@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
-    private float speedCooldownTime = 10f;
-    public bool isSpeeding;
+    public static bool isSpeeding;
     public bool isImmune = false;
     private float immunityTimer = 10f;
-    private float originalSpeed = 5f;
-    public float DontIncreaseSpeed = 1f;
-    
 
+
+    private GameObject barObject; //PickupBar GameObject
+
+    //static MoveHallway moveHallway;
+ 
     public Death death;
 
     public VisualEffect poof;
@@ -25,33 +26,32 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     //to display pickup type in UI
     public Text pickupText;
 
+
     // Start is called before the first frame update
     //change to new void Start(). Hiding/overriding base method. 
     void Start()
     {
         pickupBar = FindObjectOfType<PickupBar>();
-
-        //call Start method from ObstaclePassedScore script to update UI
-        //base.Start();   //base refers to ObstaclePassedScore class
+        
         UpdateScoreInUI();
 
-        //GetComponent<MoveHallway>();
-
-        //originalSpeed = GetComponent<MoveHallway>.hallwaySpeed;
+        //speedDuration = 10f;
 
         isSpeeding = false;
 
-        pickupBar.setMaxSlider(speedCooldownTime);
+        //pickupBar.setMaxSlider(speedDuration);
+
+        pickupText = GameObject.Find("PickupType").GetComponent<Text>();
+
+        pickupText.text = "";
+
+
     }
 
     // Update is called once per frame
     new void Update()
     {
         base.Update();   //base refers to ObstaclePassedScore class
-
-
-        //check if player is using speedup
-        StopSpeedEffect();
 
         //check if player is immune
         if (isImmune == true)
@@ -68,8 +68,6 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 immunityTimer = 10f;    //set count down back to 10s
             }
         }
-
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -84,38 +82,37 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                 UpdateScoreInUI();
 
-                Destroy(gameObject);
-
                 pickupText.text = "Score Booster!";
+
+                Canvas.ForceUpdateCanvases(); // Force Canvas to redraw
+
+                Destroy(gameObject);
 
             }
 
             //player collides with speed potion
             if (gameObject.CompareTag("BluePotion"))   //speed boost
             {
-                
                 //make sure player can't pickup another speed potion while one is already active
-
                 if(isSpeeding == false) 
                 {
-                    MoveHallway moveHallway = GetComponent<MoveHallway>();  //use GetComponent() functionality
-                    
                     Destroy(gameObject);
+                    
+                    GetComponent<MoveHallway>();  //use GetComponent() functionality
 
-                    moveHallway.ApplySpeed(increaseSpeed);//boost "player" forward speed by increasing hallway speed
+                    MoveHallway.ApplySpeed(increaseSpeed);//boost "player" forward speed by increasing hallway speed
 
                     isSpeeding = true;  //need boolean check for cooldown
 
                     pickupText.text = "Super Speed!";
 
+                    barObject.SetActive(true);
+
+                    
                 }
                 else //is already speeding, just destroy pickup, do not activate effect
                 {
                     Destroy(gameObject);
-
-                    //moveHallway.ApplySpeed(DontIncreaseSpeed);
-
-                    //isSpeeding = false;
 
                 }
 
@@ -134,34 +131,11 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                 pickupText.text = "Immunity!";
 
+                barObject.SetActive(true);
+
             }
 
 
-        }
-    }
-
-    public void StopSpeedEffect()
-    {
-        if (isSpeeding == true)
-        {
-            speedCooldownTime -= Time.deltaTime;
-
-            Debug.Log("Speed Cooldown count down started");
-
-            pickupBar.sliderValue(speedCooldownTime);
-
-            if (speedCooldownTime <= 0f)
-            {   
-                MoveHallway moveHallway = GetComponent<MoveHallway>();
-                moveHallway.EndSpeedBoost(originalSpeed);
-                
-                isSpeeding = false;
-                Debug.Log("Speed set to false");
-
-                //MoveHallway.hallwaySpeed = originalSpeed;
-
-                speedCooldownTime = 5f;
-            }
         }
     }
 }

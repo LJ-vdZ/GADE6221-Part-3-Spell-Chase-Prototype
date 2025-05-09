@@ -4916,6 +4916,7 @@ MonoBehaviour:
   death: {fileID: 0}
   poof: {fileID: 0}
   pickupBar: {fileID: 4163395194182266907, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
+  pickupText: {fileID: 7947897908048282744, guid: 9b728b88908cf144191a4a801ef01de5, type: 3}
 --- !u!114 &2476416210870298010
 MonoBehaviour:
   m_ObjectHideFlags: 0
