@@ -30712,6 +30712,62 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013950640}
   m_Mesh: {fileID: 4300092, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
+--- !u!1 &2018326391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018326392}
+  - component: {fileID: 2018326393}
+  m_Layer: 0
+  m_Name: BossSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2018326392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018326391}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.72881234, z: -0, w: 0.6847135}
+  m_LocalPosition: {x: 0.23, y: 0.464, z: -0.6}
+  m_LocalScale: {x: 1, y: 1.471, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 93.574, z: 0}
+--- !u!114 &2018326393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018326391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354367fa55779fc4d939e570880c5c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
+  GameManager: {fileID: 0}
+  scoreText: {fileID: 0}
+  boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
+  spawnerOne: {fileID: 1141819892}
+  spawnerTwo: {fileID: 1225511254}
+  spawnerThree: {fileID: 846722325}
+  Min: -0.5
+  Max: -0.5
 --- !u!1 &2025404860
 GameObject:
   m_ObjectHideFlags: 0
@@ -31456,3 +31512,4 @@ SceneRoots:
   - {fileID: 586000994}
   - {fileID: 306942004}
   - {fileID: 1625287736}
+  - {fileID: 2018326392}

@@ -1,0 +1,68 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Boss : ObstaclePassedScore
+{
+    public GameObject boss;
+    public GameObject spawnerOne;
+    public GameObject spawnerTwo;
+    public GameObject spawnerThree;
+    private bool spawned = false;
+    private bool oneCoroutine = false;
+
+    [SerializeField] float Min;
+
+    [SerializeField] float Max;
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(BossSpawn());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       if (spawned == false && oneCoroutine == false && score >= 5 && score < 50)
+        {
+            oneCoroutine = true;
+            spawnerOne.SetActive(false);
+            spawnerTwo.SetActive(false);
+            spawnerThree.SetActive(false);
+            StartCoroutine(BossSpawn());
+        } 
+    }
+
+    void BringBoss()
+    {
+        spawnerOne.SetActive(false);
+        spawnerTwo.SetActive(false);
+        spawnerThree.SetActive(false);
+        float wantedX = transform.position.x + Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
+        Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
+        Quaternion rotation = Quaternion.Euler(0, 180, 0);  // Rotates boss to face front
+        Instantiate(boss, position, rotation);
+
+        spawned = true;
+        //oneCoroutine = false;
+    }
+
+    void LeaveBoss()
+    {
+        spawnerOne.SetActive(true);
+        spawnerTwo.SetActive(true);
+        spawnerThree.SetActive(true);
+        spawned = false;
+        Destroy(boss);
+    }
+
+    IEnumerator BossSpawn()
+    {
+
+        if (spawned == false && score >= 5 && score < 50)
+        {
+            yield return new WaitForSeconds(7f);
+            BringBoss();
+        }
+    }
+}
