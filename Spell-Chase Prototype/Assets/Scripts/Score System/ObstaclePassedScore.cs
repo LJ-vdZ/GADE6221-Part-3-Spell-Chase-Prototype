@@ -47,12 +47,9 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
         {
             scoreText.text = "Score: " + score;
             
-            Debug.Log("Score Updated: " + score); //check if it works
+            //(it does work) Debug.Log("Score Updated: " + score); //check if it works
         }
-        //else
-        //{
-        //    Debug.LogError("ScoreText UI not working");
-        //}
+        
     }
 
     // Start is called before the first frame update
@@ -68,7 +65,6 @@ public class ObstaclePassedScore : Death    //need to check if player died on co
             scoreText = scoreTextObj.GetComponent<Text>();
         }
        
-
         UpdateScoreInUI();
 
     }

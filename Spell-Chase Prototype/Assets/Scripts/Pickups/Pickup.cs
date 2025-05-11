@@ -7,14 +7,13 @@ using UnityEngine.UI;
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
+    //public float speedCooldownTimeBar = 20f;
     public static bool isSpeeding;
     public bool isImmune = false;
-    private float immunityTimer = 10f;
+    private float immunityTimer = 40f;
 
 
     private GameObject barObject; //PickupBar GameObject
-
-    //static MoveHallway moveHallway;
  
     public Death death;
 
@@ -27,24 +26,20 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     public Text pickupText;
 
 
-    // Start is called before the first frame update
-    //change to new void Start(). Hiding/overriding base method. 
+    // Start is called before the first frame update 
     void Start()
     {
         pickupBar = FindObjectOfType<PickupBar>();
         
         UpdateScoreInUI();
 
-        //speedDuration = 10f;
-
         isSpeeding = false;
-
-        //pickupBar.setMaxSlider(speedDuration);
 
         pickupText = GameObject.Find("PickupType").GetComponent<Text>();
 
         pickupText.text = "";
 
+        //barObject.SetActive(false);
 
     }
 
@@ -102,13 +97,10 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                     MoveHallway.ApplySpeed(increaseSpeed);//boost "player" forward speed by increasing hallway speed
 
-                    isSpeeding = true;  //need boolean check for cooldown
+                    Pickup.isSpeeding = true;  //need boolean check for cooldown
 
                     pickupText.text = "Super Speed!";
 
-                    barObject.SetActive(true);
-
-                    
                 }
                 else //is already speeding, just destroy pickup, do not activate effect
                 {
@@ -134,8 +126,6 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 barObject.SetActive(true);
 
             }
-
-
         }
     }
 }

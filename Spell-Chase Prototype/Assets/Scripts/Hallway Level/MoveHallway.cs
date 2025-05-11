@@ -6,22 +6,31 @@ using UnityEngine.UI;
 
 public class MoveHallway : MonoBehaviour        
 {
-    //[SerializeField]
+    //static to apply to all hallways including clones
     public static float hallwaySpeed = 5f;
-    public static float speedCooldownTime;
+    public static float speedCooldownTime = 40f;
     public static float originalSpeed = 5f;
 
     [SerializeField]
-    public static PickupBar pickupBar;
+    public PickupBar pickupBar;
+
+    public float maxSlider = 40f;
 
     // Start is called before the first frame update
     void Start()
     {
-        speedCooldownTime = 5f;
+
+        if(Pickup.isSpeeding == false) 
+        {
+            hallwaySpeed = 5f;
+
+            speedCooldownTime = 40f;
+        }
 
         pickupBar = FindObjectOfType<PickupBar>();
-        
-        pickupBar.setMaxSlider(speedCooldownTime);
+
+        pickupBar.setMaxSlider(maxSlider);
+
     }
 
     // Update is called once per frame
@@ -58,7 +67,7 @@ public class MoveHallway : MonoBehaviour
         Debug.Log("Hallway Speed increased to " + hallwaySpeed);
     }
 
-    public static void EndSpeedBoost() 
+    public void EndSpeedBoost() 
     {
         if(Pickup.isSpeeding == true) 
         {
@@ -66,17 +75,17 @@ public class MoveHallway : MonoBehaviour
 
             Debug.Log("Speed Cooldown count down started");
 
-            pickupBar.sliderValue(speedCooldownTime);
-
-            if (speedCooldownTime == 0f)
+            if (speedCooldownTime <= 0f)
             {
                 hallwaySpeed = originalSpeed;
 
                 Pickup.isSpeeding = false;
                 Debug.Log("Speed set to false");
-
-                speedCooldownTime = 5f;
+                
+                speedCooldownTime = 40f;
             }
+
+            pickupBar.sliderValue(speedCooldownTime);
         }
     }
 }

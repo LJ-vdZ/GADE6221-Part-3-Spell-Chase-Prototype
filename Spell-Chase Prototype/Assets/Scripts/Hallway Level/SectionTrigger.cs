@@ -43,8 +43,6 @@ public class SectionTrigger : MonoBehaviour
 
                 Debug.Log("isBossBattle is set to true");
 
-                //assign duration to boss battle time so it can be decreased (will change this so it score is checked)
-                //bossBattleTime = bossBattleDuration;
             }
         }
 

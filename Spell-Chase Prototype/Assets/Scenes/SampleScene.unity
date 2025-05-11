@@ -30738,7 +30738,7 @@ Transform:
   m_GameObject: {fileID: 2018326391}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.72881234, z: -0, w: 0.6847135}
-  m_LocalPosition: {x: 0.23, y: 0.464, z: -0.6}
+  m_LocalPosition: {x: 0.25, y: 0.464, z: 3.09}
   m_LocalScale: {x: 1, y: 1.471, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31127,6 +31127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2699335665865784959, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4225577808960285013, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -31178,7 +31182,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 450171770102684690, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
       propertyPath: m_Value
-      value: 10
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 450171770102684690, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
+      propertyPath: m_MaxValue
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 497772455981880744, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
       propertyPath: m_Pivot.x
@@ -31267,6 +31275,10 @@ PrefabInstance:
     - target: {fileID: 1102109147618135128, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163395194182266907, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
+      propertyPath: max
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5207284473955554415, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
       propertyPath: m_Name
