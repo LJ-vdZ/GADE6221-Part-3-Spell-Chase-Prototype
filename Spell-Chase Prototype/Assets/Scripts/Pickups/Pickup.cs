@@ -39,8 +39,6 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
         pickupText.text = "";
 
-        //barObject.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -69,7 +67,9 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     {
         if (other.gameObject.CompareTag("Player")) //if player collides with pickup
         {
-            
+            //get fill colour of slider
+            Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+
             //check which pickup tag player collided with
             if (gameObject.CompareTag("GreenPotion"))   //green pickup tag
             {
@@ -79,7 +79,10 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
                 pickupText.text = "Score Booster!";
 
-                Canvas.ForceUpdateCanvases(); // Force Canvas to redraw
+                //change slider colour to green
+                fillImage.color = Color.green;
+
+                Canvas.ForceUpdateCanvases(); //force Canvas to redraw
 
                 Destroy(gameObject);
 
@@ -100,6 +103,9 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                     Pickup.isSpeeding = true;  //need boolean check for cooldown
 
                     pickupText.text = "Super Speed!";
+
+                    //change slider colour to blue
+                    fillImage.color = Color.blue;
 
                 }
                 else //is already speeding, just destroy pickup, do not activate effect
@@ -122,6 +128,9 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 }
 
                 pickupText.text = "Immunity!";
+
+                //change slider colour to red
+                fillImage.color = Color.red;
 
                 barObject.SetActive(true);
 

@@ -9,7 +9,7 @@ public class PickupBar : MonoBehaviour
 {
     public Slider slider;
     public MoveHallway cooldownDuration;
-    //public float max = 40f;
+    
 
 
     public void setMaxSlider(float max)
