@@ -8,6 +8,9 @@ public class Boss : ObstaclePassedScore
     public GameObject spawnerOne;
     public GameObject spawnerTwo;
     public GameObject spawnerThree;
+    public GameObject spawnerFour;
+    public GameObject spawnerFive;
+    public GameObject spawnerSix;
     private bool spawned = false;
     private bool oneCoroutine = false;
 
@@ -38,6 +41,9 @@ public class Boss : ObstaclePassedScore
         spawnerOne.SetActive(false);
         spawnerTwo.SetActive(false);
         spawnerThree.SetActive(false);
+        spawnerFour.SetActive(true);
+        spawnerFive.SetActive(true);
+        spawnerSix.SetActive(true);
         float wantedX = transform.position.x + Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
         Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
         Quaternion rotation = Quaternion.Euler(0, 180, 0);  // Rotates boss to face front
