@@ -14,6 +14,8 @@ public class BossAttacksSpawn : MonoBehaviour
     [SerializeField] float Max;
 
     public int chance;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +41,13 @@ public class BossAttacksSpawn : MonoBehaviour
 
             if (chance == 1)
             {
+               
+
                 float wanted = transform.position.x + Random.Range(Min, Max);
                 Vector3 position = new Vector3(wanted, transform.position.y, transform.position.z);
 
                 Instantiate(items[Random.Range(0, items.Length)], position, Quaternion.identity);
             }
-
             yield return new WaitForSeconds(timeSpawn);
         }
     }

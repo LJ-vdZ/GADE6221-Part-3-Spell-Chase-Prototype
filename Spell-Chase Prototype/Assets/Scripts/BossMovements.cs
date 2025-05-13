@@ -6,9 +6,12 @@ using UnityEngine;
 public class BossMovements : MonoBehaviour
 {
     Animator bossAnim;
+    public float maxTime = 4f;
+    public float TimeCountdown ;
     // Start is called before the first frame update
     void Start()
     {
+        TimeCountdown = maxTime;
        bossAnim = GetComponent<Animator>();
         if (bossAnim == null)
         {
@@ -28,15 +31,23 @@ public class BossMovements : MonoBehaviour
         /*if (hatches == true)
         {
             bossAnim.SetBool("Taunt", true);
-        }
+        }*/
 
-        if(beam == true)
+        TimeCountdown -= Time.deltaTime;
+
+        if(TimeCountdown <= 0f)
         {
+            TimeCountdown = maxTime;
+            bossAnim.SetBool("Walk", false);
             bossAnim.SetBool("Cast", true);
         }
+        else
+        {
+            bossAnim.SetBool("Cast", false);
 
-        bossAnim.SetBool("Taunt", false);
-        bossAnim.SetBool("Cast", false);*/
+        }
+
+        //bossAnim.SetBool("Taunt", false);
     }
 
 }
