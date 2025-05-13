@@ -16,6 +16,8 @@ public class MoveHallway : MonoBehaviour
 
     public float maxSlider = 40f;
 
+    [System.Obsolete]
+
     // Start is called before the first frame update
     void Start()
     {

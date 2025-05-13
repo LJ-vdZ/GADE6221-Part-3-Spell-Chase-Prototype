@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 2476416210870298010}
   m_Layer: 0
   m_Name: Bottle_Endurance
-  m_TagString: BluePotion
+  m_TagString: GreenPotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -64,8 +64,85 @@ PrefabInstance:
       propertyPath: m_Name
       value: spellchase potion bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c751cecdf50aeb34e8cb37d9f0cb6ec3, type: 3}
+      propertyPath: m_TagString
+      value: BluePotion
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c751cecdf50aeb34e8cb37d9f0cb6ec3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6114164264656088157}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c751cecdf50aeb34e8cb37d9f0cb6ec3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7838456889651417649}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c751cecdf50aeb34e8cb37d9f0cb6ec3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5562183447108155379}
   m_SourcePrefab: {fileID: 100100000, guid: c751cecdf50aeb34e8cb37d9f0cb6ec3, type: 3}
+--- !u!1 &2204227963986741816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c751cecdf50aeb34e8cb37d9f0cb6ec3, type: 3}
+  m_PrefabInstance: {fileID: 1321688252220225385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &-6114164264656088157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204227963986741816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.7833831, z: 1.5167503}
+  m_Center: {x: 0, y: 1.1303252, z: -0.26854897}
+--- !u!114 &7838456889651417649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204227963986741816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39af105ac09dcb4aafe3a77c3d601e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupBar: {fileID: 0}
+  maxSlider: 40
+--- !u!114 &-5562183447108155379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204227963986741816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ebb8a965810894a94dba0c95acc74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
+  GameManager: {fileID: 0}
+  scoreText: {fileID: 0}
+  increaseSpeed: 2
+  isImmune: 0
+  death: {fileID: 0}
+  poof: {fileID: 0}
+  pickupBar: {fileID: 4163395194182266907, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
+  pickupText: {fileID: 7947897908048282744, guid: 9b728b88908cf144191a4a801ef01de5, type: 3}

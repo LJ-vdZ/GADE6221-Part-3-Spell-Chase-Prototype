@@ -1278,7 +1278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4, y: 6}
+  m_AnchoredPosition: {x: -4.000061, y: 6}
   m_SizeDelta: {x: -427.0726, y: -95.041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254910413
@@ -19193,8 +19193,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 4954339087965241304, guid: 908656ca9f225a348aa2cfc792d0bbd8, type: 3}
-  - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
+  - {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
+  - {fileID: 2204227963986741816, guid: 1e2bba0f64e93df4c90e8e8aa3a98795, type: 3}
   timeSpawn: 7
   Min: 0.6
   Max: 0.6
@@ -21514,8 +21516,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 4954339087965241304, guid: 908656ca9f225a348aa2cfc792d0bbd8, type: 3}
-  - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
+  - {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
+  - {fileID: 2204227963986741816, guid: 1e2bba0f64e93df4c90e8e8aa3a98795, type: 3}
   timeSpawn: 3
   Min: -0.023
   Max: -0.023
@@ -22445,8 +22449,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 4954339087965241304, guid: 908656ca9f225a348aa2cfc792d0bbd8, type: 3}
-  - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
+  - {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
+  - {fileID: 2204227963986741816, guid: 1e2bba0f64e93df4c90e8e8aa3a98795, type: 3}
   timeSpawn: 5
   Min: -0.5
   Max: -0.5
@@ -31612,7 +31618,8 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2528691036322373571, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 766444682094691447, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}

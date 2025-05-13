@@ -25,6 +25,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     //to display pickup type in UI
     public Text pickupText;
 
+    [System.Obsolete]
 
     // Start is called before the first frame update 
     void Start()

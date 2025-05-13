@@ -37,32 +37,42 @@ public class EnergyBeam : ObstaclePassedScore
             speed = 0;
         }
 
-        if (currentlyColliding )
+        if (currentlyColliding == true)
         {
             collisionTimer += Time.deltaTime;
 
             if ( collisionTimer >= 1f )
             {
                 int totalCollisionTime = Mathf.FloorToInt( collisionTimer );
+
+                Debug.Log("TotalCollisionTime is " + totalCollisionTime);
                 score -= decreasePerSecond * totalCollisionTime;
                 collisionTimer -= totalCollisionTime;
+                
+
                 UpdateScoreInUI();
+
+                currentlyColliding = false;     //Reset the boolean for next frame, and if still colliding then it will turn true again
             }
         }
 
         else
         {
             collisionTimer = 0f;
+
+            currentlyColliding = false;     //Reset the boolean for next frame, and if still colliding then it will turn true again
         }
 
-        currentlyColliding = false;     //Reset the boolean for next frame, and if still colliding then it will turn true again
+        //currentlyColliding = false;     //Reset the boolean for next frame, and if still colliding then it will turn true again
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit collision)
+    public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Energy beam"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             currentlyColliding = true;
+
+            Debug.Log("CurrentlyColliding is true");
         }
     }
 }
