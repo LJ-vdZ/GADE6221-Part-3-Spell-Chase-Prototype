@@ -25,7 +25,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     //to display pickup type in UI
     public Text pickupText;
 
-    [System.Obsolete]
+    //[System.Obsolete]
 
     // Start is called before the first frame update 
     void Start()
@@ -120,9 +120,10 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //player collides with immunity potion
             if(gameObject.CompareTag("RedPotion")) ////when "Obstacle" hit, destroy obstacle
             {
-                death.enabled = false;
-                
                 Destroy(gameObject);
+                
+                //death.enabled = false;
+                
                 if (poof != null)
                 {
                     poof.Play();
@@ -133,7 +134,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 //change slider colour to red
                 fillImage.color = Color.red;
 
-                barObject.SetActive(true);
+                
 
             }
         }
