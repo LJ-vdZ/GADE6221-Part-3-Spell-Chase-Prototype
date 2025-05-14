@@ -31,8 +31,6 @@ public class MoveHallway : MonoBehaviour
 
         pickupBar = FindObjectOfType<PickupBar>();
 
-        pickupBar.setMaxSlider(maxSlider);
-
     }
 
     // Update is called once per frame
@@ -83,7 +81,12 @@ public class MoveHallway : MonoBehaviour
 
                 Pickup.isSpeeding = false;
                 Debug.Log("Speed set to false");
-                
+
+
+                //get fill colour of slider
+                Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+                fillImage.color = Color.clear;
+
                 speedCooldownTime = 40f;
             }
 

@@ -128,9 +128,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6278523303134126036, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2183686937511845527}
-    - targetCorrespondingSourceObject: {fileID: 6278523303134126036, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7811897265133917607}
   m_SourcePrefab: {fileID: 100100000, guid: f6737a44dbfd8a5458ee1766c2531bda, type: 3}
 --- !u!1 &4365572469362740464 stripped
 GameObject:
@@ -291,26 +288,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4270145, y: 0.81224906, z: 1}
   m_Center: {x: -0.0025642954, y: 0.64387774, z: 0}
---- !u!114 &7811897265133917607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4365572469362740464}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c729a56887de814f98128cc7b1e142c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
-  scoreText: {fileID: 0}
-  increaseSpeed: 2
-  death: {fileID: 0}
-  poof: {fileID: 0}
-  pickupBar: {fileID: 0}
-  pickupText: {fileID: 0}

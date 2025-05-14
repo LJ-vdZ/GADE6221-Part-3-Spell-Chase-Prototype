@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
-    //public float speedCooldownTimeBar = 20f;
+    public float speedCooldown = 40f;
     public static bool isSpeeding;
     public static bool isImmune = false;
-    private float immunityTimer = 10f;
+    private float immunityTimer;
 
 
     private GameObject barObject; //PickupBar GameObject
@@ -40,16 +40,18 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
         pickupText.text = "";
 
+
     }
 
     // Update is called once per frame
     new void Update()
     {
-        base.Update();   //base refers to ObstaclePassedScore class
+        //base.Update();   //base refers to ObstaclePassedScore class
 
         //check if player is immune
         if (isImmune == true)
         {
+            
             immunityTimer -= Time.deltaTime;    //use count down to end pickup effect
 
             pickupBar.sliderValue(immunityTimer);
@@ -61,6 +63,10 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             isImmune = false;
             death.enabled = true;
             immunityTimer = 10f;    //set count down back to 10s
+
+            //get fill colour of slider
+            Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+            fillImage.color = Color.clear;
         }
     }
 
@@ -72,7 +78,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
 
             //check which pickup tag player collided with
-            if (gameObject.CompareTag("GreenPotion"))   //green pickup tag
+            if (gameObject.CompareTag("GreenPotion") && isSpeeding == false && isImmune == false)   //green pickup tag
             {
                 score = score + 10; //boost player score
 
@@ -93,15 +99,17 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             if (gameObject.CompareTag("BluePotion"))   //speed boost
             {
                 //make sure player can't pickup another speed potion while one is already active
-                if(isSpeeding == false) 
+                if(isSpeeding == false && isImmune == false) 
                 {
                     Destroy(gameObject);
-                    
+
+                    pickupBar.setMaxSlider(speedCooldown);
+
                     GetComponent<MoveHallway>();  //use GetComponent() functionality
 
                     MoveHallway.ApplySpeed(increaseSpeed);//boost "player" forward speed by increasing hallway speed
 
-                    Pickup.isSpeeding = true;  //need boolean check for cooldown
+                    isSpeeding = true;  //need boolean check for cooldown
 
                     pickupText.text = "Super Speed!";
 
@@ -120,13 +128,16 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //player collides with immunity potion
             if(gameObject.CompareTag("RedPotion")) ////when "Obstacle" hit, destroy obstacle
             {
-                isImmune = true;
-                Pickup.isImmune = true;
-
                 Destroy(gameObject);
+
+                immunityTimer = 10f;
                 
-                //death.enabled = false;
+                pickupBar.setMaxSlider(immunityTimer);
+
+                isImmune = true;
                 
+                death.enabled = false;
+
                 if (poof != null)
                 {
                     poof.Play();
