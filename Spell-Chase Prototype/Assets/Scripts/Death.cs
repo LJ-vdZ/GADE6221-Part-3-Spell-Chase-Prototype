@@ -35,9 +35,15 @@ public class Death : MonoBehaviour
     //when character's Character Controller hits obstacle. Not when Box Collider hits obstacles.
     private void OnControllerColliderHit(ControllerColliderHit collision)   
     {
+
         //Debug.Log("Collision detected");
 
         //destroy player on collision
+        if (Pickup.isImmune && collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(collision.gameObject);
+            return;
+        }
         if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit 
         {
             spawner1.GetComponent<spawner2>().enabled = false;

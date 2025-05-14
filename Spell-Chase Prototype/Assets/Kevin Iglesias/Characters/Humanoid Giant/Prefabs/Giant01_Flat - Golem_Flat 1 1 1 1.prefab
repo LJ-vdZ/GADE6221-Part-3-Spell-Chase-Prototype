@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 2634032271424181056}
   - component: {fileID: 1247655962212237259}
   - component: {fileID: 8537427145341134877}
+  - component: {fileID: 3872217230546019943}
   m_Layer: 0
   m_Name: Giant01_Flat - Golem_Flat 1 1 1 1
   m_TagString: Untagged
@@ -1001,6 +1002,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3872217230546019943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706125810680773408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3335bff5f8f16a84b8269a728185eb07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
+  GameManager: {fileID: 0}
+  scoreText: {fileID: 0}
+  boss: {fileID: 0}
+  spawnerOne: {fileID: 0}
+  spawnerTwo: {fileID: 0}
+  spawnerThree: {fileID: 0}
+  spawnerFour: {fileID: 0}
+  spawnerFive: {fileID: 0}
+  spawnerSix: {fileID: 0}
+  Min: 0
+  Max: 0
 --- !u!1 &4722376180616140745
 GameObject:
   m_ObjectHideFlags: 0

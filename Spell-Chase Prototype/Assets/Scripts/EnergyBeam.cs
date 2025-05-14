@@ -8,7 +8,7 @@ public class EnergyBeam : ObstaclePassedScore
     float speed;
     public Vector3 rotateSpeed = new Vector3(100, 0, 0);
 
-    public int decreasePerSecond = 10;
+    public int decreasePerSecond = 1;
     public float collisionTimer = 0f;
     private bool currentlyColliding = false;
 

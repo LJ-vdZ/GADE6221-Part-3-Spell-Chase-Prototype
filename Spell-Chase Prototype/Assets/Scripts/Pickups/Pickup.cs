@@ -9,8 +9,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     public int increaseSpeed = 2;
     //public float speedCooldownTimeBar = 20f;
     public static bool isSpeeding;
-    public bool isImmune = false;
-    private float immunityTimer = 40f;
+    public static bool isImmune = false;
+    private float immunityTimer = 10f;
 
 
     private GameObject barObject; //PickupBar GameObject
@@ -55,12 +55,12 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             pickupBar.sliderValue(immunityTimer);
 
             //if count down reaches zero, stop effect of pickup, get rid of immunity
-            if (immunityTimer <= 0f)
-            {
-                isImmune = false;
-                death.enabled = true;
-                immunityTimer = 10f;    //set count down back to 10s
-            }
+        }
+        if (immunityTimer <= 0f)
+        {
+            isImmune = false;
+            death.enabled = true;
+            immunityTimer = 10f;    //set count down back to 10s
         }
     }
 
@@ -120,6 +120,9 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //player collides with immunity potion
             if(gameObject.CompareTag("RedPotion")) ////when "Obstacle" hit, destroy obstacle
             {
+                isImmune = true;
+                Pickup.isImmune = true;
+
                 Destroy(gameObject);
                 
                 //death.enabled = false;
@@ -135,6 +138,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 fillImage.color = Color.red;
 
                 
+
+
 
             }
         }

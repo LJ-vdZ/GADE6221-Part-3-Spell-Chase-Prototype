@@ -24,9 +24,9 @@ public class Boss : ObstaclePassedScore
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-       if (spawned == false && oneCoroutine == false && score >= 30 && score < 100)
+       if (spawned == false && oneCoroutine == false && score >= 30 && score < 40)
         {
             oneCoroutine = true;
             spawnerOne.SetActive(false);
@@ -34,6 +34,11 @@ public class Boss : ObstaclePassedScore
             spawnerThree.SetActive(false);
             StartCoroutine(BossSpawn());
         } 
+
+       if (spawned == true && score <= 0)
+        {
+            LeaveBoss();
+        }
     }
 
     void BringBoss()
@@ -58,8 +63,16 @@ public class Boss : ObstaclePassedScore
         spawnerOne.SetActive(true);
         spawnerTwo.SetActive(true);
         spawnerThree.SetActive(true);
+        spawnerFour.SetActive(false);
+        spawnerFive.SetActive(false);
+        spawnerSix.SetActive(false);
+
+        if (boss != null)
+        {
+            Destroy(boss);
+            boss = null;
+        }
         spawned = false;
-        Destroy(boss);
     }
 
     IEnumerator BossSpawn()

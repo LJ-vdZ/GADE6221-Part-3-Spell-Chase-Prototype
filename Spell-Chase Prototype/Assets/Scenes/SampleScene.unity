@@ -19197,6 +19197,7 @@ MonoBehaviour:
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   - {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
   - {fileID: 2204227963986741816, guid: 1e2bba0f64e93df4c90e8e8aa3a98795, type: 3}
+  - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   timeSpawn: 7
   Min: 0.6
   Max: 0.6
@@ -21520,6 +21521,7 @@ MonoBehaviour:
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   - {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
   - {fileID: 2204227963986741816, guid: 1e2bba0f64e93df4c90e8e8aa3a98795, type: 3}
+  - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   timeSpawn: 3
   Min: -0.023
   Max: -0.023
@@ -22453,6 +22455,7 @@ MonoBehaviour:
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   - {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
   - {fileID: 2204227963986741816, guid: 1e2bba0f64e93df4c90e8e8aa3a98795, type: 3}
+  - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   timeSpawn: 5
   Min: -0.5
   Max: -0.5
@@ -23965,7 +23968,6 @@ MonoBehaviour:
   GameManager: {fileID: 0}
   scoreText: {fileID: 0}
   increaseSpeed: 8
-  isImmune: 0
   death: {fileID: 0}
   poof: {fileID: 0}
   pickupBar: {fileID: 0}
