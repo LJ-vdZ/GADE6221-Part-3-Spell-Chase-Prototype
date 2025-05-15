@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -31,6 +33,13 @@ public class PlayerMovement : MonoBehaviour
     //timer for rolling movement on click. Roll will last 0.5 seconds
     private float rollDuration = 0.1f; 
     private float rollTimer = 0f;
+
+    //sound for pickup collection
+    [SerializeField]
+    AudioSource speaker;
+
+    [SerializeField]
+    public AudioClip[] audioClips;
 
     // Start is called before the first frame update
     void Start()
@@ -130,6 +139,49 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(transform.position.x, startingYPos, transform.position.z);
         }
 
+    }
+
+    public void OnControllerColliderHit(ControllerColliderHit other)
+    {
+        if (other.collider.CompareTag("GreenPotion"))
+        {
+            OnScoreBoosterSound();
+        }
+        else if (other.collider.CompareTag("BluePotion"))
+        {
+            OnSpeedBoosterSound();
+        }
+        else if (other.collider.CompareTag("RedPotion")) 
+        {
+            OnImmunitySound();
+        }
+    }
+
+    public void OnScoreBoosterSound()
+    {
+        PlaySound(0);
+    }
+
+    public void OnSpeedBoosterSound()
+    {
+        PlaySound(1);
+    }
+
+    public void OnImmunitySound()
+    {
+
+        PlaySound(2);
+    }
+
+
+
+    //pickup audio
+    public void PlaySound(int i)
+    {
+        speaker.Stop();
+
+        speaker.clip = audioClips[i];
+        speaker.Play(0);
     }
 }
 //REFERENCING

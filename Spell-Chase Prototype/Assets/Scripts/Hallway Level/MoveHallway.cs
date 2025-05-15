@@ -19,7 +19,7 @@ public class MoveHallway : MonoBehaviour
     [System.Obsolete]
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
 
         if(Pickup.isSpeeding == false) 
@@ -61,7 +61,6 @@ public class MoveHallway : MonoBehaviour
 
     public static void ApplySpeed(float increaseSpeed)
     {
-
         hallwaySpeed = hallwaySpeed * increaseSpeed;
 
         Debug.Log("Hallway Speed increased to " + hallwaySpeed);
@@ -72,6 +71,8 @@ public class MoveHallway : MonoBehaviour
         if(Pickup.isSpeeding == true) 
         {
             speedCooldownTime -= Time.deltaTime;
+
+            pickupBar.sliderValue(speedCooldownTime);
 
             Debug.Log("Speed Cooldown count down started");
 
@@ -90,7 +91,7 @@ public class MoveHallway : MonoBehaviour
                 speedCooldownTime = 40f;
             }
 
-            pickupBar.sliderValue(speedCooldownTime);
+            
         }
     }
 }

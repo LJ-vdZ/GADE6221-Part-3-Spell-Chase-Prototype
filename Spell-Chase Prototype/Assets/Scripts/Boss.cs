@@ -80,7 +80,7 @@ public class Boss : ObstaclePassedScore
 
         if (spawned == false && score >= 30 && score < 100)
         {
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(8f);
             BringBoss();
         }
     }

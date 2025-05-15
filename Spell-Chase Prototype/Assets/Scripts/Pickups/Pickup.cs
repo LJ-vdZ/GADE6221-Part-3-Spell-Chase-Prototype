@@ -9,9 +9,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     public int increaseSpeed = 2;
     public float speedCooldown = 40f;
     public static bool isSpeeding;
-    public static bool isImmune = false;
-    private float immunityTimer;
-
+    public static bool isImmune;
+    private float immunityTimer = 10f;
 
     private GameObject barObject; //PickupBar GameObject
  
@@ -44,12 +43,11 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     // Update is called once per frame
     new void Update()
     {
-        //base.Update();   //base refers to ObstaclePassedScore class
+        base.Update();   //base refers to ObstaclePassedScore class
 
         //check if player is immune
         if (isImmune == true)
-        {
-            
+        {            
             immunityTimer -= Time.deltaTime;    //use count down to end pickup effect
 
             pickupBar.sliderValue(immunityTimer);
@@ -78,6 +76,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //check which pickup tag player collided with
             if (gameObject.CompareTag("GreenPotion") && isSpeeding == false && isImmune == false)   //green pickup tag
             {
+                pickupBar.setMaxSlider(immunityTimer);
+
                 score = score + 10; //boost player score
 
                 UpdateScoreInUI();
@@ -87,7 +87,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 //change slider colour to green
                 fillImage.color = Color.green;
 
-                Canvas.ForceUpdateCanvases(); //force Canvas to redraw
+                //Canvas.ForceUpdateCanvases(); //force Canvas to redraw
 
                 Destroy(gameObject);
 
@@ -99,6 +99,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 //make sure player can't pickup another speed potion while one is already active
                 if(isSpeeding == false && isImmune == false) 
                 {
+
                     Destroy(gameObject);
 
                     pickupBar.setMaxSlider(speedCooldown);
@@ -124,10 +125,11 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             }
 
             //player collides with immunity potion
-            if(gameObject.CompareTag("RedPotion")) ////when "Obstacle" hit, destroy obstacle
+            if (gameObject.CompareTag("RedPotion") && isImmune == false) ////when "Obstacle" hit, destroy obstacle
             {
+                
                 Destroy(gameObject);
-
+                
                 immunityTimer = 10f;
                 
                 pickupBar.setMaxSlider(immunityTimer);
@@ -147,9 +149,13 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 //change slider colour to red
                 fillImage.color = Color.red;
 
+
             }
+
+            
         }
     }
+    
 }
 //REFERENCES
 //Microsoft Learn, 2023. new modifier (C# Reference). [online] Available at: <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/new-modifier> [Accessed 21 March 2025].
