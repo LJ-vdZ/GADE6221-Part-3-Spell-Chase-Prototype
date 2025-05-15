@@ -17,8 +17,6 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
  
     public Death death;
 
-    public VisualEffect poof;
-
     [SerializeField]
     public PickupBar pickupBar;
 
@@ -135,22 +133,19 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 pickupBar.setMaxSlider(immunityTimer);
 
                 isImmune = true;
+
+                /*if (death == null)
+                {
+                    death = GameObject.FindWithTag("Player").GetComponent<Death>();
+                }*/
                 
                 death.enabled = false;
 
-                if (poof != null)
-                {
-                    poof.Play();
-                }
 
                 pickupText.text = "Immunity!";
 
                 //change slider colour to red
                 fillImage.color = Color.red;
-
-                
-
-
 
             }
         }

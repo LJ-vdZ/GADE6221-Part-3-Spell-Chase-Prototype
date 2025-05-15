@@ -26,7 +26,7 @@ public class Boss : ObstaclePassedScore
     // Update is called once per frame
     void FixedUpdate()
     {
-       if (spawned == false && oneCoroutine == false && score >= 30 && score < 40)
+       if (spawned == false && oneCoroutine == false && score >= 30 && score < 70)
         {
             oneCoroutine = true;
             spawnerOne.SetActive(false);

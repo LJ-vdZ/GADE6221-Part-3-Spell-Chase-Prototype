@@ -37,9 +37,9 @@ public class BossAttacksSpawn : MonoBehaviour
     {
         while (true)
         {
-            int chance = Random.Range(0, 2);  // 50/50 chance
+            int chance = Random.Range(0, 3);  // 50/50 chance
 
-            if (chance == 1)
+            if (chance == 1 || chance == 2)
             {
                
 

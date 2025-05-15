@@ -1309,6 +1309,7 @@ MonoBehaviour:
   spawner2: {fileID: 0}
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
+  poof: {fileID: 0}
   scoreText: {fileID: 0}
 --- !u!114 &6480415611255852060
 MonoBehaviour:
@@ -1364,6 +1365,7 @@ MonoBehaviour:
   spawner2: {fileID: 0}
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!1 &4397076360616678384
 GameObject:
   m_ObjectHideFlags: 0

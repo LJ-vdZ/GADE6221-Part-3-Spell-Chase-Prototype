@@ -18835,6 +18835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 4509738343484687526, guid: f34db43259721af4fa2ecccda6620a8f, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   timeSpawn: 2
   Min: -0.5
   Max: -0.5
@@ -20993,6 +20994,7 @@ MonoBehaviour:
   spawner2: {fileID: 0}
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
+  poof: {fileID: 0}
   scoreText: {fileID: 569598117}
   EndScreenUI: {fileID: 1330105523}
   reset: 0
@@ -21970,6 +21972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 4509738343484687526, guid: f34db43259721af4fa2ecccda6620a8f, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   timeSpawn: 3
   Min: -0.023
   Max: -0.023
@@ -31036,6 +31039,7 @@ MonoBehaviour:
   spawner2: {fileID: 0}
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
+  poof: {fileID: 0}
   scoreText: {fileID: 0}
   boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
   spawnerOne: {fileID: 1141819892}
@@ -31242,6 +31246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 4509738343484687526, guid: f34db43259721af4fa2ecccda6620a8f, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   timeSpawn: 3
   Min: 0.6
   Max: 0.6
@@ -31477,6 +31482,10 @@ PrefabInstance:
       propertyPath: bossHallway
       value: 
       objectReference: {fileID: 3595676116555251688, guid: 8cb0ef5c8e9efc64eaeb5bb3fe56351b, type: 3}
+    - target: {fileID: 7126563902056830988, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
+      propertyPath: poof
+      value: 
+      objectReference: {fileID: 5173250633396794144, guid: dfe3ebfc9121c4a47b0be98bffb4b09c, type: 3}
     - target: {fileID: 7126563902056830988, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
       propertyPath: spawner1
       value: 

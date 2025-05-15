@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.VFX;
 
 public class Death : MonoBehaviour    
 {   
@@ -14,6 +15,8 @@ public class Death : MonoBehaviour
     //public GameObject EndScreenUI;
     public GameManager GameManager;
     public static bool deathStatus = false;
+
+    public VisualEffect poof;
 
     private float startingYPos;
 
@@ -41,6 +44,11 @@ public class Death : MonoBehaviour
         //destroy player on collision
         if (Pickup.isImmune && collision.gameObject.CompareTag("Obstacle"))
         {
+            if (poof != null)
+            {
+                VisualEffect effect = Instantiate(poof, collision.transform.position, Quaternion.identity);
+                effect.Play();
+            }
             Destroy(collision.gameObject);
             return;
         }

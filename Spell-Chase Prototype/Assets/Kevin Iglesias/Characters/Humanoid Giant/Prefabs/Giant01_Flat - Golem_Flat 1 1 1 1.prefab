@@ -940,7 +940,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -1019,6 +1019,7 @@ MonoBehaviour:
   spawner2: {fileID: 0}
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
+  poof: {fileID: 0}
   scoreText: {fileID: 0}
   boss: {fileID: 0}
   spawnerOne: {fileID: 0}
