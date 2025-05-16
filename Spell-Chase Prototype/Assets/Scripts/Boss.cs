@@ -35,7 +35,7 @@ public class Boss : ObstaclePassedScore
             StartCoroutine(BossSpawn());
         } 
 
-       if (spawned == true && score <= 0)
+       if (spawned == true && score >= 100)
         {
             LeaveBoss();
         }
@@ -80,7 +80,7 @@ public class Boss : ObstaclePassedScore
 
         if (spawned == false && score >= 30 && score < 100)
         {
-            yield return new WaitForSeconds(8f);
+            yield return new WaitForSeconds(12f);
             BringBoss();
         }
     }

@@ -9,7 +9,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     public int increaseSpeed = 2;
     public float speedCooldown = 40f;
     public static bool isSpeeding;
-    public bool isImmune;
+    public static bool isImmune;
     private float immunityTimer;
 
     private GameObject barObject; //PickupBar GameObject
@@ -55,8 +55,19 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             pickupBar.sliderValue(immunityTimer);
 
             //if count down reaches zero, stop effect of pickup, get rid of immunity
+
+            if (immunityTimer < 0f)
+            {
+                isImmune = false;
+                death.enabled = true;
+                immunityTimer = 10f;    //set count down back to 10s
+
+                //get fill colour of slider
+                Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+                fillImage.color = Color.clear;
+            }
         }
-        if (immunityTimer < 0f)
+        /*if (immunityTimer < 0f)
         {
             isImmune = false;
             death.enabled = true;
@@ -65,7 +76,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             //get fill colour of slider
             Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
             fillImage.color = Color.clear;
-        }
+        }*/
 
         UpdateScoreInUI();
     }
@@ -129,14 +140,28 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             }
 
             //player collides with immunity potion
-            if (gameObject.CompareTag("RedPotion") && isImmune == false) ////when "Obstacle" hit, destroy obstacle
+            if (gameObject.CompareTag("RedPotion") /*&& isImmune == false*/) ////when "Obstacle" hit, destroy obstacle
             {
+                PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
+
+                if (playerStatus != null && playerStatus.isImmune == false)
+                {
+                    playerStatus.isImmune = true;
+                    pickupBar.setMaxSlider(immunityTimer);
+                    death.enabled = false;
+                    pickupText.text = "Immunity!";
+                    //change slider colour to red
+                    fillImage.color = Color.red;
+                }
                 
+                isImmune = playerStatus.isImmune;
+
+
                 Destroy(gameObject);
                 
                 //immunityTimer = 10f;
                 
-                pickupBar.setMaxSlider(immunityTimer);
+                /*pickupBar.setMaxSlider(immunityTimer);
 
                 isImmune = true;
 
@@ -145,13 +170,13 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                     death = GameObject.FindWithTag("Player").GetComponent<Death>();
                 }*/
                 
-                death.enabled = false;
+                /*death.enabled = false;
 
 
                 pickupText.text = "Immunity!";
 
                 //change slider colour to red
-                fillImage.color = Color.red;
+                fillImage.color = Color.red;*/
 
 
             }
