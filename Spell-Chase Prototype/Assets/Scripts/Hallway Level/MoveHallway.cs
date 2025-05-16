@@ -29,7 +29,7 @@ public class MoveHallway : MonoBehaviour
             speedCooldownTime = 40f;
         }
 
-        pickupBar = FindObjectOfType<PickupBar>();
+        //pickupBar = FindObjectOfType<PickupBar>();
 
     }
 

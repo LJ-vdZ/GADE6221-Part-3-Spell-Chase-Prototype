@@ -10,7 +10,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     public float speedCooldown = 40f;
     public static bool isSpeeding;
     public static bool isImmune;
-    private float immunityTimer;
+    public float immunityTimer = 10f;
 
     private GameObject barObject; //PickupBar GameObject
  
@@ -22,7 +22,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     //to display pickup type in UI
     public Text pickupText;
 
-    //[System.Obsolete]
+
+    [System.Obsolete]
 
     // Start is called before the first frame update 
     void Start()
@@ -37,35 +38,36 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
         pickupText.text = "";
 
-        immunityTimer = 10f;
-
 
     }
 
     // Update is called once per frame
-    new void Update()
+    void Update()
     {
-        base.Update();   //base refers to ObstaclePassedScore class
+        //base.Update();   //base refers to ObstaclePassedScore class
 
         //check if player is immune
         if (isImmune == true)
         {            
             immunityTimer -= Time.deltaTime;    //use count down to end pickup effect
 
+            
             pickupBar.sliderValue(immunityTimer);
 
             //if count down reaches zero, stop effect of pickup, get rid of immunity
 
-            if (immunityTimer < 0f)
+            if (immunityTimer <= 0f)
             {
                 isImmune = false;
                 death.enabled = true;
-                immunityTimer = 10f;    //set count down back to 10s
 
                 //get fill colour of slider
                 Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
                 fillImage.color = Color.clear;
+
+                immunityTimer = 10f;    //set count down back to 10s
             }
+
         }
         /*if (immunityTimer < 0f)
         {
@@ -83,16 +85,14 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
     private void OnTriggerEnter(Collider other)
     {
+        //get fill colour of slider
+        Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+
         if (other.gameObject.CompareTag("Player")) //if player collides with pickup
         {
-            //get fill colour of slider
-            Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
-
             //check which pickup tag player collided with
             if (gameObject.CompareTag("GreenPotion") && isSpeeding == false && isImmune == false)   //green pickup tag
             {
-                pickupBar.setMaxSlider(immunityTimer);
-
                 score = score + 10; //boost player score
 
                 UpdateScoreInUI();
@@ -147,11 +147,11 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 if (playerStatus != null && playerStatus.isImmune == false)
                 {
                     playerStatus.isImmune = true;
-                    pickupBar.setMaxSlider(immunityTimer);
                     death.enabled = false;
                     pickupText.text = "Immunity!";
                     //change slider colour to red
                     fillImage.color = Color.red;
+                    pickupBar.setMaxSlider(immunityTimer);
                 }
                 
                 isImmune = playerStatus.isImmune;
