@@ -20,10 +20,14 @@ public class Death : MonoBehaviour
 
     private float startingYPos;
 
+    public Pickup isImmune;
+
     // Start is called before the first frame update
     void Start()
     {
         playerAnim = GetComponent<Animator>();
+
+        
 
         //Need to stop hallway movement if player death is true. Set hallwayspeed to 0.
         //MoveHallway.hallwaySpeed = 5;
@@ -32,7 +36,7 @@ public class Death : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        isImmune = GetComponent<Pickup>();
     }
 
     //when character's Character Controller hits obstacle. Not when Box Collider hits obstacles.
@@ -42,16 +46,18 @@ public class Death : MonoBehaviour
         //Debug.Log("Collision detected");
 
         //destroy player on collision
-        if (Pickup.isImmune && collision.gameObject.CompareTag("Obstacle"))
+        if (isImmune && collision.gameObject.CompareTag("Obstacle"))
         {
             if (poof != null)
             {
                 VisualEffect effect = Instantiate(poof, collision.transform.position, Quaternion.identity);
                 effect.Play();
             }
+
             Destroy(collision.gameObject);
             return;
         }
+
         if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit 
         {
             spawner1.GetComponent<spawner2>().enabled = false;

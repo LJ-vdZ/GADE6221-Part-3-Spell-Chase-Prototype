@@ -9,8 +9,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     public int increaseSpeed = 2;
     public float speedCooldown = 40f;
     public static bool isSpeeding;
-    public static bool isImmune;
-    private float immunityTimer = 10f;
+    public bool isImmune;
+    private float immunityTimer;
 
     private GameObject barObject; //PickupBar GameObject
  
@@ -37,6 +37,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
         pickupText.text = "";
 
+        immunityTimer = 10f;
+
 
     }
 
@@ -54,7 +56,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
             //if count down reaches zero, stop effect of pickup, get rid of immunity
         }
-        if (immunityTimer <= 0f)
+        if (immunityTimer < 0f)
         {
             isImmune = false;
             death.enabled = true;
@@ -64,6 +66,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
             fillImage.color = Color.clear;
         }
+
+        UpdateScoreInUI();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,17 +91,17 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 //change slider colour to green
                 fillImage.color = Color.green;
 
-                //Canvas.ForceUpdateCanvases(); //force Canvas to redraw
+                Canvas.ForceUpdateCanvases(); //force Canvas to redraw
 
                 Destroy(gameObject);
 
             }
 
             //player collides with speed potion
-            if (gameObject.CompareTag("BluePotion"))   //speed boost
+            if (gameObject.CompareTag("BluePotion") && isImmune == false)   //speed boost
             {
                 //make sure player can't pickup another speed potion while one is already active
-                if(isSpeeding == false && isImmune == false) 
+                if(isSpeeding == false) 
                 {
 
                     Destroy(gameObject);
@@ -130,7 +134,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 
                 Destroy(gameObject);
                 
-                immunityTimer = 10f;
+                //immunityTimer = 10f;
                 
                 pickupBar.setMaxSlider(immunityTimer);
 

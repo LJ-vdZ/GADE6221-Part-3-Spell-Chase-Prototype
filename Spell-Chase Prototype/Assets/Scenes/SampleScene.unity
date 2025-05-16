@@ -236,7 +236,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 2c57fdaf6a7c26246a22ef1e64a5ecd6, type: 3}
   m_Resource: {fileID: 8300000, guid: 2c57fdaf6a7c26246a22ef1e64a5ecd6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.01
+  m_Volume: 0.25
   m_Pitch: 0.6
   Loop: 1
   Mute: 0
@@ -21124,6 +21124,7 @@ MonoBehaviour:
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   poof: {fileID: 0}
+  isImmune: {fileID: 0}
   scoreText: {fileID: 569598117}
   EndScreenUI: {fileID: 1330105523}
   reset: 0
@@ -31266,6 +31267,7 @@ MonoBehaviour:
   spawner3: {fileID: 0}
   GameManager: {fileID: 0}
   poof: {fileID: 0}
+  isImmune: {fileID: 0}
   scoreText: {fileID: 0}
   boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
   spawnerOne: {fileID: 1141819892}
