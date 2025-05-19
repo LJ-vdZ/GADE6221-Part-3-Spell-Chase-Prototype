@@ -145,9 +145,8 @@ MonoBehaviour:
   poof: {fileID: 0}
   scoreText: {fileID: 0}
   increaseSpeed: 2
-  speedCooldown: 40
   death: {fileID: 721354331408519112, guid: a389b802b1c9cc64899b3de47bf6449a, type: 3}
-  pickupBar: {fileID: 4163395194182266907, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
+  pickupBar: {fileID: 0}
   pickupText: {fileID: 7947897908048282744, guid: 9b728b88908cf144191a4a801ef01de5, type: 3}
 --- !u!82 &954788612034725002
 AudioSource:

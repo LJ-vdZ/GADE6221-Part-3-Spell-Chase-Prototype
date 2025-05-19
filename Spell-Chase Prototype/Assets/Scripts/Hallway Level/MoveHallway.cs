@@ -8,7 +8,7 @@ public class MoveHallway : MonoBehaviour
 {
     //static to apply to all hallways including clones
     public static float hallwaySpeed = 5f;
-    public static float speedCooldownTime = 40f;
+    private static float speedCooldownTime = 40f;
     public static float originalSpeed = 5f;
 
     [SerializeField]
@@ -29,7 +29,7 @@ public class MoveHallway : MonoBehaviour
             speedCooldownTime = 40f;
         }
 
-        //pickupBar = FindObjectOfType<PickupBar>();
+        pickupBar = FindObjectOfType<PickupBar>();
 
     }
 

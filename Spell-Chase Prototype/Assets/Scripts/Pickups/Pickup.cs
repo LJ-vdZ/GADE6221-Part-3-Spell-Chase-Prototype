@@ -7,28 +7,23 @@ using UnityEngine.UI;
 public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
-    public float speedCooldown = 40f;
+    private float speedCooldown = 40f;
     public static bool isSpeeding;
     public static bool isImmune;
-    public float immunityTimer = 10f;
-
-    private GameObject barObject; //PickupBar GameObject
+    private float immunityTimer = 10f;
  
     public Death death;
 
-    [SerializeField]
     public PickupBar pickupBar;
 
     //to display pickup type in UI
     public Text pickupText;
 
 
-    [System.Obsolete]
-
     // Start is called before the first frame update 
     void Start()
     {
-        pickupBar = FindObjectOfType<PickupBar>();
+        //pickupBar = FindObjectOfType<PickupBar>();
         
         UpdateScoreInUI();
 
@@ -37,7 +32,8 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
         pickupText = GameObject.Find("PickupType").GetComponent<Text>();
 
         pickupText.text = "";
-
+        
+        //pickupBar = FindObjectOfType<PickupBar>();
 
     }
 
@@ -46,14 +42,14 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     {
         //base.Update();   //base refers to ObstaclePassedScore class
 
+
         //check if player is immune
         if (isImmune == true)
-        {            
+        {
             immunityTimer -= Time.deltaTime;    //use count down to end pickup effect
-
             
             pickupBar.sliderValue(immunityTimer);
-
+            
             //if count down reaches zero, stop effect of pickup, get rid of immunity
 
             if (immunityTimer <= 0f)
@@ -61,58 +57,55 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 isImmune = false;
                 death.enabled = true;
 
+                pickupBar = FindObjectOfType<PickupBar>();
+
                 //get fill colour of slider
                 Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+                
                 fillImage.color = Color.clear;
+
+                pickupBar.setMaxSlider(immunityTimer);
 
                 immunityTimer = 10f;    //set count down back to 10s
             }
 
         }
-        /*if (immunityTimer < 0f)
-        {
-            isImmune = false;
-            death.enabled = true;
-            immunityTimer = 10f;    //set count down back to 10s
-
-            //get fill colour of slider
-            Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
-            fillImage.color = Color.clear;
-        }*/
-
+        
         UpdateScoreInUI();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        //get fill colour of slider
-        Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
-
         if (other.gameObject.CompareTag("Player")) //if player collides with pickup
         {
+            pickupBar = FindObjectOfType<PickupBar>();
+
+            //get fill colour of slider
+            Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+            
             //check which pickup tag player collided with
             if (gameObject.CompareTag("GreenPotion") && isSpeeding == false && isImmune == false)   //green pickup tag
             {
+                Destroy(gameObject);
+                
+                pickupBar.setMaxSlider(speedCooldown);
+                
                 score = score + 10; //boost player score
-
-                UpdateScoreInUI();
 
                 pickupText.text = "Score Booster!";
 
                 //change slider colour to green
                 fillImage.color = Color.green;
 
-                Canvas.ForceUpdateCanvases(); //force Canvas to redraw
-
-                Destroy(gameObject);
-
             }
 
             //player collides with speed potion
             if (gameObject.CompareTag("BluePotion") && isImmune == false)   //speed boost
             {
+                pickupBar = FindObjectOfType<PickupBar>();
+
                 //make sure player can't pickup another speed potion while one is already active
-                if(isSpeeding == false) 
+                if (isSpeeding == false) 
                 {
 
                     Destroy(gameObject);
@@ -140,48 +133,37 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             }
 
             //player collides with immunity potion
-            if (gameObject.CompareTag("RedPotion") /*&& isImmune == false*/) ////when "Obstacle" hit, destroy obstacle
+            if (gameObject.CompareTag("RedPotion") && isImmune == false) ////when "Obstacle" hit, destroy obstacle
             {
+
+                Destroy(gameObject); 
+                
+                
+                
+                
                 PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
 
                 if (playerStatus != null && playerStatus.isImmune == false)
                 {
+                    
                     playerStatus.isImmune = true;
+                    
                     death.enabled = false;
                     pickupText.text = "Immunity!";
+
+                    pickupBar.setMaxSlider(immunityTimer);
+
                     //change slider colour to red
                     fillImage.color = Color.red;
-                    pickupBar.setMaxSlider(immunityTimer);
                 }
                 
                 isImmune = playerStatus.isImmune;
 
-
-                Destroy(gameObject);
-                
-                //immunityTimer = 10f;
-                
-                /*pickupBar.setMaxSlider(immunityTimer);
-
-                isImmune = true;
-
-                /*if (death == null)
-                {
-                    death = GameObject.FindWithTag("Player").GetComponent<Death>();
-                }*/
-                
-                /*death.enabled = false;
-
-
-                pickupText.text = "Immunity!";
-
-                //change slider colour to red
-                fillImage.color = Color.red;*/
-
-
             }
 
-            
+            Canvas.ForceUpdateCanvases(); //force Canvas to redraw
+
+
         }
     }
     
