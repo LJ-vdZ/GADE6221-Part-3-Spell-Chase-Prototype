@@ -26,4 +26,4 @@ public class PickupBar : MonoBehaviour
     
 
 }
-//https://youtu.be/BLfNP4Sc_iA?si=EsXPTGAxHK9He-DQ
+//Brackeys, 2020. How to make a HEALTH BAR in Unity!. [video online] Available at: <https://youtu.be/BLfNP4Sc_iA?si=EsXPTGAxHK9He-DQ>[Accessed 05 May 2025].

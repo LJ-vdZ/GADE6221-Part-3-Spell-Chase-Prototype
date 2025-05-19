@@ -189,4 +189,4 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 //REFERENCES
 //Microsoft Learn, 2023. new modifier (C# Reference). [online] Available at: <https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/new-modifier> [Accessed 21 March 2025].
 //Geeks for Geeks, 2025. C# Method Overriding. [online] Available at: <https://www.geeksforgeeks.org/c-sharp-method-overriding/>[Accessed 21 March 2025].
-//https://youtu.be/n-bA2jUTW8k
+//All Things Game Dev, 2022. What Exactly Is Get Component - Unity Tutorial. [video online] Available at: <https://youtu.be/n-bA2jUTW8k>{Accessed 21 Match 2025].
