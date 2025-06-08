@@ -55,7 +55,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
             if (immunityTimer <= 0f)
             {
                 isImmune = false;
-                death.enabled = true;
+                //death.enabled = true;
 
                 pickupBar = FindObjectOfType<PickupBar>();
 

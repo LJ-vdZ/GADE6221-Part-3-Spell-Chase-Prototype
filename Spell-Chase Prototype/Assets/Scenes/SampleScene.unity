@@ -6506,6 +6506,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   increaseSpeed: 2
   death: {fileID: 0}
+  pickupBar: {fileID: 1906275763}
   pickupText: {fileID: 2060747974}
 --- !u!1 &306942003
 GameObject:
@@ -12850,6 +12851,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 134932324378042202, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
       propertyPath: m_Name
       value: red potion 2
@@ -30665,6 +30670,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897581127}
   m_Mesh: {fileID: 4300100, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
+--- !u!114 &1906275763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4163395194182266907, guid: 6162fe6837bc9764aae3539193e7d36f, type: 3}
+  m_PrefabInstance: {fileID: 4188302027477030145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b225e575349ec3419b9764202c155af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1928245094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30673,6 +30689,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 134932324378042202, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
       propertyPath: m_Name
       value: red potion 2 (2)
@@ -31818,6 +31838,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 134932324378042202, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2704755174665017248, guid: 823026c2671f30647845ebdec879bc8f, type: 3}
       propertyPath: m_Name
       value: red potion 2 (1)
