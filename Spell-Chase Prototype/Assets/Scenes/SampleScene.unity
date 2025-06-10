@@ -1407,7 +1407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.000061, y: 6}
+  m_AnchoredPosition: {x: -4, y: 6}
   m_SizeDelta: {x: -427.0726, y: -95.041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254910413
@@ -32320,6 +32320,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 301169500363055288, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
     - target: {fileID: 887762244005920462, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
       propertyPath: m_Name
       value: PhysicalStructure
@@ -32328,6 +32332,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Destroyable
       objectReference: {fileID: 0}
+    - target: {fileID: 1098024838824057303, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
     - target: {fileID: 1153234794061116969, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
       propertyPath: m_TagString
       value: Hallway
@@ -32344,6 +32352,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Destroyable
       objectReference: {fileID: 0}
+    - target: {fileID: 2350410753896813374, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
+    - target: {fileID: 2510423626920217266, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
+    - target: {fileID: 3010620245265642461, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
+    - target: {fileID: 3138826377470192209, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
+    - target: {fileID: 3527973869239694225, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
+    - target: {fileID: 4315836437437074174, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
     - target: {fileID: 4938939208420266548, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.6695495
@@ -32384,10 +32416,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6103609075185847047, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
     - target: {fileID: 7725947183607342135, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
       propertyPath: m_TagString
       value: Hallway
       objectReference: {fileID: 0}
+    - target: {fileID: 7745477031558652225, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
+    - target: {fileID: 8072647552544602241, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
+    - target: {fileID: 8236882447406211341, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fed9f376dd3fe5408a2a14d95c9e764, type: 2}
     - target: {fileID: 8345510790934827439, guid: 953473882ad6ed9468e579d88f5c76e3, type: 3}
       propertyPath: m_TagString
       value: Hallway
