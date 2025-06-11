@@ -6,6 +6,7 @@ public class SectionTrigger : MonoBehaviour
 {
     public GameObject hallwaySection;
     public GameObject bossHallway;
+    public GameObject forestSection;
 
     //check player score
     private int playerScore;
