@@ -13,10 +13,15 @@ public class Boss : ObstaclePassedScore
     public GameObject spawnerSix;
     private bool spawned = false;
     private bool oneCoroutine = false;
+    public int levelsCompleted = 1;
 
     [SerializeField] float Min;
 
     [SerializeField] float Max;
+
+    public static event System.Action BossSpawned;
+    public static event System.Action BossDespawned;
+    public static event System.Action<int> LevelIncreased;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +61,7 @@ public class Boss : ObstaclePassedScore
 
         spawned = true;
         //oneCoroutine = false;
+        BossSpawned?.Invoke();  // Notify listeners that boss spawned
     }
 
     void LeaveBoss()
@@ -73,6 +79,10 @@ public class Boss : ObstaclePassedScore
             boss = null;
         }
         spawned = false;
+        BossDespawned?.Invoke();
+
+        levelsCompleted++;
+        LevelIncreased?.Invoke(levelsCompleted);  // Notify listeners of new level
     }
 
     IEnumerator BossSpawn()
