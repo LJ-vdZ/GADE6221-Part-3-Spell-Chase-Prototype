@@ -12,10 +12,26 @@ public class GameManager : ObstaclePassedScore
     public Text finalScore;
     public Text ScoreText;
 
-    // Start is called before the first frame update
+    public static GameManager Instance;
+
+    void Awake()
+    {
+        //singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
