@@ -31967,6 +31967,7 @@ MonoBehaviour:
   spawnerFour: {fileID: 1196236092}
   spawnerFive: {fileID: 767185002}
   spawnerSix: {fileID: 2101916586}
+  levelsCompleted: 1
   Min: -0.5
   Max: -0.5
 --- !u!1 &2025404860
@@ -32206,6 +32207,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63a53d92558d58d4c81131476001177d, type: 3}
+--- !u!1001 &2094860649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.53472
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7008154
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.4241939
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.044428334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9990126
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 185.093
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445919703347358552, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471255290244700491, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
+      propertyPath: m_Name
+      value: AngryLog Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f566bab648abd74f8d15778aa75b8a1, type: 3}
 --- !u!1 &2101916586
 GameObject:
   m_ObjectHideFlags: 0
@@ -33189,3 +33247,4 @@ SceneRoots:
   - {fileID: 4354151610218027864}
   - {fileID: 8865199565425903464}
   - {fileID: 2089901040}
+  - {fileID: 2094860649}
