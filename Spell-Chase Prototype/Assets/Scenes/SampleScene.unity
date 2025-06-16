@@ -21422,6 +21422,15 @@ MonoBehaviour:
   reset: 0
   finalScore: {fileID: 349266205}
   ScoreText: {fileID: 569598117}
+  Min: -0.5
+  Max: -0.5
+  boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
+  spawnerOne: {fileID: 1141819892}
+  spawnerTwo: {fileID: 1225511254}
+  spawnerThree: {fileID: 846722325}
+  spawnerFour: {fileID: 1196236092}
+  spawnerFive: {fileID: 767185002}
+  spawnerSix: {fileID: 2101916586}
 --- !u!4 &1062678390
 Transform:
   m_ObjectHideFlags: 0
@@ -23428,8 +23437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175582a288e50b748911321e18b14ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 0}
-  playButton: {fileID: 0}
 --- !u!1 &1333222886
 GameObject:
   m_ObjectHideFlags: 0
@@ -31919,6 +31926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018326392}
   - component: {fileID: 2018326393}
+  - component: {fileID: 2018326394}
   m_Layer: 0
   m_Name: BossSpawner
   m_TagString: Untagged
@@ -31970,6 +31978,38 @@ MonoBehaviour:
   levelsCompleted: 1
   Min: -0.5
   Max: -0.5
+--- !u!114 &2018326394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018326391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743c21bc2fc57024fa554553081be6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  spawner3: {fileID: 0}
+  GameManager: {fileID: 0}
+  poof: {fileID: 0}
+  scoreText: {fileID: 0}
+  EndScreenUI: {fileID: 0}
+  reset: 0
+  finalScore: {fileID: 0}
+  ScoreText: {fileID: 0}
+  Min: -0.5
+  Max: -0.5
+  boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
+  spawnerOne: {fileID: 1141819892}
+  spawnerTwo: {fileID: 1225511254}
+  spawnerThree: {fileID: 846722325}
+  spawnerFour: {fileID: 1196236092}
+  spawnerFive: {fileID: 767185002}
+  spawnerSix: {fileID: 2101916586}
 --- !u!1 &2025404860
 GameObject:
   m_ObjectHideFlags: 0
