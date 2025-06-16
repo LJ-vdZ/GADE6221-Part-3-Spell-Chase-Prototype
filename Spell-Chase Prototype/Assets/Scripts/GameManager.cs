@@ -1,3 +1,4 @@
+using Firebase.Database;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,12 @@ public class GameManager : ObstaclePassedScore
     public Text ScoreText;
 
     public static GameManager Instance;
+
+    private string playerName;
+    private int gameNumber;
+    private DatabaseReference refDatabase;
+
+
 
     void Awake()
     {
@@ -31,7 +38,16 @@ public class GameManager : ObstaclePassedScore
 
     void Start()
     {
-        
+        //initialize Firebase
+        refDatabase = FirebaseDatabase.DefaultInstance.RootReference;
+
+        //load player data
+        playerName = PlayerPrefs.GetString("CurrentPlayerName", "Unknown");
+        gameNumber = PlayerPrefs.GetInt("GameNumber", 0);
+
+        //ensure UI is initialised
+        EndScreenUI.SetActive(false);
+        ScoreText.enabled = true;
     }
 
     // Update is called once per frame
@@ -59,6 +75,11 @@ public class GameManager : ObstaclePassedScore
     public void restartGame() //Function to reset entire level of game
     {
         reset = true;
+
+
+        //increment game number for next game
+        PlayerPrefs.SetInt("GameNumber", gameNumber + 1);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
