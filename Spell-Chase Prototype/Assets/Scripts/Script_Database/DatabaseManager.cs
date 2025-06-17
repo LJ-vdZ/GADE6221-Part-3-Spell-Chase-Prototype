@@ -2,6 +2,7 @@ using Firebase.Database;
 using Google.MiniJSON;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
@@ -61,9 +62,20 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-    //save score and game number when game ends
+    //save score and game number when game ends as separate entries
     public void SaveGameData(int score, int gameNumber)
     {
+        //var gameData = new Dictionary<string, object>
+        //{
+        //    { "score", score },
+        //    { "gameNumber", gameNumber },
+        //    { "playerName", Name.text } //store name, score and game number with each game
+            
+        //};
+
+        //string gameID = dbRef.Child("players").Child(playerID).Child("games").Push().Key;
+
+
         dbRef.Child("players").Child(playerID).Child("score").SetValueAsync(score).ContinueWith(task =>
         {
             if (task.IsFaulted)
