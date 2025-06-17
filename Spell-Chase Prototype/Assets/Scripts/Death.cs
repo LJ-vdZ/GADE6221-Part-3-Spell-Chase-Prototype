@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.VFX;
+using System;
 
 public class Death : MonoBehaviour    
 {   
@@ -75,7 +76,8 @@ public class Death : MonoBehaviour
 
 
 
-            GameManager.endGame();
+            //GameManager.endGame();
+            ObstaclePassedScore.RaisePlayerCollision();
         }
         else if (collision.gameObject.CompareTag("TrenchDestroyer"))   //if player fell into the trench
         {
@@ -89,7 +91,8 @@ public class Death : MonoBehaviour
 
 
 
-            GameManager.endGame();
+            //GameManager.endGame();
+            ObstaclePassedScore.RaisePlayerCollision();
         }
 
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : ObstaclePassedScore
+public class Boss : MonoBehaviour
 {
     public GameObject boss;
     public GameObject spawnerOne;
@@ -31,7 +31,7 @@ public class Boss : ObstaclePassedScore
     // Update is called once per frame
     void FixedUpdate()
     {
-       if (spawned == false && oneCoroutine == false && score >= 30 && score < 70)
+       if (spawned == false && oneCoroutine == false && ObstaclePassedScore.score >= 30 && ObstaclePassedScore.score < 70)
         {
             oneCoroutine = true;
             /*spawnerOne.SetActive(false);
@@ -42,7 +42,7 @@ public class Boss : ObstaclePassedScore
             //BossSpawned?.Invoke();
         } 
 
-       if (spawned == true && score >= 100)
+       if (spawned == true && ObstaclePassedScore.score >= 100)
         {
             LeaveBoss();
 
@@ -84,6 +84,7 @@ public class Boss : ObstaclePassedScore
             boss = null;
         }*/
         spawned = false;
+        oneCoroutine = false;
         BossDespawned?.Invoke();
 
         //levelsCompleted++;
@@ -93,7 +94,7 @@ public class Boss : ObstaclePassedScore
     IEnumerator BossSpawn()
     {
 
-        if (spawned == false && score >= 30 && score < 100)
+        if (spawned == false && ObstaclePassedScore.score >= 30 && ObstaclePassedScore.score < 100)
         {
             yield return new WaitForSeconds(12f);
             BringBoss();

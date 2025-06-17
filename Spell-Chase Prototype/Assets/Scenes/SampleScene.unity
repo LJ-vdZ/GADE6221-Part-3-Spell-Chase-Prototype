@@ -6554,13 +6554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ebb8a965810894a94dba0c95acc74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
-  poof: {fileID: 0}
-  scoreText: {fileID: 0}
   increaseSpeed: 2
   death: {fileID: 0}
   pickupBar: {fileID: 1906275763}
@@ -21510,13 +21503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743c21bc2fc57024fa554553081be6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
-  poof: {fileID: 0}
-  scoreText: {fileID: 569598117}
   EndScreenUI: {fileID: 1330105523}
   reset: 0
   finalScore: {fileID: 349266205}
@@ -32061,13 +32047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354367fa55779fc4d939e570880c5c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
-  poof: {fileID: 0}
-  scoreText: {fileID: 0}
   boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
   spawnerOne: {fileID: 1141819892}
   spawnerTwo: {fileID: 1225511254}
@@ -32090,13 +32069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743c21bc2fc57024fa554553081be6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawner1: {fileID: 0}
-  spawner2: {fileID: 0}
-  spawner3: {fileID: 0}
-  GameManager: {fileID: 0}
-  poof: {fileID: 0}
-  scoreText: {fileID: 0}
   EndScreenUI: {fileID: 0}
   reset: 0
   finalScore: {fileID: 0}

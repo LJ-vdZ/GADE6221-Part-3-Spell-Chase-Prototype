@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.UI;
 
-public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
+public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
     private float speedCooldown = 40f;
@@ -26,7 +26,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     {
         //pickupBar = FindObjectOfType<PickupBar>();
         
-        UpdateScoreInUI();
+        //UpdateScoreInUI();
 
         isSpeeding = false;
 
@@ -73,7 +73,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
         }
         
-        UpdateScoreInUI();
+        //UpdateScoreInUI();
     }
 
     [System.Obsolete]
@@ -93,7 +93,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
                 
                 pickupBar.setMaxSlider(speedCooldown);
                 
-                score = score + 10; //boost player score
+                ObstaclePassedScore.score = ObstaclePassedScore.score + 10; //boost player score
 
                 pickupText.text = "Score Booster!";
 

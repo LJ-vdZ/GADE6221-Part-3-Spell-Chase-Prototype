@@ -13,7 +13,7 @@ public class BossDie : Boss
     // Update is called once per frame
     void FixedUpdate()
     {
-       if (score >= 100)
+       if (ObstaclePassedScore.score >= 100)
         {
             bossAnim2.SetBool("Walk", false);
             bossAnim2.SetBool("Cast", false);

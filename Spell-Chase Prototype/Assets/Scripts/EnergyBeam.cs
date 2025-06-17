@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBeam : ObstaclePassedScore
+public class EnergyBeam : MonoBehaviour
 {
     [SerializeField]
     float speed;
@@ -46,11 +46,11 @@ public class EnergyBeam : ObstaclePassedScore
                 int totalCollisionTime = Mathf.FloorToInt( collisionTimer );
 
                 Debug.Log("TotalCollisionTime is " + totalCollisionTime);
-                score -= decreasePerSecond * totalCollisionTime;
+                ObstaclePassedScore.score -= decreasePerSecond * totalCollisionTime;
                 collisionTimer -= totalCollisionTime;
                 
 
-                UpdateScoreInUI();
+                //UpdateScoreInUI();
 
                 currentlyColliding = false;     //Reset the boolean for next frame, and if still colliding then it will turn true again
             }

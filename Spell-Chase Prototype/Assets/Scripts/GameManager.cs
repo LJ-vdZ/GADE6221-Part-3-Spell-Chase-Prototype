@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-public class GameManager : ObstaclePassedScore
+public class GameManager : MonoBehaviour
 {
     public GameObject EndScreenUI;
     public bool reset = false;
@@ -56,6 +56,7 @@ public class GameManager : ObstaclePassedScore
 
     void Start()
     {
+
         ////initialize Firebase
         //refDatabase = FirebaseDatabase.DefaultInstance.RootReference;
 
@@ -65,8 +66,13 @@ public class GameManager : ObstaclePassedScore
         gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
 
         //ensure UI is initialised
-        EndScreenUI.SetActive(false);
-        ScoreText.enabled = true;
+        reset = false;
+
+        EndScreenUI.SetActive(false);      // hide game over UI
+        ScoreText.enabled = true;          // re-enable score display
+
+        currentScore = 0;                  // reset score if needed
+        finalScore.text = "";              // clear final score text
 
         hasDied = false; //reset on start
     }
@@ -74,7 +80,7 @@ public class GameManager : ObstaclePassedScore
     // Update is called once per frame
     void Update() // Checks for death and shows final score
     {
-        if(Death.deathStatus == true && !hasDied) //checl flag
+        /*if(Death.deathStatus == true && !hasDied) //checl flag
         {
             endGame();
             finalScore.text = "Score: " + score;
@@ -85,11 +91,11 @@ public class GameManager : ObstaclePassedScore
         {
             EndScreenUI.SetActive(false);
             reset = false;
-            deathStatus = false;
+            // = false;
             hasDied = false; //reset flag
         }
 
-        currentScore = score;
+        currentScore = score;*/
     }
 
     public void endGame() //Brings up end game screen
@@ -105,6 +111,8 @@ public class GameManager : ObstaclePassedScore
 
     public void restartGame() //Function to reset entire level of game
     {
+        EndScreenUI.SetActive(true);
+        Time.timeScale = 1f;
         reset = true;
 
         ////save data when player dies
@@ -126,6 +134,10 @@ public class GameManager : ObstaclePassedScore
 
     void OnEnable()
     {
+        ObstaclePassedScore.ScoreIncreased += HandleScoreIncreased;
+        ObstaclePassedScore.ScoreDecreased += HandleScoreDecreased;
+        ObstaclePassedScore.PlayerCollision += HandlePlayerDeath;
+
         Boss.BossSpawned += HandleBossSpawn;
         Boss.BossDespawned += HandleBossDespawn;
         Boss.LevelIncreased += HandleLevelIncrease;
@@ -133,6 +145,10 @@ public class GameManager : ObstaclePassedScore
 
     void OnDisable()
     {
+        ObstaclePassedScore.ScoreIncreased -= HandleScoreIncreased;
+        ObstaclePassedScore.ScoreDecreased -= HandleScoreDecreased;
+        ObstaclePassedScore.PlayerCollision -= HandlePlayerDeath;
+
         Boss.BossSpawned -= HandleBossSpawn;
         Boss.BossDespawned -= HandleBossDespawn;
         Boss.LevelIncreased -= HandleLevelIncrease;
@@ -161,7 +177,7 @@ public class GameManager : ObstaclePassedScore
         if (boss != null)
         {
             Destroy(boss);
-            activeBoss = null;
+            boss = null;
         }
 
         // Reset spawners
@@ -185,6 +201,34 @@ public class GameManager : ObstaclePassedScore
 
         databaseManager.SaveGameData(currentScore, currentGameNumber);
         
+    }
+
+    private void HandleScoreIncreased(int score)
+    {
+        currentScore = score;
+        ScoreText.text = "Score: " + currentScore;
+    }
+
+    private void HandleScoreDecreased(int score)
+    {
+        currentScore = score;
+        ScoreText.text = "Score: " + currentScore;
+    }
+
+    private void HandlePlayerDeath()
+    {
+        if (!hasDied)
+        {
+            finalScore.text = "Score: " + currentScore;
+            ScoreText.enabled = false;
+            EndScreenUI.SetActive(true);
+            hasDied = true;
+
+            OnPlayerDeath();
+
+            currentGameNumber++;
+            PlayerPrefs.SetInt("GameNumber", currentGameNumber);
+        }
     }
 
     //public void SetGameNumber(int gameNumber)
