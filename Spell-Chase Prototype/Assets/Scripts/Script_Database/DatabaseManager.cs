@@ -17,6 +17,8 @@ public class DatabaseManager : MonoBehaviour
 
     private DatabaseReference dbRef;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,13 +28,66 @@ public class DatabaseManager : MonoBehaviour
         dbRef = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void CreatePlayer() 
     {
-        Player newPlayer = new Player(Name.text);
+        CheckPlayerExists();
+    }
 
-        string json = JsonUtility.ToJson(newPlayer);
+    private IEnumerator CheckPlayerExists() 
+    {
+        var playerData = dbRef.Child("players").Child(playerID).GetValueAsync();
 
-        dbRef.Child("players").Child(playerID).SetRawJsonValueAsync(json);
+        yield return new WaitUntil(predicate: () => playerData.IsCompleted);
+
+        if (playerData.Result == null || !playerData.Result.Exists)
+        {
+
+            Player newPlayer = new Player(Name.text);
+
+            string json = JsonUtility.ToJson(newPlayer);
+
+            dbRef.Child("players").Child(playerID).SetRawJsonValueAsync(json);
+
+            //initialize score
+            dbRef.Child("players").Child(playerID).Child("score").SetValueAsync(0);
+
+            //initialize game number
+            dbRef.Child("players").Child(playerID).Child("gameNumber").SetValueAsync(0);
+        }
+    }
+
+    //save score and game number when game ends
+    public void SaveGameData(int score, int gameNumber)
+    {
+        dbRef.Child("players").Child(playerID).Child("score").SetValueAsync(score).ContinueWith(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to save score: " + task.Exception);
+            }
+            else
+            {
+                Debug.Log("Score saved successfully: " + score);
+            }
+        });
+
+        dbRef.Child("players").Child(playerID).Child("gameNumber").SetValueAsync(gameNumber).ContinueWith(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Failed to save game number: " + task.Exception);
+            }
+            else
+            {
+                Debug.Log("Game number saved successfully: " + gameNumber);
+            }
+        });
+
     }
 
     //name
@@ -51,6 +106,39 @@ public class DatabaseManager : MonoBehaviour
     }
 
     //score
+    public IEnumerator GetScore(Action<int> onCallback)
+    {
+        var playerScoreData = dbRef.Child("players").Child(playerID).Child("score").GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => playerScoreData.IsCompleted);
+
+        if (playerScoreData.Result != null)
+        {
+            DataSnapshot snapShot = playerScoreData.Result;
+
+            int score = snapShot.Value != null ? Convert.ToInt32(snapShot.Value) : 0;
+
+            onCallback.Invoke(score);
+        }
+    }
+
+    //game number
+    public IEnumerator GetGameNumber(Action<int> onCallback)
+    {
+        var playerGameNumberData = dbRef.Child("players").Child(playerID).Child("gameNumber").GetValueAsync();
+        
+        yield return new WaitUntil(predicate: () => playerGameNumberData.IsCompleted);
+
+        if (playerGameNumberData.Result != null)
+        {
+            DataSnapshot snapShot = playerGameNumberData.Result;
+
+            int gameNumber = snapShot.Value != null ? Convert.ToInt32(snapShot.Value) : 0;
+
+            onCallback.Invoke(gameNumber);
+        }
+    }
+
 
     public void GetPlayerInfo() 
     {
@@ -60,7 +148,17 @@ public class DatabaseManager : MonoBehaviour
             NameText.text = "Player Name: " + name;
         }));
 
-        //score
+        //name
+        StartCoroutine(GetScore((int score) =>
+        {
+            NameText.text = "\nPlayer Score: " + score;
+        }));
+
+        //game number
+        StartCoroutine(GetGameNumber((int gameNumber) =>
+        {
+            NameText.text += "\nGame Number: " + gameNumber;
+        }));
     }
 
 }

@@ -31,7 +31,13 @@ public class GameManager : ObstaclePassedScore
 
     private int completedLevels = 0;
 
+    public DatabaseManager databaseManager;
+    
+    private int currentGameNumber = 1; //increment for each new game
 
+    private int currentScore = 0;
+
+    private bool hasDied = false; //new flag to prevent multiple death calls for OnPlayerDeath
 
     void Awake()
     {
@@ -50,53 +56,71 @@ public class GameManager : ObstaclePassedScore
 
     void Start()
     {
-        //initialize Firebase
-        refDatabase = FirebaseDatabase.DefaultInstance.RootReference;
+        ////initialize Firebase
+        //refDatabase = FirebaseDatabase.DefaultInstance.RootReference;
 
-        //load player data
-        playerName = PlayerPrefs.GetString("CurrentPlayerName", "Unknown");
-        gameNumber = PlayerPrefs.GetInt("GameNumber", 0);
+        ////load player data
+        //playerName = PlayerPrefs.GetString("CurrentPlayerName", "Unknown");
+
+        gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
 
         //ensure UI is initialised
         EndScreenUI.SetActive(false);
         ScoreText.enabled = true;
+
+        hasDied = false; //reset on start
     }
 
     // Update is called once per frame
     void Update() // Checks for death and shows final score
     {
-        if(Death.deathStatus == true) 
+        if(Death.deathStatus == true && !hasDied) //checl flag
         {
             endGame();
             finalScore.text = "Score: " + score;
+            currentGameNumber++;
+
         }
         if(reset == true)
         {
             EndScreenUI.SetActive(false);
             reset = false;
             deathStatus = false;
+            hasDied = false; //reset flag
         }
+
+        currentScore = score;
     }
 
     public void endGame() //Brings up end game screen
     {
         ScoreText.enabled = false;
-        EndScreenUI.SetActive(true); 
+        EndScreenUI.SetActive(true);
+
+        //save data when player dies
+        OnPlayerDeath();
+
+        hasDied = true; //set flag to prevent more calls
     }
 
     public void restartGame() //Function to reset entire level of game
     {
         reset = true;
 
+        ////save data when player dies
+        //OnPlayerDeath();
 
-        //increment game number for next game
-        PlayerPrefs.SetInt("GameNumber", gameNumber + 1);
+        ////increment game number for next game
+        //PlayerPrefs.SetInt("GameNumber", currentGameNumber);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void quit() //Function to exit the application
     {
+        ////save data when player dies
+        //OnPlayerDeath();
+
         Application.Quit();
     }
 
@@ -153,6 +177,20 @@ public class GameManager : ObstaclePassedScore
     {
         completedLevels++;
     }
+
+    public void OnPlayerDeath()
+    {
+        
+        Debug.Log($"Saving - Score: {currentScore}, GameNumber: {currentGameNumber}");
+
+        databaseManager.SaveGameData(currentScore, currentGameNumber);
+        
+    }
+
+    //public void SetGameNumber(int gameNumber)
+    //{
+    //    currentGameNumber = gameNumber;
+    //}
 
 
 }

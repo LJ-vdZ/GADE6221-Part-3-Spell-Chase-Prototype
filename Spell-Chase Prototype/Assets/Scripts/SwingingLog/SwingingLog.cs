@@ -11,8 +11,6 @@ public class SwingingLog : MonoBehaviour
     [SerializeField]
     private Vector3 swingAxis = Vector3.forward; //axis of rotation (z-axis)
 
-    private float startAngle = 0f; //starting angle of log before swing
-
     private Quaternion initialRotation;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

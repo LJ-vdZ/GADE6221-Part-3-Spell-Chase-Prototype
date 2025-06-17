@@ -6,7 +6,7 @@ using UnityEngine.UI;   //added for UI Text
 public class ObstaclePassedScore : Death    //need to check if player died on collision. Must not include score of obstacle player collides with. 
 {
     //set starting score to zero
-    public static int score = 0;   //use static so that this applies to all other triggers
+    public static int score;   //use static so that this applies to all other triggers
 
     //to display score in UI
     public Text scoreText;

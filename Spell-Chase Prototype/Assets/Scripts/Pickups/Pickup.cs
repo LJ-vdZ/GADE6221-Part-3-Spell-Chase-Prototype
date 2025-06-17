@@ -19,6 +19,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
     //to display pickup type in UI
     public Text pickupText;
 
+    
 
     // Start is called before the first frame update 
     void Start()
@@ -37,6 +38,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
 
     }
 
+    [System.Obsolete]
     // Update is called once per frame
     void Update()
     {
@@ -74,6 +76,7 @@ public class Pickup : ObstaclePassedScore   //inherit from ObstaclePassedScore
         UpdateScoreInUI();
     }
 
+    [System.Obsolete]
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) //if player collides with pickup

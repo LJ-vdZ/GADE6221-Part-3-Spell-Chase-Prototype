@@ -31,14 +31,15 @@ public class MainMenuScreen : MonoBehaviour
 
     public void PlayGame() 
     {
-        // Reset game state
-        if (GameManager.Instance != null) // Assuming a GameManager singleton
+        //reset game state
+        if (GameManager.Instance != null) 
         {
             GameManager.Instance.restartGame();
         }
 
-        // Ensure death menu is disabled (if it’s in this scene or persistent)
-        GameObject deathMenu = GameObject.Find("DeathMenuCanvas"); // Adjust name
+        //ensure death menu is disabled
+        GameObject deathMenu = GameObject.Find("DeathMenuCanvas"); 
+
         if (deathMenu != null)
         {
             deathMenu.SetActive(false);
