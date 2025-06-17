@@ -1196,6 +1196,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173240868}
   m_Mesh: {fileID: 4300092, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
+--- !u!4 &187363358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4923389978277381348, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
+  m_PrefabInstance: {fileID: 8865199565425903464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &200096379
 GameObject:
   m_ObjectHideFlags: 0
@@ -13736,6 +13741,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589482329}
   m_Mesh: {fileID: 4300038, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
+--- !u!1 &605787710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 605787712}
+  - component: {fileID: 605787711}
+  m_Layer: 0
+  m_Name: LogPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &605787711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605787710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cd9e90b0b0413448f00d0cfd73b407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 60
+  swingSpeed: 3
+  swingAxis: {x: 1, y: 0, z: 0}
+--- !u!4 &605787712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605787710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.683, y: 4.13, z: -5.549}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 187363358}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &630145120
 GameObject:
   m_ObjectHideFlags: 0
@@ -33210,19 +33263,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 605787712}
     m_Modifications:
     - target: {fileID: 4923389978277381348, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.68
+      value: -0.002998352
       objectReference: {fileID: 0}
     - target: {fileID: 4923389978277381348, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.99
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 4923389978277381348, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.38
+      value: 0.16899967
       objectReference: {fileID: 0}
     - target: {fileID: 4923389978277381348, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33285,6 +33338,6 @@ SceneRoots:
   - {fileID: 2134168552}
   - {fileID: 1928245094}
   - {fileID: 4354151610218027864}
-  - {fileID: 8865199565425903464}
   - {fileID: 2089901040}
   - {fileID: 2094860649}
+  - {fileID: 605787712}
