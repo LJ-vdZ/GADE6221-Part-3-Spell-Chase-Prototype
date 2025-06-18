@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.UI;
+using System;
 
 public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
 {
@@ -19,10 +20,14 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
     //to display pickup type in UI
     public Text pickupText;
 
-    
+    public static event Action GreenPotionPickup;
+    public static event Action BluePotionPickup;
+    public static event Action RedPotionPickup;
+
+
 
     // Start is called before the first frame update 
-    void Start()
+    /*void Start()
     {
         //pickupBar = FindObjectOfType<PickupBar>();
         
@@ -36,11 +41,11 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
         
         //pickupBar = FindObjectOfType<PickupBar>();
 
-    }
+    }*/
 
-    [System.Obsolete]
+    //[System.Obsolete]
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         //base.Update();   //base refers to ObstaclePassedScore class
 
@@ -74,12 +79,30 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
         }
         
         //UpdateScoreInUI();
-    }
+    }*/
 
-    [System.Obsolete]
+    //[System.Obsolete]
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")) //if player collides with pickup
+        if (other.CompareTag("Player"))
+        {
+            if (gameObject.CompareTag("GreenPotion"))
+            {
+                GreenPotionPickup?.Invoke();
+                Destroy(gameObject);
+            }
+            else if (gameObject.CompareTag("BluePotion"))
+            {
+                BluePotionPickup?.Invoke();
+                Destroy(gameObject);
+            }
+            else if (gameObject.CompareTag("RedPotion"))
+            {
+                RedPotionPickup?.Invoke();
+                Destroy(gameObject);
+            }
+        }
+        /*if (other.gameObject.CompareTag("Player")) //if player collides with pickup
         {
             pickupBar = FindObjectOfType<PickupBar>();
 
@@ -167,7 +190,7 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
             Canvas.ForceUpdateCanvases(); //force Canvas to redraw
 
 
-        }
+        }*/
     }
     
 }

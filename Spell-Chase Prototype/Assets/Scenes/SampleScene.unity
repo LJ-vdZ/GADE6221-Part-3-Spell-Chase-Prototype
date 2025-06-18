@@ -21507,6 +21507,14 @@ MonoBehaviour:
   reset: 0
   finalScore: {fileID: 349266205}
   ScoreText: {fileID: 569598117}
+  pickupBar: {fileID: 1906275763}
+  pickupText: {fileID: 2060747974}
+  death: {fileID: 0}
+  moveHallway: {fileID: 0}
+  greenPotionScoreBoost: 10
+  bluePotionSpeedIncrease: 2
+  speedCooldown: 40
+  immunityCooldown: 10
   Min: -0.5
   Max: -0.5
   bossSpawner: {fileID: 1073220143}

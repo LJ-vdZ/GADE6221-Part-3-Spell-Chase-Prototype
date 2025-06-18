@@ -47,7 +47,7 @@ public class Death : MonoBehaviour
         //Debug.Log("Collision detected");
 
         //destroy player on collision
-        if (playerStatus.isImmune && collision.gameObject.CompareTag("Obstacle"))
+        if (GameManager.Instance != null && GameManager.Instance.IsImmune() && collision.gameObject.CompareTag("Obstacle"))
         {
             if (poof != null)
             {

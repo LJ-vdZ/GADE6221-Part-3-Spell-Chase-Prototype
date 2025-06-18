@@ -13,6 +13,23 @@ public class GameManager : MonoBehaviour
     public Text finalScore;
     public Text ScoreText;
 
+    // Pickup effect related variables
+    public PickupBar pickupBar;
+    public Text pickupText;
+
+    public Death death; // reference to death script
+    public MoveHallway moveHallway; // reference to MoveHallway script
+
+    public int greenPotionScoreBoost = 10;
+    public float bluePotionSpeedIncrease = 2f;
+    public float speedCooldown = 40f;
+    public float immunityCooldown = 10f;
+
+    private bool isSpeeding = false;
+    private bool isImmune = false;
+    private float immunityTimer;
+    private float speedTimer;
+
     public static GameManager Instance;
 
     private string playerName;
@@ -57,7 +74,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        if (pickupBar == null)
+        {
+            pickupBar = FindObjectOfType<PickupBar>();
+        }
         ////initialize Firebase
         //refDatabase = FirebaseDatabase.DefaultInstance.RootReference;
 
@@ -81,6 +101,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update() // Checks for death and shows final score
     {
+        HandlePickupTimers();
         /*if(Death.deathStatus == true && !hasDied) //checl flag
         {
             endGame();
@@ -135,6 +156,10 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
+        Pickup.GreenPotionPickup += HandleGreenPotionPickup;
+        Pickup.BluePotionPickup += HandleBluePotionPickup;
+        Pickup.RedPotionPickup += HandleRedPotionPickup;
+
         ObstaclePassedScore.ScoreIncreased += HandleScoreIncreased;
         ObstaclePassedScore.ScoreDecreased += HandleScoreDecreased;
         ObstaclePassedScore.PlayerCollision += HandlePlayerDeath;
@@ -146,6 +171,10 @@ public class GameManager : MonoBehaviour
 
     void OnDisable()
     {
+        Pickup.GreenPotionPickup -= HandleGreenPotionPickup;
+        Pickup.BluePotionPickup -= HandleBluePotionPickup;
+        Pickup.RedPotionPickup -= HandleRedPotionPickup;
+
         ObstaclePassedScore.ScoreIncreased -= HandleScoreIncreased;
         ObstaclePassedScore.ScoreDecreased -= HandleScoreDecreased;
         ObstaclePassedScore.PlayerCollision -= HandlePlayerDeath;
@@ -233,6 +262,119 @@ public class GameManager : MonoBehaviour
 
             currentGameNumber++;
             PlayerPrefs.SetInt("GameNumber", currentGameNumber);
+        }
+    }
+
+    private void HandleGreenPotionPickup()
+    {
+        ObstaclePassedScore.score += greenPotionScoreBoost;
+        UpdateScoreUI();
+
+        pickupBar.setMaxSlider(speedCooldown);
+        SetPickupUI("Score Booster!", Color.green);
+    }
+
+    private void HandleBluePotionPickup()
+    {
+        if (isImmune) return;  // Don't apply speed if immune (optional logic)
+
+        if (!isSpeeding)
+        {
+            isSpeeding = true;
+            speedTimer = speedCooldown;
+
+            MoveHallway.ApplySpeed(bluePotionSpeedIncrease);
+
+            pickupBar.setMaxSlider(speedCooldown);
+            SetPickupUI("Super Speed!", Color.blue);
+        }
+    }
+
+    private void HandleRedPotionPickup()
+    {
+        Debug.Log("Red Potion Event Triggered");
+        if (!isImmune)
+        {
+            isImmune = true;
+            immunityTimer = immunityCooldown;
+
+            death.enabled = false;  // Disable death script during immunity
+
+            pickupBar.setMaxSlider(immunityCooldown);
+            SetPickupUI("Immunity!", Color.red);
+        }
+    }
+
+    private void HandlePickupTimers()
+    {
+        if (isSpeeding)
+        {
+            speedTimer -= Time.deltaTime;
+            pickupBar.sliderValue(speedTimer);
+
+            if (speedTimer <= 0f)
+            {
+                isSpeeding = false;
+                MoveHallway.ResetSpeed(); // You will need a method to reset speed to normal
+
+                pickupBar.ClearSlider();
+                ClearPickupUI();
+            }
+        }
+
+        if (isImmune)
+        {
+            immunityTimer -= Time.deltaTime;
+            Debug.Log($"Immunity timer: {immunityTimer}");
+            pickupBar.sliderValue(immunityTimer);
+
+            if (immunityTimer <= 0f)
+            {
+                isImmune = false;
+                death.enabled = true;
+
+                pickupBar.ClearSlider();
+                ClearPickupUI();
+            }
+        }
+    }
+
+    public bool IsImmune()
+    {
+        return isImmune;
+    }
+
+    private void SetPickupUI(string text, Color color)
+    {
+        if (pickupText != null)
+        {
+            pickupText.text = text;
+        }
+        if (pickupBar != null)
+        {
+            Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+            fillImage.color = color;
+        }
+    }
+
+    private void ClearPickupUI()
+    {
+        if (pickupText != null)
+        {
+            pickupText.text = "";
+        }
+        if (pickupBar != null)
+        {
+            Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();
+            fillImage.color = Color.clear;
+        }
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (ScoreText != null)
+        {
+            ScoreText.text = "Score: " + ObstaclePassedScore.score;
         }
     }
 
