@@ -21509,6 +21509,7 @@ MonoBehaviour:
   ScoreText: {fileID: 569598117}
   Min: -0.5
   Max: -0.5
+  bossSpawner: {fileID: 1073220143}
   boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
   spawnerOne: {fileID: 1141819892}
   spawnerTwo: {fileID: 1225511254}
@@ -21527,6 +21528,60 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 564.5036, y: 341, z: 147.06921}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1073220143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073220145}
+  - component: {fileID: 1073220144}
+  m_Layer: 0
+  m_Name: BossSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1073220144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073220143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354367fa55779fc4d939e570880c5c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
+  spawnerOne: {fileID: 1141819892}
+  spawnerTwo: {fileID: 1225511254}
+  spawnerThree: {fileID: 846722325}
+  spawnerFour: {fileID: 1196236092}
+  spawnerFive: {fileID: 767185002}
+  spawnerSix: {fileID: 2101916586}
+  levelsCompleted: 1
+  Min: 0
+  Max: 0
+--- !u!4 &1073220145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073220143}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.06, y: 0.74, z: 0.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32002,87 +32057,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013950640}
   m_Mesh: {fileID: 4300092, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
---- !u!1 &2018326391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2018326392}
-  - component: {fileID: 2018326393}
-  - component: {fileID: 2018326394}
-  m_Layer: 0
-  m_Name: BossSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2018326392
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018326391}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.72881234, z: -0, w: 0.6847135}
-  m_LocalPosition: {x: 0.25, y: 0.464, z: 3.09}
-  m_LocalScale: {x: 1, y: 1.471, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 93.574, z: 0}
---- !u!114 &2018326393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018326391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354367fa55779fc4d939e570880c5c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
-  spawnerOne: {fileID: 1141819892}
-  spawnerTwo: {fileID: 1225511254}
-  spawnerThree: {fileID: 846722325}
-  spawnerFour: {fileID: 1196236092}
-  spawnerFive: {fileID: 767185002}
-  spawnerSix: {fileID: 2101916586}
-  levelsCompleted: 1
-  Min: -0.5
-  Max: -0.5
---- !u!114 &2018326394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018326391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743c21bc2fc57024fa554553081be6be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EndScreenUI: {fileID: 0}
-  reset: 0
-  finalScore: {fileID: 0}
-  ScoreText: {fileID: 0}
-  Min: -0.5
-  Max: -0.5
-  boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
-  spawnerOne: {fileID: 1141819892}
-  spawnerTwo: {fileID: 1225511254}
-  spawnerThree: {fileID: 846722325}
-  spawnerFour: {fileID: 1196236092}
-  spawnerFive: {fileID: 767185002}
-  spawnerSix: {fileID: 2101916586}
-  databaseManager: {fileID: 0}
 --- !u!1 &2025404860
 GameObject:
   m_ObjectHideFlags: 0
@@ -33433,7 +33407,6 @@ SceneRoots:
   - {fileID: 586000994}
   - {fileID: 306942004}
   - {fileID: 1625287736}
-  - {fileID: 2018326392}
   - {fileID: 1196236094}
   - {fileID: 767185004}
   - {fileID: 2101916588}
@@ -33447,3 +33420,4 @@ SceneRoots:
   - {fileID: 2094860649}
   - {fileID: 605787712}
   - {fileID: 155082716}
+  - {fileID: 1073220145}

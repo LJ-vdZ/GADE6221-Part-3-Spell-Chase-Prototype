@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float Max;
 
+    public GameObject bossSpawner;
     public GameObject boss;
     private GameObject activeBoss;
 
@@ -111,7 +112,7 @@ public class GameManager : MonoBehaviour
 
     public void restartGame() //Function to reset entire level of game
     {
-        EndScreenUI.SetActive(true);
+        EndScreenUI.SetActive(false);
         Time.timeScale = 1f;
         reset = true;
 
@@ -161,23 +162,27 @@ public class GameManager : MonoBehaviour
         spawnerTwo.SetActive(false);
         spawnerThree.SetActive(false);
 
-        //Turn on boss spawners
+        //Turn on boss attack spawners
         spawnerFour.SetActive(true);
         spawnerFive.SetActive(true);
         spawnerSix.SetActive(true);
 
-        float wantedX = transform.position.x + UnityEngine.Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
+        /*float wantedX = transform.position.x + UnityEngine.Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
         Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
-        Quaternion rotation = Quaternion.Euler(0, 180, 0);  // Rotates boss to face front
-        Instantiate(boss, position, rotation);
+        Quaternion rotation = Quaternion.Euler(0, 180, 0);  // Rotates boss to face front*/
+
+        // Use the bossSpawner's position and rotation
+        Vector3 spawnPosition = bossSpawner.transform.position;
+        Quaternion spawnRotation = Quaternion.Euler(0, 180f, 0);
+        activeBoss = Instantiate(boss, spawnPosition, spawnRotation);
     }
 
     private void HandleBossDespawn()
     {
-        if (boss != null)
+        if (activeBoss != null)
         {
-            Destroy(boss);
-            boss = null;
+            Destroy(activeBoss);
+            activeBoss = null;
         }
 
         // Reset spawners
