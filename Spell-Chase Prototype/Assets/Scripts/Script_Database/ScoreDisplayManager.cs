@@ -51,24 +51,19 @@ public class ScoreDisplayManager : MonoBehaviour
             //sort score by descending so highest score is at the top
             playerDataList.Sort((a, b) => b.Score.CompareTo(a.Score));
 
-            //instantiate UI elements
+            //instantiate UI elements, loop through all the children under player sin firebase // each player snapshot is one game
             foreach (var playersData in playerDataList)
             {
                 GameObject playerInfoObj = Instantiate(playerInfoPrefab, contentPanel);
 
                 TMP_Text textComponent = playerInfoObj.GetComponent<TMP_Text>();
 
-                textComponent.text = $"Game: {playersData.GameNumber}, Name: {playersData.Name}, Score: {playersData.Score} \n--------------------------------";
+                textComponent.text = $"\nGame: {playersData.GameNumber}, Name: {playersData.Name}, Score: {playersData.Score} \n--------------------------------\n";
             }
         }
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
 
 [System.Serializable]
