@@ -6,22 +6,22 @@ using TMPro;
 public class MainMenuScreen : MonoBehaviour
 {
     [SerializeField]
-    //public TMP_InputField inputField;
+    public TMP_InputField inputField;
 
-    //public Button playButton;
+    public Button playButton;
 
     public void Start()
     {
-        //playButton.interactable = false;
+        playButton.interactable = false;
 
-        ////ensure input field exists and add listener for text changes
-        //if (inputField != null)
-        //{
-        //    inputField.onValueChanged.AddListener(OnNameInputChanged);
+        //ensure input field exists and add listener for text changes
+        if (inputField != null)
+        {
+            inputField.onValueChanged.AddListener(OnNameInputChanged);
 
-        //    //check starting input field state
-        //    OnNameInputChanged(inputField.text);
-        //}
+            //check starting input field state
+            OnNameInputChanged(inputField.text);
+        }
     }
 
     public void StartGame() 
@@ -67,13 +67,13 @@ public class MainMenuScreen : MonoBehaviour
 
 
     //called when input field text changes
-    //private void OnNameInputChanged(string inputText)
-    //{
-    //    //enable button if input is not empty
-    //    if (playButton != null)
-    //    {
-    //        playButton.interactable = !string.IsNullOrWhiteSpace(inputText);    //ignore whitespace
-    //    }
-    //}
+    private void OnNameInputChanged(string inputText)
+    {
+        //enable button if input is not empty
+        if (playButton != null)
+        {
+            playButton.interactable = !string.IsNullOrWhiteSpace(inputText);    //ignore whitespace
+        }
+    }
 
 }

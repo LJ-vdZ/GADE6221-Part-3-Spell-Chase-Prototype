@@ -53,18 +53,29 @@ public class DatabaseManager : MonoBehaviour
 
         if (playerData.Result == null || !playerData.Result.Exists)
         {
-            
-            Player newPlayer = new Player(Name.text);
+            yield return StartCoroutine(GetNextGlobalGameNumber((int nextGameNumber) =>
+            {
+                Player newPlayer = new Player(Name.text);
 
-            string json = JsonUtility.ToJson(newPlayer);
+                string json = JsonUtility.ToJson(newPlayer);
+                dbRef.Child("players").Child(playerID).SetRawJsonValueAsync(json);
 
-            dbRef.Child("players").Child(playerID).SetRawJsonValueAsync(json);
+                dbRef.Child("players").Child(playerID).Child("score").SetValueAsync(0);
 
-            //initialize score
-            dbRef.Child("players").Child(playerID).Child("score").SetValueAsync(0);
+                dbRef.Child("players").Child(playerID).Child("gameNumber").SetValueAsync(nextGameNumber);
+            }));
 
-            //initialize game number
-            dbRef.Child("players").Child(playerID).Child("gameNumber").SetValueAsync(0);
+            //Player newPlayer = new Player(Name.text);
+
+            //string json = JsonUtility.ToJson(newPlayer);
+
+            //dbRef.Child("players").Child(playerID).SetRawJsonValueAsync(json);
+
+            ////initialize score
+            //dbRef.Child("players").Child(playerID).Child("score").SetValueAsync(0);
+
+            ////initialize game number
+            //dbRef.Child("players").Child(playerID).Child("gameNumber").SetValueAsync(0);
         }
         
     }
@@ -78,6 +89,35 @@ public class DatabaseManager : MonoBehaviour
 
         dbRef.Child("players").Child(playerID).Child("gameNumber").SetValueAsync(gameNumber);
 
+    }
+
+
+    public IEnumerator GetNextGlobalGameNumber(Action<int> onCallback)
+    {
+        var playerData = dbRef.Child("players").GetValueAsync();
+
+        yield return new WaitUntil(() => playerData.IsCompleted);
+
+        int highestGameNumber = 0;
+
+        if (playerData.Result != null)
+        {
+            DataSnapshot snapshot = playerData.Result;
+
+            foreach (var player in snapshot.Children)
+            {
+                if (player.HasChild("gameNumber"))
+                {
+                    int gameNum = Convert.ToInt32(player.Child("gameNumber").Value);
+                    if (gameNum > highestGameNumber)
+                    {
+                        highestGameNumber = gameNum;
+                    }
+                }
+            }
+        }
+
+        onCallback.Invoke(highestGameNumber + 1); //next game number
     }
 }
 //https://youtu.be/59RBOBbeJaA

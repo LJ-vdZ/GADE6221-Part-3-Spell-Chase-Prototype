@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public DatabaseManager databaseManager;
     
-    private int currentGameNumber = 1; //increment for each new game
+    private int currentGameNumber = 0; //increment for each new game
 
     private int currentScore = 0;
 
@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
+
     }
 
     void Start()
@@ -78,13 +80,8 @@ public class GameManager : MonoBehaviour
         {
             pickupBar = FindObjectOfType<PickupBar>();
         }
-        ////initialize Firebase
-        //refDatabase = FirebaseDatabase.DefaultInstance.RootReference;
-
-        ////load player data
-        //playerName = PlayerPrefs.GetString("CurrentPlayerName", "Unknown");
-
-        gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
+        
+        //gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
 
         //ensure UI is initialised
         reset = false;
@@ -102,7 +99,7 @@ public class GameManager : MonoBehaviour
     void Update() // Checks for death and shows final score
     {
         HandlePickupTimers();
-        /*if(Death.deathStatus == true && !hasDied) //checl flag
+        /*if(Death.deathStatus == true && !hasDied) //check flag
         {
             endGame();
             finalScore.text = "Score: " + score;
@@ -230,8 +227,17 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
-        
-        Debug.Log($"Saving - Score: {currentScore}, GameNumber: {currentGameNumber}");
+        currentGameNumber++;
+
+        Debug.Log("Before saving: " + currentGameNumber);
+
+        //Debug.Log($"Saving - Score: {currentScore}, GameNumber: {currentGameNumber}");
+
+
+        PlayerPrefs.SetInt("GameNumber", currentGameNumber); //save game number locally, PlayerPrefs to remember number
+        PlayerPrefs.Save(); //make sure game number is saved
+
+        Debug.Log("Saved to PlayerPrefs: " + PlayerPrefs.GetInt("GameNumber"));
 
         databaseManager.SaveGameData(currentScore, currentGameNumber);
         
@@ -260,8 +266,8 @@ public class GameManager : MonoBehaviour
 
             OnPlayerDeath();
 
-            currentGameNumber++;
-            PlayerPrefs.SetInt("GameNumber", currentGameNumber);
+            //currentGameNumber++;
+            //PlayerPrefs.SetInt("GameNumber", currentGameNumber);
         }
     }
 
