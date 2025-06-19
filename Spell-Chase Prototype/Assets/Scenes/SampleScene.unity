@@ -23322,7 +23322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1062678389}
+      - m_Target: {fileID: 1330105528}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: restartGame
         m_Mode: 1
@@ -23452,6 +23452,7 @@ GameObject:
   - component: {fileID: 1330105525}
   - component: {fileID: 1330105524}
   - component: {fileID: 1330105527}
+  - component: {fileID: 1330105528}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -23535,6 +23536,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 0}
   playButton: {fileID: 0}
+--- !u!114 &1330105528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330105523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743c21bc2fc57024fa554553081be6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EndScreenUI: {fileID: 0}
+  reset: 0
+  finalScore: {fileID: 0}
+  ScoreText: {fileID: 0}
+  pickupBar: {fileID: 0}
+  pickupText: {fileID: 0}
+  death: {fileID: 0}
+  moveHallway: {fileID: 0}
+  greenPotionScoreBoost: 10
+  bluePotionSpeedIncrease: 2
+  speedCooldown: 40
+  immunityCooldown: 10
+  Min: 0
+  Max: 0
+  bossSpawner: {fileID: 0}
+  boss: {fileID: 0}
+  spawnerOne: {fileID: 0}
+  spawnerTwo: {fileID: 0}
+  spawnerThree: {fileID: 0}
+  spawnerFour: {fileID: 0}
+  spawnerFive: {fileID: 0}
+  spawnerSix: {fileID: 0}
+  databaseManager: {fileID: 0}
 --- !u!1 &1333222886
 GameObject:
   m_ObjectHideFlags: 0

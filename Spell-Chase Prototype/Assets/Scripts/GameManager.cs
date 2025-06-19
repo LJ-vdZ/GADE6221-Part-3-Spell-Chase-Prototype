@@ -60,15 +60,12 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         //singleton
-        if (Instance == null)
+        if (Instance != null)
         {
-            Instance = this;
-            
+            Destroy(Instance.gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        Instance = this;
 
         gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
 
@@ -76,6 +73,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Scene restarted. GameManager Start() running.");
+
         if (pickupBar == null)
         {
             pickupBar = FindObjectOfType<PickupBar>();
@@ -92,29 +91,38 @@ public class GameManager : MonoBehaviour
         currentScore = 0;                  // reset score if needed
         finalScore.text = "";              // clear final score text
 
-        hasDied = false; //reset on start
+        hasDied = false;
+
+        Time.timeScale = 1f;
+
+        death.enabled = true;
+
+        moveHallway.enabled = true;
+
+
     }
 
     // Update is called once per frame
     void Update() // Checks for death and shows final score
     {
         HandlePickupTimers();
-        /*if(Death.deathStatus == true && !hasDied) //check flag
-        {
-            endGame();
-            finalScore.text = "Score: " + score;
-            currentGameNumber++;
 
-        }
-        if(reset == true)
+        //if (Death.deathStatus == true && !hasDied) //check flag
+        //{
+        //    endGame();
+        //    finalScore.text = "Score: " + score;
+        //    currentGameNumber++;
+
+        //}
+
+        if (reset == true)
         {
             EndScreenUI.SetActive(false);
             reset = false;
-            // = false;
-            hasDied = false; //reset flag
+            
         }
 
-        currentScore = score;*/
+        //currentScore = score;
     }
 
     public void endGame() //Brings up end game screen
@@ -125,22 +133,25 @@ public class GameManager : MonoBehaviour
         //save data when player dies
         OnPlayerDeath();
 
-        hasDied = true; //set flag to prevent more calls
     }
 
     public void restartGame() //Function to reset entire level of game
     {
-        EndScreenUI.SetActive(false);
         Time.timeScale = 1f;
-        reset = true;
-
-        ////save data when player dies
-        //OnPlayerDeath();
-
-        ////increment game number for next game
-        //PlayerPrefs.SetInt("GameNumber", currentGameNumber);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        EndScreenUI.SetActive(false);
+
+        hasDied = false;
+        EndScreenUI.SetActive(false);
+        ScoreText.enabled = true;
+        finalScore.text = "";
+
+        currentScore = 0;
+        ObstaclePassedScore.score = 0;
+
+        death.enabled = true;
+        moveHallway.enabled = true;
     }
 
     public void quit() //Function to exit the application
@@ -266,8 +277,6 @@ public class GameManager : MonoBehaviour
 
             OnPlayerDeath();
 
-            //currentGameNumber++;
-            //PlayerPrefs.SetInt("GameNumber", currentGameNumber);
         }
     }
 

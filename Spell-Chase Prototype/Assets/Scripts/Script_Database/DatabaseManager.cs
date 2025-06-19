@@ -30,10 +30,10 @@ public class DatabaseManager : MonoBehaviour
         //playerID = dbRef.Child("players").Push().Key;   //this create new unique ID in the firebase
     }
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    //void Awake()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
     public void CreatePlayer() 
     {
