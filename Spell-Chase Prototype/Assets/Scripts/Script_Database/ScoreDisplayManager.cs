@@ -58,7 +58,7 @@ public class ScoreDisplayManager : MonoBehaviour
 
                 TMP_Text textComponent = playerInfoObj.GetComponent<TMP_Text>();
 
-                textComponent.text = $"\nGame: {playersData.GameNumber}, Name: {playersData.Name}, Score: {playersData.Score} \n--------------------------------\n";
+                textComponent.text = $"Game: {playersData.GameNumber}, Name: {playersData.Name}, Score: {playersData.Score}\n";
             }
         }
     }
