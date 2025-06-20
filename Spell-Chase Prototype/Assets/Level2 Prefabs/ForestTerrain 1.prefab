@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 56079320510259590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7121666, z: -0, w: 0.70201045}
-  m_LocalPosition: {x: 1.4, y: -0.32, z: -10.28}
+  m_LocalPosition: {x: 1.29, y: -0.32, z: -1.66}
   m_LocalScale: {x: 1.0476322, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2342,6 +2342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3013026319154991680}
+  - component: {fileID: 9147771620468082373}
   m_Layer: 0
   m_Name: ForestTerrain 1
   m_TagString: Destroyable
@@ -2358,8 +2359,8 @@ Transform:
   m_GameObject: {fileID: 5630685780516528797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.23, y: 1.11, z: 5.9}
-  m_LocalScale: {x: 1, y: 1, z: 0.954524}
+  m_LocalPosition: {x: 7.0026, y: 4.1567, z: 40.439}
+  m_LocalScale: {x: 1.3238525, y: 1.3238525, z: 1.1372967}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6115065247508811116}
@@ -2372,6 +2373,18 @@ Transform:
   - {fileID: 5966400395189558754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9147771620468082373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5630685780516528797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39af105ac09dcb4aafe3a77c3d601e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5773265962191492843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3316,8 +3329,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.483341, y: 0.065517545, z: 51.734764}
-  m_Center: {x: 2.2416706, y: -0.46724123, z: 12.154004}
+  m_Size: {x: 5.483341, y: 0.4417036, z: 51.734764}
+  m_Center: {x: 2.2416706, y: -0.8223855, z: 12.154007}
 --- !u!1 &8013159475022541216
 GameObject:
   m_ObjectHideFlags: 0

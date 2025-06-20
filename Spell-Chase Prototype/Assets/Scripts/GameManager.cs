@@ -95,9 +95,9 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        death.enabled = true;
+        //death.enabled = true;
 
-        moveHallway.enabled = true;
+        //moveHallway.enabled = true;
 
 
     }
@@ -313,7 +313,7 @@ public class GameManager : MonoBehaviour
             isImmune = true;
             immunityTimer = immunityCooldown;
 
-            death.enabled = false;  // Disable death script during immunity
+            //death.enabled = false;  // Disable death script during immunity
 
             pickupBar.setMaxSlider(immunityCooldown);
             SetPickupUI("Immunity!", Color.red);

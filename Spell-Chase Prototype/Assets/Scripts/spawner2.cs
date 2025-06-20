@@ -30,17 +30,40 @@ public class spawner2 : MonoBehaviour
     //location of bookshelf in array - prefabs[0]
     private const int BOOKSHELF_INDEX = 0;
 
+    private Coroutine spawnCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
         spawnObstacle = true;
-        StartCoroutine(PrefabSpawn());
+        spawnCoroutine = StartCoroutine(PrefabSpawn());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //restart spawning if boss battle is over and obstacles are not spawning
+        if (SectionTrigger.isBossBattle = false && spawnObstacle == false)
+        {
+            Debug.Log("Boss battle ended — restarting obstacle spawn");
+             
+            spawnObstacle = true;
+
+            //only restart if its not already spawning obstacles
+            if (spawnCoroutine == null)
+            {
+                spawnCoroutine = StartCoroutine(PrefabSpawn());
+            }
+        }
+    }
+
+    public void RestartSpawning()
+    {
+        if (spawnCoroutine == null)
+        {
+            spawnObstacle = true;
+            spawnCoroutine = StartCoroutine(PrefabSpawn());
+        }
     }
 
     IEnumerator PrefabSpawn()
@@ -69,15 +92,17 @@ public class spawner2 : MonoBehaviour
             if (Death.deathStatus == true || SectionTrigger.isBossBattle == true)
             {
                 spawnObstacle = false;
+                break;  //exit the loop. end coroutine
 
-                yield return null;
+                //yield return null;
             }
-            
-
-
+           
             yield return new WaitForSeconds( timeSpawn );
             
         }
+
+        //allow corotine to restart
+        spawnCoroutine = null; 
     }
 
     private int ChoosePrefab()
