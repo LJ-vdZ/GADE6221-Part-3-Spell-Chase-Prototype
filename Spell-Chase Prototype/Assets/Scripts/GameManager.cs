@@ -60,12 +60,12 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         //singleton
-        if (Instance != null)
-        {
-            Destroy(Instance.gameObject);
-        }
+        //if (Instance != null)
+        //{
+        //    Destroy(Instance.gameObject);
+        //}
 
-        Instance = this;
+        //Instance = this;
 
         gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
 
@@ -80,8 +80,6 @@ public class GameManager : MonoBehaviour
             pickupBar = FindObjectOfType<PickupBar>();
         }
         
-        //gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
-
         //ensure UI is initialised
         reset = false;
 
@@ -107,11 +105,11 @@ public class GameManager : MonoBehaviour
     {
         HandlePickupTimers();
 
-        //if (Death.deathStatus == true && !hasDied) //check flag
+        //if (Death.deathStatus == true) //check flag
         //{
         //    endGame();
-        //    finalScore.text = "Score: " + score;
-        //    currentGameNumber++;
+        ////    finalScore.text = "Score: " + score;
+        ////    currentGameNumber++;
 
         //}
 
@@ -138,20 +136,20 @@ public class GameManager : MonoBehaviour
     public void restartGame() //Function to reset entire level of game
     {
         Time.timeScale = 1f;
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        EndScreenUI.SetActive(false);
 
-        hasDied = false;
-        EndScreenUI.SetActive(false);
-        ScoreText.enabled = true;
-        finalScore.text = "";
+        Debug.Log("Game Scene reloaded");
+        
+        //hasDied = false;
+        //EndScreenUI.SetActive(false);
+        //ScoreText.enabled = true;
+        //finalScore.text = "";
 
-        currentScore = 0;
-        ObstaclePassedScore.score = 0;
+        //currentScore = 0;
+        /*ObstaclePassedScore.score = 0*/;
 
-        death.enabled = true;
-        moveHallway.enabled = true;
+        //death.enabled = true;
+        //moveHallway.enabled = true;
     }
 
     public void quit() //Function to exit the application
@@ -270,14 +268,15 @@ public class GameManager : MonoBehaviour
     {
         if (!hasDied)
         {
+            Debug.Log("HandlePlayerDeath called");
             finalScore.text = "Score: " + currentScore;
             ScoreText.enabled = false;
             EndScreenUI.SetActive(true);
             hasDied = true;
 
             OnPlayerDeath();
-
         }
+        
     }
 
     private void HandleGreenPotionPickup()
@@ -325,7 +324,8 @@ public class GameManager : MonoBehaviour
         if (isSpeeding)
         {
             speedTimer -= Time.deltaTime;
-            pickupBar.sliderValue(speedTimer);
+            //pickupBar.sliderValue(speedTimer);
+            pickupBar.setMaxSlider(speedCooldown);
 
             if (speedTimer <= 0f)
             {
@@ -346,7 +346,7 @@ public class GameManager : MonoBehaviour
             if (immunityTimer <= 0f)
             {
                 isImmune = false;
-                death.enabled = true;
+                //death.enabled = true;
 
                 pickupBar.ClearSlider();
                 ClearPickupUI();
@@ -365,6 +365,7 @@ public class GameManager : MonoBehaviour
         {
             pickupText.text = text;
         }
+
         if (pickupBar != null)
         {
             Image fillImage = pickupBar.slider.fillRect.GetComponent<Image>();

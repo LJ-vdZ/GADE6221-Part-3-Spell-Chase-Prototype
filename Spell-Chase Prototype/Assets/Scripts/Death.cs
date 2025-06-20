@@ -17,6 +17,8 @@ public class Death : MonoBehaviour
     public GameManager GameManager;
     public static bool deathStatus = false;
 
+    private bool alreadyDied = false;
+
     public VisualEffect poof;
 
     private float startingYPos;
@@ -26,12 +28,14 @@ public class Death : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        alreadyDied = false;
+
         playerAnim = GetComponent<Animator>();
 
         playerStatus = player.GetComponent<PlayerStatus>();
 
         //Need to stop hallway movement if player death is true. Set hallwayspeed to 0.
-        //MoveHallway.hallwaySpeed = 5;
+        //MoveHallway.hallwaySpeed = 3f;
     }
 
     // Update is called once per frame
@@ -43,6 +47,7 @@ public class Death : MonoBehaviour
     //when character's Character Controller hits obstacle. Not when Box Collider hits obstacles.
     private void OnControllerColliderHit(ControllerColliderHit collision)   
     {
+        if (alreadyDied) return;
 
         //Debug.Log("Collision detected");
 
@@ -61,6 +66,8 @@ public class Death : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))    //when "Obstacle" hit 
         {
+            alreadyDied = true;
+
             spawner1.GetComponent<spawner2>().enabled = false;
             spawner2.GetComponent<spawner2>().enabled = false;
             spawner3.GetComponent<spawner2>().enabled = false;
@@ -68,7 +75,7 @@ public class Death : MonoBehaviour
             deathStatus = true;
 
             playerAnim.SetBool("Die", true);
-            //MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
+            MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
 
 
 
@@ -81,11 +88,13 @@ public class Death : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("TrenchDestroyer"))   //if player fell into the trench
         {
+            alreadyDied = true;
+
             Debug.Log("Collision set to true");
             deathStatus = true;
 
             playerAnim.SetBool("Die", true);
-            //MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
+            MoveHallway.hallwaySpeed = 0;   //hallway stops moving. Giving illusion that player stopped moving forward on collision
 
             player.GetComponent<PlayerMovement>().enabled = false;
 

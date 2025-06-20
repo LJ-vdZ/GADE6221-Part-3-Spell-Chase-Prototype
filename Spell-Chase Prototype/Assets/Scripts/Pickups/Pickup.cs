@@ -8,7 +8,7 @@ using System;
 public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
-    private float speedCooldown = 40f;
+    private float speedCooldown = 10f;
     public static bool isSpeeding;
     public static bool isImmune;
     private float immunityTimer = 10f;
@@ -86,12 +86,12 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
     {
         if (other.CompareTag("Player"))
         {
-            if (gameObject.CompareTag("GreenPotion"))
+            if (gameObject.CompareTag("GreenPotion") && isImmune == false && isSpeeding == false)
             {
                 GreenPotionPickup?.Invoke();
                 Destroy(gameObject);
             }
-            else if (gameObject.CompareTag("BluePotion"))
+            else if (gameObject.CompareTag("BluePotion") && isImmune == false)
             {
                 BluePotionPickup?.Invoke();
                 Destroy(gameObject);

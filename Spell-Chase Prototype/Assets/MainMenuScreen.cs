@@ -49,6 +49,11 @@ public class MainMenuScreen : MonoBehaviour
 
     }
 
+    public void restartGame() 
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
     public void ExitGame() 
     {
         Application.Quit();

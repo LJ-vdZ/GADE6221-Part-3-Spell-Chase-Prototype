@@ -94,26 +94,35 @@ public class MoveHallway : MonoBehaviour
 
          }
      }*/
-    public static float hallwaySpeed = 5f;
+    public static float hallwaySpeed = 0f;
     public static float originalSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        hallwaySpeed = originalSpeed;
+        hallwaySpeed = 5f;
+        Debug.Log("MoveHallway Start - hallwaySpeed reset to: " + hallwaySpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        
         // Move hallway on z-axis
         transform.position += new Vector3(0, 0, -hallwaySpeed) * Time.deltaTime;
+        
+        Debug.Log("MoveHallway is running. Speed: " + hallwaySpeed);
 
-        // Stop hallway movement if player is dead
-        if (Death.deathStatus)
-        {
-            hallwaySpeed = 0;
-        }
+        //// Stop hallway movement if player is dead
+        //if (Death.deathStatus)
+        //{
+        //    hallwaySpeed = 0;
+        //}
+        //else 
+        //{
+        //    hallwaySpeed = originalSpeed;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
