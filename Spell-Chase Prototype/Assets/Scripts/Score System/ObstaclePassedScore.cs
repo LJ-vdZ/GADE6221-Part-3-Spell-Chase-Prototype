@@ -36,13 +36,11 @@ public class ObstaclePassedScore : MonoBehaviour    //need to check if player di
         }
     }
 
-    
-
-    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //private void //OnControllerColliderHit(ControllerColliderHit hit)
     //{
-       
+
     //    //don't include collision with obstacle in score
-    //    if (Death.deathStatus == true)  
+    //    if (Death.deathStatus == true)
     //    {
     //        Debug.Log("Player died");
     //        score = score - 1;

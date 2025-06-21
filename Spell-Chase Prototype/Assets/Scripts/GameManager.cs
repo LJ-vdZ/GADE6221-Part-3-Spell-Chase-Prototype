@@ -240,9 +240,6 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Before saving: " + currentGameNumber);
 
-        //Debug.Log($"Saving - Score: {currentScore}, GameNumber: {currentGameNumber}");
-
-
         PlayerPrefs.SetInt("GameNumber", currentGameNumber); //save game number locally, PlayerPrefs to remember number
         PlayerPrefs.Save(); //make sure game number is saved
 
@@ -273,7 +270,7 @@ public class GameManager : MonoBehaviour
             ScoreText.enabled = false;
             EndScreenUI.SetActive(true);
             hasDied = true;
-
+;
             OnPlayerDeath();
         }
         
@@ -290,7 +287,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleBluePotionPickup()
     {
-        if (isImmune) return;  // Don't apply speed if immune (optional logic)
+        if (isImmune) return;  //don't apply speed if immune
 
         if (!isSpeeding)
         {
@@ -299,7 +296,7 @@ public class GameManager : MonoBehaviour
 
             MoveHallway.ApplySpeed(bluePotionSpeedIncrease);
 
-            pickupBar.setMaxSlider(speedCooldown);
+            pickupBar.setMaxSlider(immunityCooldown);
             SetPickupUI("Super Speed!", Color.blue);
         }
     }
@@ -312,7 +309,7 @@ public class GameManager : MonoBehaviour
             isImmune = true;
             immunityTimer = immunityCooldown;
 
-            //death.enabled = false;  // Disable death script during immunity
+            death.enabled = false;  //disable death script during immunity
 
             pickupBar.setMaxSlider(immunityCooldown);
             SetPickupUI("Immunity!", Color.red);
@@ -324,13 +321,13 @@ public class GameManager : MonoBehaviour
         if (isSpeeding)
         {
             speedTimer -= Time.deltaTime;
-            //pickupBar.sliderValue(speedTimer);
-            pickupBar.setMaxSlider(speedCooldown);
+            pickupBar.sliderValue(speedTimer);
+            //pickupBar.setMaxSlider(speedCooldown);
 
             if (speedTimer <= 0f)
             {
                 isSpeeding = false;
-                MoveHallway.ResetSpeed(); // You will need a method to reset speed to normal
+                MoveHallway.ResetSpeed(); //reset speed to normal
 
                 pickupBar.ClearSlider();
                 ClearPickupUI();
@@ -346,7 +343,7 @@ public class GameManager : MonoBehaviour
             if (immunityTimer <= 0f)
             {
                 isImmune = false;
-                //death.enabled = true;
+                death.enabled = true;
 
                 pickupBar.ClearSlider();
                 ClearPickupUI();
@@ -394,10 +391,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void SetGameNumber(int gameNumber)
-    //{
-    //    currentGameNumber = gameNumber;
-    //}
 
 
 }
