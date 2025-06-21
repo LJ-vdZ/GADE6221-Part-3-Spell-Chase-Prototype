@@ -8,10 +8,10 @@ using System;
 public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
 {
     public int increaseSpeed = 2;
-    private float speedCooldown = 10f;
+    //private float speedCooldown = 10f;
     public static bool isSpeeding;
     public static bool isImmune;
-    private float immunityTimer = 10f;
+    //private float immunityTimer = 10f;
  
     public Death death;
 
@@ -86,6 +86,25 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
     {
         if (other.CompareTag("Player"))
         {
+            ////check that no other pickup effects are active
+            //if (!isSpeeding && !isImmune)
+            //{
+            //    if (gameObject.CompareTag("GreenPotion"))
+            //    {
+            //        GreenPotionPickup?.Invoke();    //trigger score boost effect
+            //    }
+            //    else if (gameObject.CompareTag("BluePotion"))
+            //    {
+            //        BluePotionPickup?.Invoke(); //trigger speed effect
+            //    }
+            //    else if (gameObject.CompareTag("RedPotion"))
+            //    {
+            //        RedPotionPickup?.Invoke(); //trigger immunity effect
+            //    }
+            //}
+
+            //Destroy(gameObject);
+
             if (gameObject.CompareTag("GreenPotion") && isImmune == false && isSpeeding == false)
             {
                 GreenPotionPickup?.Invoke();
@@ -96,7 +115,7 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
                 BluePotionPickup?.Invoke();
                 Destroy(gameObject);
             }
-            else if (gameObject.CompareTag("RedPotion"))
+            else if (gameObject.CompareTag("RedPotion") && isSpeeding == false)
             {
                 RedPotionPickup?.Invoke();
                 Destroy(gameObject);
