@@ -46,11 +46,12 @@ public class GameManager : MonoBehaviour
     public GameObject bossSpawner;
     public GameObject boss;
     private GameObject activeBoss;
+    public static bool isBossBattle = false;
 
     public GameObject spawnerOne, spawnerTwo, spawnerThree;
     public GameObject spawnerFour, spawnerFive, spawnerSix;
 
-    private int completedLevels = 0;
+    public int completedLevels = 0;
 
     public DatabaseManager databaseManager;
     
@@ -63,12 +64,13 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         //singleton
-        //if (Instance != null)
-        //{
-        //    Destroy(Instance.gameObject);
-        //}
+        if (Instance != null)
+        {
+            Destroy(Instance.gameObject);
+        }
 
-        //Instance = this;
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
 
@@ -121,6 +123,21 @@ public class GameManager : MonoBehaviour
             EndScreenUI.SetActive(false);
             reset = false;
             
+        }
+
+        if (!isBossBattle && completedLevels == 0 && currentScore >= 30)
+        {
+            isBossBattle = true;
+            HandleBossSpawn();
+        }
+
+        if (isBossBattle && currentScore >= 100)
+        {
+            isBossBattle = false;
+            HandleBossDespawn();
+
+            completedLevels++;  // Level up
+            HandleLevelIncrease();
         }
 
         //currentScore = score;
@@ -228,26 +245,48 @@ public class GameManager : MonoBehaviour
              activeBoss = null;
          }
 
-         /*// Reset spawners
-         spawnerOne.SetActive(true);
-         spawnerTwo.SetActive(true);
-         spawnerThree.SetActive(true);
-         spawnerFour.SetActive(false);
-         spawnerFive.SetActive(false);
-         spawnerSix.SetActive(false);*/
+        /*// Reset spawners
+        spawnerOne.SetActive(true);
+        spawnerTwo.SetActive(true);
+        spawnerThree.SetActive(true);
+        spawnerFour.SetActive(false);
+        spawnerFive.SetActive(false);
+        spawnerSix.SetActive(false);*/
         for (int i = 0; i < normalSpawners.Length; i++)
         {
             normalSpawners[i].ExitBossMode();
         }
+        // Stop all spawners immediately
+        /*foreach (var spawner in normalSpawners)
+        {
+            spawner.StopSpawningTemporarily();
+        }*/
+
+        // Delay forest transition
+        StartCoroutine(DelayedForestTransition());
     }
 
+    private IEnumerator DelayedForestTransition()
+    {
+        yield return new WaitForSeconds(5f); // Delay for 5 seconds
+
+        foreach (var spawner in normalSpawners)
+        {
+            spawner.SetForestMode(true);
+        }
+    }
     private void HandleLevelIncrease()
     {
         completedLevels++;
         // Restart spawners
-        foreach (var spawner in FindObjectsOfType<spawner2>())
+        /*foreach (var spawner in FindObjectsOfType<spawner2>())
         {
             spawner.RestartSpawning();
+        }*/
+        foreach (var spawner in normalSpawners)
+        {
+            spawner.SetForestMode(true);
+            //spawner.RestartSpawning();
         }
     }
 

@@ -6,10 +6,16 @@ public class spawner2 : MonoBehaviour
 {
     private Vector3 originalPosition;
     [SerializeField] public Transform bossAttackPosition; // set in inspector
+    [SerializeField] public Transform forestPosition;
+
     private bool bossMode = false;
+    private bool forestMode = false;
+
     [SerializeField] private GameObject[] bossAttackPrefabs; // set boss-only prefabs
 
     [SerializeField] GameObject[] prefabs;
+
+    [SerializeField] GameObject[] forestPrefabs;
 
     [SerializeField] float timeSpawn = 1f;
 
@@ -49,7 +55,7 @@ public class spawner2 : MonoBehaviour
     void Update()
     {
         //restart spawning if boss battle is over and obstacles are not spawning
-        if (SectionTrigger.isBossBattle = false && spawnObstacle == false)
+        if (SectionTrigger.isBossBattle == false && spawnObstacle == false)
         {
             Debug.Log("Boss battle ended — restarting obstacle spawn");
              
@@ -78,15 +84,53 @@ public class spawner2 : MonoBehaviour
         {
             transform.position = bossAttackPosition.position;
         }
+        forestMode = false;
         bossMode = true;
         RestartSpawning();
     }
 
     public void ExitBossMode()
     {
+        StopCoroutineIfRunning();
         transform.position = originalPosition;
+        forestMode = true;
         bossMode = false;
-        RestartSpawning();
+        spawnObstacle = false;
+        //RestartSpawning();
+    }
+
+    public void SetForestMode(bool enable)
+    {
+        StopCoroutineIfRunning();
+        if (enable && forestPosition != null)
+        {
+            transform.position = forestPosition.position;
+            forestMode = true;
+            bossMode = false;
+        }
+        else
+        {
+            transform.position = originalPosition;
+            forestMode = false;
+        }
+        //RestartSpawning();
+        spawnObstacle = true;
+        spawnCoroutine = StartCoroutine(PrefabSpawn());
+    }
+
+    private void StopCoroutineIfRunning()
+    {
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
+    }
+
+    public void StopSpawningTemporarily()
+    {
+        StopCoroutineIfRunning();
+        spawnObstacle = false;
     }
 
     IEnumerator PrefabSpawn()
@@ -125,7 +169,7 @@ public class spawner2 : MonoBehaviour
         }
 
         //allow corotine to restart
-        spawnCoroutine = null; */
+        spawnCoroutine = null; 
         while (spawnObstacle)
         {
             float wantedX = transform.position.x + Random.Range(Min, Max);
@@ -137,6 +181,44 @@ public class spawner2 : MonoBehaviour
             Instantiate(prefabToSpawn, position, Quaternion.identity);
 
             if (Random.value < pickupSpawnChance && !bossMode)
+            {
+                Vector3 pickupPosition = new Vector3(wantedX, transform.position.y - 1f, transform.position.z + 2f);
+                Instantiate(Pickups[Random.Range(0, Pickups.Length)], pickupPosition, Quaternion.identity);
+            }
+
+            if (Death.deathStatus /*|| SectionTrigger.isBossBattle)
+            {
+                spawnObstacle = false;
+                break;
+            }
+
+            yield return new WaitForSeconds(timeSpawn);
+        }
+
+        spawnCoroutine = null;*/
+        while (spawnObstacle)
+        {
+            float wantedX = transform.position.x + Random.Range(Min, Max);
+            Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);
+
+            GameObject prefabToSpawn;
+
+            if (bossMode)
+            {
+                prefabToSpawn = bossAttackPrefabs[Random.Range(0, bossAttackPrefabs.Length)];
+            }
+            else if (forestMode)
+            {
+                prefabToSpawn = forestPrefabs[Random.Range(0, forestPrefabs.Length)];
+            }
+            else
+            {
+                prefabToSpawn = prefabs[Random.Range(0, prefabs.Length)];
+            }
+
+            Instantiate(prefabToSpawn, position, Quaternion.identity);
+
+            if (Random.value < pickupSpawnChance && !bossMode && !forestMode)
             {
                 Vector3 pickupPosition = new Vector3(wantedX, transform.position.y - 1f, transform.position.z + 2f);
                 Instantiate(Pickups[Random.Range(0, Pickups.Length)], pickupPosition, Quaternion.identity);

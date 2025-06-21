@@ -10,6 +10,9 @@ public class SectionTrigger : MonoBehaviour
 
     public int levelNum;
 
+    private GameManager gameManager;
+
+
     //check player score
     private int playerScore;
 
@@ -29,6 +32,7 @@ public class SectionTrigger : MonoBehaviour
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         //set boss battle to false and boss battle time to zero at start of game
         //bossBattleTime = 0f;
         isBossBattle = false;
@@ -36,7 +40,7 @@ public class SectionTrigger : MonoBehaviour
         levelNum = 0;
     }
 
-    private void Update()
+    /*private void Update()
     {
         //get player's score from ObstaclePassScore
         playerScore = ObstaclePassedScore.score;
@@ -70,12 +74,32 @@ public class SectionTrigger : MonoBehaviour
 
         }
 
-    }
+    }*/
 
     //check if player collides with invisible wall
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Trigger"))
+        if (other.gameObject.CompareTag("Trigger") && !hasTriggered)
+        {
+            hasTriggered = true;
+
+            if (GameManager.isBossBattle)
+            {
+                // Spawn boss hallway during boss battle only
+                Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
+            }
+            else if (gameManager != null && gameManager.completedLevels >= 1)
+            {
+                // After boss defeated, spawn forest hallway for level 2+
+                Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
+            }
+            else
+            {
+                // Normal hallway spawn before boss battle
+                Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
+            }
+        }
+        /*if (other.gameObject.CompareTag("Trigger"))
         {
             
             //collision of both Box Collider and Character Controls are detected. Two hallway sections are generated as a result.
@@ -108,7 +132,7 @@ public class SectionTrigger : MonoBehaviour
                 Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);   //there is no rotation
 
             }
-        }
+        }*/
     }
 
     //when player exits trigger, must rest hasTrigger to false. Otherwise, the map will only regenerate once. We want it to regenerate every time a trigger is hit.

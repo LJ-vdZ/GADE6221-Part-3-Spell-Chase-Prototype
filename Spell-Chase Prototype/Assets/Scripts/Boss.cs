@@ -62,18 +62,18 @@ public class Boss : MonoBehaviour
         }
 
         //spawn boss 2 
-        if (!bossTwoSpawned && !bossTwoCoroutineStarted && ObstaclePassedScore.score >= 80 && ObstaclePassedScore.score < 300)
+        /*if (!bossTwoSpawned && !bossTwoCoroutineStarted && ObstaclePassedScore.score >= 80 && ObstaclePassedScore.score < 300)
         {
             bossTwoCoroutineStarted = true;
             StartCoroutine(BossTwoSpawn());
-        }
+        }*/
 
         //despawn boss 2
-        if (bossTwoSpawned && ObstaclePassedScore.score >= 300)
+        /*if (bossTwoSpawned && ObstaclePassedScore.score >= 300)
         {
             LeaveBossTwo();
             LevelIncreased?.Invoke();
-        }
+        }*/
     }
 
     void BringBoss()
@@ -116,7 +116,7 @@ public class Boss : MonoBehaviour
         //LevelIncreased?.Invoke(levelsCompleted);  // Notify listeners of new level
     }
 
-    void BringBossTwo()
+    /*void BringBossTwo()
     {
         Debug.Log("BringBossTwo() called");
 
@@ -163,7 +163,7 @@ public class Boss : MonoBehaviour
         }
 
         // TestCube (keep for reference, but bossTwo should work after fixing)
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        /*GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = new Vector3(0, 1, 5);
         cube.name = "TestCube";
         Debug.Log($"TestCube spawned at position: {cube.transform.position}");
@@ -173,28 +173,28 @@ public class Boss : MonoBehaviour
         bossTwoSpawned = true;
        
         BossSpawned?.Invoke();
-    }
+    }*/
 
-    void LeaveBossTwo()
+    /*void LeaveBossTwo()
     {
         bossTwoSpawned = false;
 
         bossTwoCoroutineStarted = false;
 
         BossDespawned?.Invoke();
-    }
+    }*/
 
     IEnumerator BossSpawn()
     {
 
         if (spawned == false && ObstaclePassedScore.score >= 30 && ObstaclePassedScore.score < 100)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(10f);
             BringBoss();
         }
     }
 
-    IEnumerator BossTwoSpawn()
+    /*IEnumerator BossTwoSpawn()
     {
         Debug.Log("BossTwoSpawn coroutine started");
 
@@ -204,5 +204,5 @@ public class Boss : MonoBehaviour
 
         yield break;
         
-    }
+    }*/
 }
