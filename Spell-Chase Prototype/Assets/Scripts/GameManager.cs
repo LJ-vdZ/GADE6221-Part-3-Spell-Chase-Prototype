@@ -8,6 +8,9 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private spawner2[] normalSpawners;           // Assign spawners 1, 2, 3
+    [SerializeField] private Transform[] bossSpawnerPositions;
+
     public GameObject EndScreenUI;
     public bool reset = false;
     public Text finalScore;
@@ -192,7 +195,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleBossSpawn()
     {
-        //Turn off normal spawners
+        /*//Turn off normal spawners
         spawnerOne.SetActive(false);
         spawnerTwo.SetActive(false);
         spawnerThree.SetActive(false);
@@ -200,7 +203,7 @@ public class GameManager : MonoBehaviour
         //Turn on boss attack spawners
         spawnerFour.SetActive(true);
         spawnerFive.SetActive(true);
-        spawnerSix.SetActive(true);
+        spawnerSix.SetActive(true);*/
 
         /*float wantedX = transform.position.x + UnityEngine.Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
         Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
@@ -210,28 +213,42 @@ public class GameManager : MonoBehaviour
         Vector3 spawnPosition = bossSpawner.transform.position;
         Quaternion spawnRotation = Quaternion.Euler(0, 180f, 0);
         activeBoss = Instantiate(boss, spawnPosition, spawnRotation);
+        for (int i = 0; i < normalSpawners.Length; i++)
+        {
+            normalSpawners[i].bossAttackPosition = bossSpawnerPositions[i];
+            normalSpawners[i].EnterBossMode();
+        }
     }
 
     private void HandleBossDespawn()
     {
-        if (activeBoss != null)
-        {
-            Destroy(activeBoss);
-            activeBoss = null;
-        }
+         if (activeBoss != null)
+         {
+             Destroy(activeBoss);
+             activeBoss = null;
+         }
 
-        // Reset spawners
-        spawnerOne.SetActive(true);
-        spawnerTwo.SetActive(true);
-        spawnerThree.SetActive(true);
-        spawnerFour.SetActive(false);
-        spawnerFive.SetActive(false);
-        spawnerSix.SetActive(false);
+         /*// Reset spawners
+         spawnerOne.SetActive(true);
+         spawnerTwo.SetActive(true);
+         spawnerThree.SetActive(true);
+         spawnerFour.SetActive(false);
+         spawnerFive.SetActive(false);
+         spawnerSix.SetActive(false);*/
+        for (int i = 0; i < normalSpawners.Length; i++)
+        {
+            normalSpawners[i].ExitBossMode();
+        }
     }
 
     private void HandleLevelIncrease()
     {
         completedLevels++;
+        // Restart spawners
+        foreach (var spawner in FindObjectsOfType<spawner2>())
+        {
+            spawner.RestartSpawning();
+        }
     }
 
     public void OnPlayerDeath()

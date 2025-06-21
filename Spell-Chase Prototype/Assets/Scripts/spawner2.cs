@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class spawner2 : MonoBehaviour
 {
+    private Vector3 originalPosition;
+    [SerializeField] public Transform bossAttackPosition; // set in inspector
+    private bool bossMode = false;
+    [SerializeField] private GameObject[] bossAttackPrefabs; // set boss-only prefabs
+
     [SerializeField] GameObject[] prefabs;
 
     [SerializeField] float timeSpawn = 1f;
@@ -35,6 +40,7 @@ public class spawner2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalPosition = transform.position;
         spawnObstacle = true;
         spawnCoroutine = StartCoroutine(PrefabSpawn());
     }
@@ -66,9 +72,26 @@ public class spawner2 : MonoBehaviour
         }
     }
 
+    public void EnterBossMode()
+    {
+        if (bossAttackPosition != null)
+        {
+            transform.position = bossAttackPosition.position;
+        }
+        bossMode = true;
+        RestartSpawning();
+    }
+
+    public void ExitBossMode()
+    {
+        transform.position = originalPosition;
+        bossMode = false;
+        RestartSpawning();
+    }
+
     IEnumerator PrefabSpawn()
     {
-        while(spawnObstacle == true)
+        /*while(spawnObstacle == true)
         {
             float wantedX = transform.position.x + Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
             Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
@@ -102,7 +125,33 @@ public class spawner2 : MonoBehaviour
         }
 
         //allow corotine to restart
-        spawnCoroutine = null; 
+        spawnCoroutine = null; */
+        while (spawnObstacle)
+        {
+            float wantedX = transform.position.x + Random.Range(Min, Max);
+            Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);
+
+            int prefabIndex = bossMode ? Random.Range(0, bossAttackPrefabs.Length) : ChoosePrefab();
+            GameObject prefabToSpawn = bossMode ? bossAttackPrefabs[prefabIndex] : prefabs[prefabIndex];
+
+            Instantiate(prefabToSpawn, position, Quaternion.identity);
+
+            if (Random.value < pickupSpawnChance && !bossMode)
+            {
+                Vector3 pickupPosition = new Vector3(wantedX, transform.position.y - 1f, transform.position.z + 2f);
+                Instantiate(Pickups[Random.Range(0, Pickups.Length)], pickupPosition, Quaternion.identity);
+            }
+
+            if (Death.deathStatus || SectionTrigger.isBossBattle)
+            {
+                spawnObstacle = false;
+                break;
+            }
+
+            yield return new WaitForSeconds(timeSpawn);
+        }
+
+        spawnCoroutine = null;
     }
 
     private int ChoosePrefab()
