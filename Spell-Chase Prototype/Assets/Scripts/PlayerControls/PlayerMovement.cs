@@ -67,10 +67,14 @@ public class PlayerMovement : MonoBehaviour
         //left and right movements
         if (Input.GetKeyDown(KeyCode.LeftArrow)  && targetLane > 0)
         {
+            speaker.PlayOneShot(audioClips[3]); //play whoosh
+
             targetLane = targetLane - 1;    //move to left. Left = 0
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && targetLane < 2)
         {
+            speaker.PlayOneShot(audioClips[3], 0.5f); //play whoosh
+
             targetLane = targetLane + 1;    //move to right. Right = 2
         }
 
@@ -86,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))  //key is clicked    
             {
+                speaker.PlayOneShot(audioClips[3]); //play whoosh 
+
                 verticalVelocity = jumpForce;
                 playerAnim.SetBool("Jump", true);
             }
@@ -106,6 +112,8 @@ public class PlayerMovement : MonoBehaviour
         //Crouching Movement
         if (Input.GetKeyDown(KeyCode.DownArrow) && controller.isGrounded)    //when key is clicked
         {
+            speaker.PlayOneShot(audioClips[3]); //play whoosh. 
+
             //reduce player height
             controller.height = 1f;
             playerAnim.SetBool("Roll", true);
@@ -141,37 +149,37 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void OnControllerColliderHit(ControllerColliderHit other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.collider.CompareTag("GreenPotion"))
+        if (other.CompareTag("GreenPotion"))
         {
-            OnScoreBoosterSound();
+            speaker.PlayOneShot(audioClips[0]);
         }
-        else if (other.collider.CompareTag("BluePotion"))
+        else if (other.CompareTag("BluePotion"))
         {
-            OnSpeedBoosterSound();
+            speaker.PlayOneShot(audioClips[1]);
         }
-        else if (other.collider.CompareTag("RedPotion")) 
+        else if (other.CompareTag("RedPotion")) 
         {
-            OnImmunitySound();
+            speaker.PlayOneShot(audioClips[2]);
         }
     }
 
-    public void OnScoreBoosterSound()
-    {
-        PlaySound(0);
-    }
+    //public void OnScoreBoosterSound()
+    //{
+    //    PlaySound(0);
+    //}
 
-    public void OnSpeedBoosterSound()
-    {
-        PlaySound(1);
-    }
+    //public void OnSpeedBoosterSound()
+    //{
+    //    PlaySound(1);
+    //}
 
-    public void OnImmunitySound()
-    {
+    //public void OnImmunitySound()
+    //{
 
-        PlaySound(2);
-    }
+    //    PlaySound(2);
+    //}
 
 
 

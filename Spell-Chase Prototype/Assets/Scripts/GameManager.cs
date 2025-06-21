@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        //death.enabled = true;
+        death.enabled = true;
 
         //moveHallway.enabled = true;
 

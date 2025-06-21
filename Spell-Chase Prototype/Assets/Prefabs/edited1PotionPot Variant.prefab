@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39af105ac09dcb4aafe3a77c3d601e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupBar: {fileID: 0}
-  maxSlider: 40
 --- !u!65 &1835982888003775045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -305,7 +303,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a60611dba552d6f47b739de8370a5368, type: 3}
   m_Resource: {fileID: 8300000, guid: a60611dba552d6f47b739de8370a5368, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.43
   m_Pitch: 2
   Loop: 1
   Mute: 0
