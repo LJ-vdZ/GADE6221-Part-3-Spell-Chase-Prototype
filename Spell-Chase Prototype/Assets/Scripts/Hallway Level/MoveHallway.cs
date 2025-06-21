@@ -112,7 +112,7 @@ public class MoveHallway : MonoBehaviour
         // Move hallway on z-axis
         transform.position += new Vector3(0, 0, -hallwaySpeed) * Time.deltaTime;
         
-        Debug.Log("MoveHallway is running. Speed: " + hallwaySpeed);
+        //Debug.Log("MoveHallway is running. Speed: " + hallwaySpeed);
 
         //// Stop hallway movement if player is dead
         //if (Death.deathStatus)

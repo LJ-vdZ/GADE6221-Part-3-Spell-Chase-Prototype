@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && targetLane < 2)
         {
-            speaker.PlayOneShot(audioClips[3], 0.5f); //play whoosh
+            speaker.PlayOneShot(audioClips[3]); //play whoosh
 
             targetLane = targetLane + 1;    //move to right. Right = 2
         }

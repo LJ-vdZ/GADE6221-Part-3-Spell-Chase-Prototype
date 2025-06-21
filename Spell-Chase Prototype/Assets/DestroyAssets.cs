@@ -6,7 +6,7 @@ public class DestroyAssets : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Player")) 
+        if (!other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BluePotion") || other.gameObject.CompareTag("GreenPotion") || other.gameObject.CompareTag("RedPotion")) 
         {
             Destroy(other.gameObject);     //destory anything that is not the player
         }
