@@ -6,7 +6,7 @@ public class spawner2 : MonoBehaviour
 {
     private Vector3 originalPosition;
     [SerializeField] public Transform bossAttackPosition; // set in inspector
-    [SerializeField] public Transform forestPosition;
+    //[SerializeField] public Transform forestPosition;
 
     private bool bossMode = false;
     private bool forestMode = false;
@@ -93,7 +93,7 @@ public class spawner2 : MonoBehaviour
     {
         StopCoroutineIfRunning();
         transform.position = originalPosition;
-        forestMode = true;
+        forestMode = false;
         bossMode = false;
         spawnObstacle = false;
         //RestartSpawning();
@@ -102,9 +102,9 @@ public class spawner2 : MonoBehaviour
     public void SetForestMode(bool enable)
     {
         StopCoroutineIfRunning();
-        if (enable && forestPosition != null)
+        if (enable )
         {
-            transform.position = forestPosition.position;
+            transform.position = originalPosition;
             forestMode = true;
             bossMode = false;
         }
@@ -125,6 +125,34 @@ public class spawner2 : MonoBehaviour
             StopCoroutine(spawnCoroutine);
             spawnCoroutine = null;
         }
+    }
+
+    public void SpawnForestAfterBoss(float delaySeconds)
+    {
+        StartCoroutine(SpawnForestCoroutine(delaySeconds));
+    }
+
+    private IEnumerator SpawnForestCoroutine(float delay)
+    {
+        // Stop spawning immediately
+        StopCoroutineIfRunning();
+        spawnObstacle = false;
+
+        Debug.Log($"{gameObject.name}: Stopped spawning after boss. Waiting {delay} seconds before forest.");
+
+        // Wait for the delay (e.g. 5 seconds)
+        yield return new WaitForSeconds(delay);
+
+        // Move to forest position and switch mode
+        
+        
+            transform.position = originalPosition;
+            forestMode = true;
+            bossMode = false;
+
+        // Enable spawning again with forest prefabs
+        spawnObstacle = true;
+        spawnCoroutine = StartCoroutine(PrefabSpawn());
     }
 
     public void StopSpawningTemporarily()
@@ -218,7 +246,7 @@ public class spawner2 : MonoBehaviour
 
             Instantiate(prefabToSpawn, position, Quaternion.identity);
 
-            if (Random.value < pickupSpawnChance && !bossMode && !forestMode)
+            if (Random.value < pickupSpawnChance && !bossMode )
             {
                 Vector3 pickupPosition = new Vector3(wantedX, transform.position.y - 1f, transform.position.z + 2f);
                 Instantiate(Pickups[Random.Range(0, Pickups.Length)], pickupPosition, Quaternion.identity);

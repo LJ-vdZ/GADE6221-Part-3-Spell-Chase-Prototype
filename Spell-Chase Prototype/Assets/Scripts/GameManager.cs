@@ -285,7 +285,7 @@ public class GameManager : MonoBehaviour
         }*/
         foreach (var spawner in normalSpawners)
         {
-            spawner.SetForestMode(true);
+            spawner.SpawnForestAfterBoss(5f);
             //spawner.RestartSpawning();
         }
     }
