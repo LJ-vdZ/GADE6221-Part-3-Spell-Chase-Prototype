@@ -12,6 +12,7 @@ public class spawner2 : MonoBehaviour
     private bool forestMode = false;
 
     [SerializeField] private GameObject[] bossAttackPrefabs; // set boss-only prefabs
+    private GameObject[] currentBossPrefabs;
 
     [SerializeField] GameObject[] prefabs;
 
@@ -82,7 +83,7 @@ public class spawner2 : MonoBehaviour
         }
     }
 
-    public void EnterBossMode()
+    public void EnterBossMode(GameObject[] bossPrefabs)
     {
         if (bossAttackPosition != null)
         {
@@ -90,6 +91,8 @@ public class spawner2 : MonoBehaviour
         }
         forestMode = false;
         bossMode = true;
+
+        currentBossPrefabs = bossPrefabs;
         RestartSpawning();
     }
 
@@ -254,7 +257,12 @@ public class spawner2 : MonoBehaviour
 
             if (bossMode)
             {
-                prefabToSpawn = bossAttackPrefabs[Random.Range(0, bossAttackPrefabs.Length)];
+                prefabToSpawn = currentBossPrefabs[Random.Range(0, currentBossPrefabs.Length)];
+                /*prefabToSpawn = bossAttackPrefabs[Random.Range(0, bossAttackPrefabs.Length)];
+                if (currentBossPrefabs != null && currentBossPrefabs.Length > 0)
+                    prefabToSpawn = currentBossPrefabs[Random.Range(0, currentBossPrefabs.Length)];
+                else
+                    prefabToSpawn = bossAttackPrefabs[Random.Range(0, bossAttackPrefabs.Length)];*/
             }
             else if (forestMode)
             {

@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private spawner2[] normalSpawners;           // Assign spawners 1, 2, 3
     [SerializeField] private Transform[] bossSpawnerPositions;
+    public GameObject[] boss1Prefabs;  // hallway boss prefabs for all spawners
+    public GameObject[] boss2Prefabs;  // forest boss prefabs for all spawners
+
+    public enum LevelType { Hallway, Forest }
+    public LevelType currentLevelType = LevelType.Hallway;
 
     public GameObject EndScreenUI;
     public bool reset = false;
@@ -44,7 +49,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] float Max;
 
     public GameObject bossSpawner;
-    public GameObject boss;
+    public GameObject boss1;
+    public GameObject boss2;
     private GameObject activeBoss;
     public static bool isBossBattle = false;
 
@@ -213,29 +219,22 @@ public class GameManager : MonoBehaviour
 
     private void HandleBossSpawn()
     {
-        /*//Turn off normal spawners
-        spawnerOne.SetActive(false);
-        spawnerTwo.SetActive(false);
-        spawnerThree.SetActive(false);
-
-        //Turn on boss attack spawners
-        spawnerFour.SetActive(true);
-        spawnerFive.SetActive(true);
-        spawnerSix.SetActive(true);*/
-
-        /*float wantedX = transform.position.x + UnityEngine.Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
-        Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
-        Quaternion rotation = Quaternion.Euler(0, 180, 0);  // Rotates boss to face front*/
-
+        
         // Use the bossSpawner's position and rotation
         isBossBattle = true;
+
+        bool isForest = ShouldUseForestBoss();
+        GameObject bossPrefab = isForest ? boss2 : boss1;
+
         Vector3 spawnPosition = bossSpawner.transform.position;
         Quaternion spawnRotation = Quaternion.Euler(0, 180f, 0);
-        activeBoss = Instantiate(boss, spawnPosition, spawnRotation);
+        activeBoss = Instantiate(bossPrefab, spawnPosition, spawnRotation);
+
+        GameObject[] bossPrefabsToUse = isForest ? boss2Prefabs : boss1Prefabs;
         for (int i = 0; i < normalSpawners.Length; i++)
         {
             normalSpawners[i].bossAttackPosition = bossSpawnerPositions[i];
-            normalSpawners[i].EnterBossMode();
+            normalSpawners[i].EnterBossMode(bossPrefabsToUse);
         }
     }
 
@@ -248,13 +247,7 @@ public class GameManager : MonoBehaviour
              activeBoss = null;
          }
 
-        /*// Reset spawners
-        spawnerOne.SetActive(true);
-        spawnerTwo.SetActive(true);
-        spawnerThree.SetActive(true);
-        spawnerFour.SetActive(false);
-        spawnerFive.SetActive(false);
-        spawnerSix.SetActive(false);*/
+       
         for (int i = 0; i < normalSpawners.Length; i++)
         {
             normalSpawners[i].ExitBossMode();
@@ -266,10 +259,10 @@ public class GameManager : MonoBehaviour
         }*/
 
         // Delay forest transition
-        StartCoroutine(DelayedForestTransition());
+        //StartCoroutine(DelayedForestTransition());
     }
 
-    private IEnumerator DelayedForestTransition()
+    /*private IEnumerator DelayedForestTransition()
     {
         yield return new WaitForSeconds(5f); // Delay for 5 seconds
 
@@ -277,7 +270,7 @@ public class GameManager : MonoBehaviour
         {
             spawner.SetForestMode(true);
         }
-    }
+    }*/
     private void HandleLevelIncrease()
     {
         completedLevels++;
@@ -286,11 +279,42 @@ public class GameManager : MonoBehaviour
         {
             spawner.RestartSpawning();
         }*/
-        foreach (var spawner in normalSpawners)
+        if (completedLevels >= 2)
+        {
+            bool useForest = UnityEngine.Random.value > 0.5f;
+            // Update current level type based on random choice
+            currentLevelType = useForest ? LevelType.Forest : LevelType.Hallway;
+            StartCoroutine(RandomizeLevel(useForest));
+        }
+        else
+        {
+            currentLevelType = LevelType.Forest;
+            foreach (var spawner in normalSpawners)
+            {
+                spawner.SpawnForestAfterBoss(5f);
+            }
+        }
+        /*foreach (var spawner in normalSpawners)
         {
             spawner.SpawnForestAfterBoss(5f);
             //spawner.RestartSpawning();
+        }*/
+    }
+
+    private IEnumerator RandomizeLevel(bool useForest)
+    {
+        yield return new WaitForSeconds(5f);
+
+        foreach (var spawner in normalSpawners)
+        {
+            spawner.SetForestMode(useForest);
         }
+    }
+
+    private bool ShouldUseForestBoss()
+    {
+        //return completedLevels >= 1 && completedLevels % 2 == 1;
+        return completedLevels >= 1 && currentLevelType == LevelType.Forest;
     }
 
     public void OnPlayerDeath()

@@ -8,6 +8,12 @@ public class Boss : MonoBehaviour
 
     public GameObject bossTwo;
 
+    private int nextBossSpawnScore = 30;   // Initial boss appears at score 30
+    private int nextBossDespawnScore = 100;
+    private int bossCount = 0;
+
+    private bool bossActive = false;
+
     public GameObject spawnerOne;
     public GameObject spawnerTwo;
     public GameObject spawnerThree;
@@ -31,35 +37,54 @@ public class Boss : MonoBehaviour
     private bool bossTwoCoroutineStarted = false;
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         StartCoroutine(BossSpawn());
 
-    }
+    }*/
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        int score = ObstaclePassedScore.score;
+
+        if (!bossActive && score >= nextBossSpawnScore)
+        {
+            bossActive = true;
+            BossSpawned?.Invoke();  // GameManager listens and spawns the boss
+        }
+
+        if (bossActive && score >= nextBossDespawnScore)
+        {
+            bossActive = false;
+            BossDespawned?.Invoke();  // GameManager listens and removes boss
+            LevelIncreased?.Invoke(); // GameManager advances level and spawner behavior
+
+            // Prepare next milestone
+            bossCount++;
+            nextBossSpawnScore = nextBossDespawnScore + 50;
+            nextBossDespawnScore = nextBossSpawnScore + 100;
+        }
         //spawn boss 1
-        if (spawned == false && oneCoroutine == false && ObstaclePassedScore.score >= 30 && ObstaclePassedScore.score < 100)
+        /*if (spawned == false && oneCoroutine == false && ObstaclePassedScore.score >= 30 && ObstaclePassedScore.score < 100)
         {
              oneCoroutine = true;
              /*spawnerOne.SetActive(false);
              spawnerTwo.SetActive(false);
-             spawnerThree.SetActive(false);*/
+             spawnerThree.SetActive(false);
              StartCoroutine(BossSpawn());
 
              //BossSpawned?.Invoke();
-        } 
+        } */
 
         //despawn boss 1
-        if (spawned == true && ObstaclePassedScore.score >= 100)
-        {
-             LeaveBoss();
- 
-             //BossDespawned?.Invoke();
-             LevelIncreased?.Invoke();
-        }
+        /* if (spawned == true && ObstaclePassedScore.score >= 100)
+         {
+              LeaveBoss();
+
+              //BossDespawned?.Invoke();
+              LevelIncreased?.Invoke();
+         }*/
 
         //spawn boss 2 
         /*if (!bossTwoSpawned && !bossTwoCoroutineStarted && ObstaclePassedScore.score >= 80 && ObstaclePassedScore.score < 300)
@@ -76,45 +101,24 @@ public class Boss : MonoBehaviour
         }*/
     }
 
-    void BringBoss()
+    /*void BringBoss()
     {
-        /*spawnerOne.SetActive(false);
-        spawnerTwo.SetActive(false);
-        spawnerThree.SetActive(false);
-        spawnerFour.SetActive(true);
-        spawnerFive.SetActive(true);
-        spawnerSix.SetActive(true);
-        float wantedX = transform.position.x + Random.Range(Min, Max);    //transform.position.x is the x position of the spawner. Ensures obstacles spawn within the spawning range at the x position of spawner
-        Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);    //included z position so that obstacles spawn at z position of spawners
-        Quaternion rotation = Quaternion.Euler(0, 180, 0);  // Rotates boss to face front
-        Instantiate(boss, position, rotation);*/
 
         spawned = true;
         //oneCoroutine = false;
         BossSpawned?.Invoke();  // Notify listeners that boss spawned
-    }
+    }*/
 
-    void LeaveBoss()
+   /* void LeaveBoss()
     {
-        /*spawnerOne.SetActive(true);
-        spawnerTwo.SetActive(true);
-        spawnerThree.SetActive(true);
-        spawnerFour.SetActive(false);
-        spawnerFive.SetActive(false);
-        spawnerSix.SetActive(false);
-
-        if (boss != null)
-        {
-            Destroy(boss);
-            boss = null;
-        }*/
+        
         spawned = false;
         oneCoroutine = false;
         BossDespawned?.Invoke();
 
         //levelsCompleted++;
         //LevelIncreased?.Invoke(levelsCompleted);  // Notify listeners of new level
-    }
+    }*/
 
     /*void BringBossTwo()
     {
@@ -184,7 +188,7 @@ public class Boss : MonoBehaviour
         BossDespawned?.Invoke();
     }*/
 
-    IEnumerator BossSpawn()
+    /*IEnumerator BossSpawn()
     {
 
         if (spawned == false && ObstaclePassedScore.score >= 30 && ObstaclePassedScore.score < 100)
@@ -192,17 +196,7 @@ public class Boss : MonoBehaviour
             yield return new WaitForSeconds(10f);
             BringBoss();
         }
-    }
-
-    /*IEnumerator BossTwoSpawn()
-    {
-        Debug.Log("BossTwoSpawn coroutine started");
-
-        
-        //yield return new WaitForSeconds(2f);
-        BringBossTwo();
-
-        yield break;
-        
     }*/
+
+   
 }

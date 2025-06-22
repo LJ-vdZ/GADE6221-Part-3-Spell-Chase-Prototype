@@ -19668,6 +19668,7 @@ MonoBehaviour:
   - {fileID: 6510053244085063537, guid: 98f7c3c13301ee3449bfa9293c93af1d, type: 3}
   - {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
   - {fileID: 5682284791052725754, guid: e3c2fb247a50cba41a33e43e832326c0, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   timeSpawn: 7
   Min: 0.6
   Max: 0.6
@@ -21555,6 +21556,13 @@ MonoBehaviour:
   - {fileID: 1196236094}
   - {fileID: 767185004}
   - {fileID: 2101916588}
+  boss1Prefabs:
+  - {fileID: 4509738343484687526, guid: f34db43259721af4fa2ecccda6620a8f, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
+  boss2Prefabs:
+  - {fileID: 8733643688379924376, guid: 3c116b48100e1f14090a328d107ad01a, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
+  currentLevelType: 0
   EndScreenUI: {fileID: 1330105523}
   reset: 0
   finalScore: {fileID: 349266205}
@@ -21570,7 +21578,8 @@ MonoBehaviour:
   Min: -0.5
   Max: -0.5
   bossSpawner: {fileID: 1073220143}
-  boss: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
+  boss1: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
+  boss2: {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   spawnerOne: {fileID: 1141819892}
   spawnerTwo: {fileID: 1225511254}
   spawnerThree: {fileID: 846722325}
@@ -22226,6 +22235,7 @@ MonoBehaviour:
   - {fileID: 6510053244085063537, guid: 98f7c3c13301ee3449bfa9293c93af1d, type: 3}
   - {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
   - {fileID: 5682284791052725754, guid: e3c2fb247a50cba41a33e43e832326c0, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   timeSpawn: 3
   Min: -0.023
   Max: -0.023
@@ -23266,6 +23276,7 @@ MonoBehaviour:
   - {fileID: 6510053244085063537, guid: 98f7c3c13301ee3449bfa9293c93af1d, type: 3}
   - {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
   - {fileID: 5682284791052725754, guid: e3c2fb247a50cba41a33e43e832326c0, type: 3}
+  - {fileID: 6061762598729348762, guid: d96e6b1fb9994a344915b75aa488f9a0, type: 3}
   timeSpawn: 5
   Min: -0.5
   Max: -0.5
@@ -23672,6 +23683,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSpawners: []
   bossSpawnerPositions: []
+  boss1Prefabs: []
+  boss2Prefabs: []
+  currentLevelType: 0
   EndScreenUI: {fileID: 1330105523}
   reset: 0
   finalScore: {fileID: 0}
@@ -23687,7 +23701,8 @@ MonoBehaviour:
   Min: 0
   Max: 0
   bossSpawner: {fileID: 0}
-  boss: {fileID: 0}
+  boss1: {fileID: 0}
+  boss2: {fileID: 0}
   spawnerOne: {fileID: 0}
   spawnerTwo: {fileID: 0}
   spawnerThree: {fileID: 0}

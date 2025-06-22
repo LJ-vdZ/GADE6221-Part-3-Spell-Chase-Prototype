@@ -42,8 +42,8 @@ public class SectionTrigger : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         //set boss battle to false and boss battle time to zero at start of game
         //bossBattleTime = 0f;
-        isBossBattle = false;
-
+        //isBossBattle = false;
+        hasTriggered = false;
         levelNum = 0;
     }
 
@@ -92,6 +92,37 @@ public class SectionTrigger : MonoBehaviour
 
             if (GameManager.isBossBattle)
             {
+                // Spawn the appropriate boss hallway based on current level type
+                if (gameManager.currentLevelType == GameManager.LevelType.Hallway)
+                {
+                    Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
+                }
+                else
+                {
+                    // For forest boss battle, spawn forest section or forest boss hallway if you have one
+                    Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
+                }
+            }
+            else
+            {
+                // Not a boss battle, spawn the section according to the current level type
+                if (gameManager.currentLevelType == GameManager.LevelType.Hallway)
+                {
+                    Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
+                }
+            }
+        }
+
+        /*if (other.gameObject.CompareTag("Trigger") && !hasTriggered)
+        {
+            hasTriggered = true;
+
+            if (GameManager.isBossBattle)
+            {
                 // Spawn boss hallway during boss battle only
                 Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
             }
@@ -104,95 +135,93 @@ public class SectionTrigger : MonoBehaviour
             {
                 // Normal hallway spawn before boss battle
                 Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
-            }
+            }*/
 
 
-            //hasTriggered = true;
+        //hasTriggered = true;
 
-            ////get current score and previous score to check for score milestone
-            //int currentScore = ObstaclePassedScore.score;
-            //int scoreSinceLastBoss = currentScore - lastBossScoreTrigger;
+        ////get current score and previous score to check for score milestone
+        //int currentScore = ObstaclePassedScore.score;
+        //int scoreSinceLastBoss = currentScore - lastBossScoreTrigger;
 
-            ////check if both boss battles happened
-            //if (foughtBossHallway && foughtBossForest)
-            //{
-            //    //randomly pick new environment
-            //    int randomChoice = Random.Range(0, 2);
-            //    if (randomChoice == 0)  //if zero, instantiate hallwaySection prefab
-            //    {
-            //        Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
-            //    }
-            //    else //else instantiate forestSection prefab
-            //    {
-            //        Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
-            //    }
+        ////check if both boss battles happened
+        //if (foughtBossHallway && foughtBossForest)
+        //{
+        //    //randomly pick new environment
+        //    int randomChoice = Random.Range(0, 2);
+        //    if (randomChoice == 0)  //if zero, instantiate hallwaySection prefab
+        //    {
+        //        Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
+        //    }
+        //    else //else instantiate forestSection prefab
+        //    {
+        //        Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
+        //    }
 
-            //}
-            //else if (GameManager.isBossBattle || ObstaclePassedScore.score >= 30)
-            //{
-            //    //spawn boss hallway during boss battle only
-            //    Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
-                
-            //    foughtBossHallway = true;
-            //}
-            //else if (gameManager != null && gameManager.completedLevels >= 1)
-            //{
-            //    //after boss defeated, spawn forest hallway for level 2+
-            //    Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
+        //}
+        //else if (GameManager.isBossBattle || ObstaclePassedScore.score >= 30)
+        //{
+        //    //spawn boss hallway during boss battle only
+        //    Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
 
-            //    foughtBossForest = true;
-            //}
-            //else
-            //{
-            //    //normal hallway spawn before boss battle
-            //    Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
-            //}
-        }
-        /*if (other.gameObject.CompareTag("Trigger"))
-        {
-            
-            //collision of both Box Collider and Character Controls are detected. Two hallway sections are generated as a result.
-            //make sure only one trigger happens, not two. We only want to generate one hallway
-            if (!hasTriggered && levelNum == 0 && isBossBattle == false)
-            {
-                hasTriggered = true;    //a trigger occured
-                
-                //spawn new section of hallway
-                //indicate where to spawn new hallway
-                Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);   //there is no rotation
-            
-            }
-            
-            if (!hasTriggered && isBossBattle == true) //spawn boss hallway
-            {
-                Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
-                
-                Debug.Log("Boss hallway generated");
+        //    foughtBossHallway = true;
+        //}
+        //else if (gameManager != null && gameManager.completedLevels >= 1)
+        //{
+        //    //after boss defeated, spawn forest hallway for level 2+
+        //    Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
 
-                hasTriggered = true;    //a trigger occured
-            }
-
-            if (!hasTriggered && isBossBattle == false && levelNum == 1)
-            {
-                hasTriggered = true;    //a trigger occured
-
-                //spawn forest environment 
-                //indicate where to spawn new section of map
-                Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);   //there is no rotation
-
-            }
-        }*/
+        //    foughtBossForest = true;
+        //}
+        //else
+        //{
+        //    //normal hallway spawn before boss battle
+        //    Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
+        //}
     }
+    /*if (other.gameObject.CompareTag("Trigger"))
+    {
+
+        //collision of both Box Collider and Character Controls are detected. Two hallway sections are generated as a result.
+        //make sure only one trigger happens, not two. We only want to generate one hallway
+        if (!hasTriggered && levelNum == 0 && isBossBattle == false)
+        {
+            hasTriggered = true;    //a trigger occured
+
+            //spawn new section of hallway
+            //indicate where to spawn new hallway
+            Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);   //there is no rotation
+
+        }
+
+        if (!hasTriggered && isBossBattle == true) //spawn boss hallway
+        {
+            Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
+
+            Debug.Log("Boss hallway generated");
+
+            hasTriggered = true;    //a trigger occured
+        }
+
+        if (!hasTriggered && isBossBattle == false && levelNum == 1)
+        {
+            hasTriggered = true;    //a trigger occured
+
+            //spawn forest environment 
+            //indicate where to spawn new section of map
+            Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);   //there is no rotation
+
+        }
+    }*/
+
 
     //when player exits trigger, must rest hasTrigger to false. Otherwise, the map will only regenerate once. We want it to regenerate every time a trigger is hit.
-    private void OnTriggerExit(Collider other) 
+    private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Trigger")) 
+        if (other.gameObject.CompareTag("Trigger"))
         {
             hasTriggered = false;
-
         }
-
     }
 }
 
