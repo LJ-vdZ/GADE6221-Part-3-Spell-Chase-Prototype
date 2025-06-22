@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
             
         }
 
-        if (!isBossBattle && completedLevels == 0 && currentScore >= 30)
+       /* if (!isBossBattle && completedLevels == 0 && currentScore >= 30)
         {
             isBossBattle = true;
             HandleBossSpawn();
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
 
             completedLevels++;  // Level up
             HandleLevelIncrease();
-        }
+        }*/
 
         //currentScore = score;
     }
@@ -227,6 +227,7 @@ public class GameManager : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0, 180, 0);  // Rotates boss to face front*/
 
         // Use the bossSpawner's position and rotation
+        isBossBattle = true;
         Vector3 spawnPosition = bossSpawner.transform.position;
         Quaternion spawnRotation = Quaternion.Euler(0, 180f, 0);
         activeBoss = Instantiate(boss, spawnPosition, spawnRotation);
@@ -239,7 +240,8 @@ public class GameManager : MonoBehaviour
 
     private void HandleBossDespawn()
     {
-         if (activeBoss != null)
+        isBossBattle = false;
+        if (activeBoss != null)
          {
              Destroy(activeBoss);
              activeBoss = null;
