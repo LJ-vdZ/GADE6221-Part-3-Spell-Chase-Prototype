@@ -21579,7 +21579,7 @@ MonoBehaviour:
   Max: -0.5
   bossSpawner: {fileID: 1073220143}
   boss1: {fileID: 4706125810680773408, guid: a8b9ce94fdd016b4ebd94eb0b8e1cef5, type: 3}
-  boss2: {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
+  boss2: {fileID: 388476414, guid: 7df524699deb44341b3693c8538df185, type: 3}
   spawnerOne: {fileID: 1141819892}
   spawnerTwo: {fileID: 1225511254}
   spawnerThree: {fileID: 846722325}

@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 66a0362c9c66f074b99705d40b281889, type: 3}
       propertyPath: m_TagString
-      value: Destroyable
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -315,12 +315,12 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.42486277
-  m_Center: {x: 0.1926025, y: -0.04652626, z: -0.0019253803}
+  m_Radius: 0.18826163
+  m_Center: {x: 0.036586296, y: 1.3234289e-10, z: 6.824214e-16}
 --- !u!114 &-624978289589175077
 MonoBehaviour:
   m_ObjectHideFlags: 0
