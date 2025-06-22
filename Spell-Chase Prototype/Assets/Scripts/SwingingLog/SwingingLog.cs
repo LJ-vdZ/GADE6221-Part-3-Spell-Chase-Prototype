@@ -13,20 +13,28 @@ public class SwingingLog : MonoBehaviour
 
     private Quaternion initialRotation;
 
+    private float swingTimer = 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //store initial rotation of pivot
         initialRotation = transform.rotation;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //calculate angle using sine wave to get pendulum-like motion for swinging
-        float angle = maxAngle * Mathf.Sin(Time.time * swingSpeed);
+        ////calculate angle using sine wave to get pendulum-like motion for swinging
+        //float angle = maxAngle * Mathf.Sin(Time.timeSinceLevelLoad * swingSpeed);
 
-        //apply rotation around axis
+        ////apply rotation around axis
+        //transform.rotation = initialRotation * Quaternion.AngleAxis(angle, swingAxis);
+
+        swingTimer += Time.deltaTime;
+        float angle = maxAngle * Mathf.Sin(swingTimer * swingSpeed);
         transform.rotation = initialRotation * Quaternion.AngleAxis(angle, swingAxis);
     }
 }

@@ -96,6 +96,7 @@ public class Pickup : MonoBehaviour   //inherit from ObstaclePassedScore
             {
                 BluePotionPickup?.Invoke();
                 Destroy(gameObject);
+
             }
             else if (gameObject.CompareTag("RedPotion") && isSpeeding == false)
             {

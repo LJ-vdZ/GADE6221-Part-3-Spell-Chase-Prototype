@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &6694551 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
-  m_PrefabInstance: {fileID: 3575072322684473543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &20718985
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +262,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 2c57fdaf6a7c26246a22ef1e64a5ecd6, type: 3}
   m_Resource: {fileID: 8300000, guid: 2c57fdaf6a7c26246a22ef1e64a5ecd6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.07
+  m_Volume: 0.043
   m_Pitch: 0.6
   Loop: 1
   Mute: 0
@@ -19671,8 +19666,8 @@ MonoBehaviour:
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   forestPrefabs:
   - {fileID: 6510053244085063537, guid: 98f7c3c13301ee3449bfa9293c93af1d, type: 3}
-  - {fileID: 6694551}
-  - {fileID: 5699505117485686366, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
+  - {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
+  - {fileID: 5682284791052725754, guid: e3c2fb247a50cba41a33e43e832326c0, type: 3}
   timeSpawn: 7
   Min: 0.6
   Max: 0.6
@@ -22229,8 +22224,8 @@ MonoBehaviour:
   - {fileID: 4365572469362740464, guid: 465918311aa09a24c9de6c9c4a315614, type: 3}
   forestPrefabs:
   - {fileID: 6510053244085063537, guid: 98f7c3c13301ee3449bfa9293c93af1d, type: 3}
-  - {fileID: 6694551}
-  - {fileID: 5699505117485686366, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
+  - {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
+  - {fileID: 5682284791052725754, guid: e3c2fb247a50cba41a33e43e832326c0, type: 3}
   timeSpawn: 3
   Min: -0.023
   Max: -0.023
@@ -23269,8 +23264,8 @@ MonoBehaviour:
   - {fileID: 3368747342586506169, guid: 5e88d4b0eff72934192c1fa03a038411, type: 3}
   forestPrefabs:
   - {fileID: 6510053244085063537, guid: 98f7c3c13301ee3449bfa9293c93af1d, type: 3}
-  - {fileID: 6694551}
-  - {fileID: 5699505117485686366, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
+  - {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
+  - {fileID: 5682284791052725754, guid: e3c2fb247a50cba41a33e43e832326c0, type: 3}
   timeSpawn: 5
   Min: -0.5
   Max: -0.5
@@ -30373,6 +30368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: spellchase bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 6510053244085063537, guid: 98f7c3c13301ee3449bfa9293c93af1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32921,6 +32920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AngryLog Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6960551782168187826, guid: c11225b59367c6d40a40f620192b9e6a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33128,7 +33131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5630685780516528797, guid: d95db1356cf630543abd0c36e94673b7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

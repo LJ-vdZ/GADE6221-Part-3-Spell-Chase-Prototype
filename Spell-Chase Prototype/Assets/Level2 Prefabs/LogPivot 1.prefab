@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1434299028117399006}
   - component: {fileID: 8851284023097197553}
   - component: {fileID: 7799981368520757046}
+  - component: {fileID: 3079168749334426071}
   m_Layer: 0
   m_Name: LogPivot 1
   m_TagString: Obstacle
@@ -62,16 +63,16 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 5b47802f9aaec9141af1cf4b5da722d1, type: 3}
   m_Resource: {fileID: 8300000, guid: 5b47802f9aaec9141af1cf4b5da722d1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.158
-  m_Pitch: 1
+  m_Volume: 0.071
+  m_Pitch: 0.74
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 121
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 5
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -136,7 +137,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.199
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -146,6 +147,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3079168749334426071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5682284791052725754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39af105ac09dcb4aafe3a77c3d601e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2710634750654636735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,7 +211,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwingingLog_Original Prefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7396560623386638216, guid: 2da420e0d1d309b4498842d598c19539, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -245,7 +259,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

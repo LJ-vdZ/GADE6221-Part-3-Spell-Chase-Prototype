@@ -43,6 +43,8 @@ public class spawner2 : MonoBehaviour
 
     private Coroutine spawnCoroutine;
 
+    private float lastSpawnX = float.MinValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -114,8 +116,14 @@ public class spawner2 : MonoBehaviour
             forestMode = false;
         }
         //RestartSpawning();
-        spawnObstacle = true;
-        spawnCoroutine = StartCoroutine(PrefabSpawn());
+        //spawnObstacle = true;
+        //spawnCoroutine = StartCoroutine(PrefabSpawn());
+
+        if (spawnCoroutine == null)
+        {
+            spawnObstacle = true;
+            spawnCoroutine = StartCoroutine(PrefabSpawn());
+        }
     }
 
     private void StopCoroutineIfRunning()
@@ -151,8 +159,14 @@ public class spawner2 : MonoBehaviour
             bossMode = false;
 
         // Enable spawning again with forest prefabs
-        spawnObstacle = true;
-        spawnCoroutine = StartCoroutine(PrefabSpawn());
+        //spawnObstacle = true;
+        //spawnCoroutine = StartCoroutine(PrefabSpawn());
+
+        if (spawnCoroutine == null)
+        {
+            spawnObstacle = true;
+            spawnCoroutine = StartCoroutine(PrefabSpawn());
+        }
     }
 
     public void StopSpawningTemporarily()
@@ -226,7 +240,17 @@ public class spawner2 : MonoBehaviour
         spawnCoroutine = null;*/
         while (spawnObstacle)
         {
-            float wantedX = transform.position.x + Random.Range(Min, Max);
+            //float wantedX = transform.position.x + Random.Range(Min, Max);
+
+            float wantedX;
+            do
+            {
+                wantedX = transform.position.x + Random.Range(Min, Max);
+            }
+            while (Mathf.Abs(wantedX - lastSpawnX) < 3f); // 3f is the min spacing between obstacles
+
+            lastSpawnX = wantedX;
+
             Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);
 
             GameObject prefabToSpawn;
@@ -242,6 +266,12 @@ public class spawner2 : MonoBehaviour
             else
             {
                 prefabToSpawn = prefabs[Random.Range(0, prefabs.Length)];
+            }
+
+            //check if prefab is swinging log and apply vertical offset so its above the ground
+            if (prefabToSpawn.GetComponent<SwingingLog>() != null)
+            {
+                position += new Vector3(0, 2.5f, 0); //adjust y position of swinging log
             }
 
             Instantiate(prefabToSpawn, position, Quaternion.identity);
