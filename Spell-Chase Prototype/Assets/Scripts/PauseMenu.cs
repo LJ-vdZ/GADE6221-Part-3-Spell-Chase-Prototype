@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart() //Function to reload the game
     {
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }

@@ -48,6 +48,8 @@ public class spawner2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(gameObject.name + " starting spawn coroutine");
+
         originalPosition = transform.position;
         spawnObstacle = true;
         spawnCoroutine = StartCoroutine(PrefabSpawn());
@@ -238,18 +240,13 @@ public class spawner2 : MonoBehaviour
         }
 
         spawnCoroutine = null;*/
+
+        // wait a moment before starting spawns, to avoid multiple spawns on scene reload
+        yield return new WaitForSeconds(1f);
+
         while (spawnObstacle)
         {
-            //float wantedX = transform.position.x + Random.Range(Min, Max);
-
-            float wantedX;
-            do
-            {
-                wantedX = transform.position.x + Random.Range(Min, Max);
-            }
-            while (Mathf.Abs(wantedX - lastSpawnX) < 3f); // 3f is the min spacing between obstacles
-
-            lastSpawnX = wantedX;
+            float wantedX = transform.position.x + Random.Range(Min, Max);
 
             Vector3 position = new Vector3(wantedX, transform.position.y, transform.position.z);
 
@@ -275,6 +272,8 @@ public class spawner2 : MonoBehaviour
             }
 
             Instantiate(prefabToSpawn, position, Quaternion.identity);
+
+            Debug.Log(gameObject.name + " spawned " + prefabToSpawn.name + " at " + position);
 
             if (Random.value < pickupSpawnChance && !bossMode )
             {

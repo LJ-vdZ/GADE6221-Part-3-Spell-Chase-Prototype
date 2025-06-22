@@ -155,7 +155,8 @@ public class GameManager : MonoBehaviour
 
     public void restartGame() //Function to reset entire level of game
     {
-        Time.timeScale = 1f;
+
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         Debug.Log("Game Scene reloaded");

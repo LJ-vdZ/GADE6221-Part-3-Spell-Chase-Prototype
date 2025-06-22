@@ -28,7 +28,14 @@ public class SectionTrigger : MonoBehaviour
 
     private bool hasTriggered;
 
-    public spawner2[] spawners; //assign all 3 spawners in the Inspector
+    //check boss battles for looping
+    private bool foughtBossHallway = false;
+    private bool foughtBossForest = false;
+
+    //use score milestones to trigger boss hallway during loop
+    private int lastBossScoreTrigger = 0;
+
+
 
     private void Start()
     {
@@ -83,19 +90,42 @@ public class SectionTrigger : MonoBehaviour
         {
             hasTriggered = true;
 
-            if (GameManager.isBossBattle)
+            //get current score and previous score to check for score milestone
+            int currentScore = ObstaclePassedScore.score;
+            int scoreSinceLastBoss = currentScore - lastBossScoreTrigger;
+
+            //check if both boss battles happened
+            if (foughtBossHallway && foughtBossForest)
             {
-                // Spawn boss hallway during boss battle only
+                //randomly pick new environment
+                int randomChoice = Random.Range(0, 2);
+                if (randomChoice == 0)  //if zero, instantiate hallwaySection prefab
+                {
+                    Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
+                }
+                else //else instantiate forestSection prefab
+                {
+                    Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
+                }
+
+            }
+            else if (GameManager.isBossBattle || ObstaclePassedScore.score >= 30)
+            {
+                //spawn boss hallway during boss battle only
                 Instantiate(bossHallway, new Vector3(7, 6, 43), Quaternion.identity);
+                
+                foughtBossHallway = true;
             }
             else if (gameManager != null && gameManager.completedLevels >= 1)
             {
-                // After boss defeated, spawn forest hallway for level 2+
+                //after boss defeated, spawn forest hallway for level 2+
                 Instantiate(forestSection, new Vector3(-0.24f, 1.3f, 53.902f), Quaternion.identity);
+
+                foughtBossForest = true;
             }
             else
             {
-                // Normal hallway spawn before boss battle
+                //normal hallway spawn before boss battle
                 Instantiate(hallwaySection, new Vector3(7, 6, 43), Quaternion.identity);
             }
         }
