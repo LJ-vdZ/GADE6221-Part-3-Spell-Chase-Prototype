@@ -63,7 +63,7 @@ public class Boss : MonoBehaviour
             // Prepare next milestone
             bossCount++;
             nextBossSpawnScore = nextBossDespawnScore + 50;
-            nextBossDespawnScore = nextBossSpawnScore + 100;
+            nextBossDespawnScore = nextBossSpawnScore + 200;
         }
         //spawn boss 1
         /*if (spawned == false && oneCoroutine == false && ObstaclePassedScore.score >= 30 && ObstaclePassedScore.score < 100)
