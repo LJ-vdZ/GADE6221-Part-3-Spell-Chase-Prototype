@@ -19,11 +19,22 @@ public class FireballSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //set player reference for LookAt
+        ////set player reference for LookAt
+        //if (player == null)
+        //{
+        //    player = GameObject.Find("Player").transform;
+        //}
+
+        //find player tag at runtime
         if (player == null)
         {
-            player = GameObject.Find("Player").transform;
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+            {
+                player = playerObject.transform;
+            }
         }
+
     }
 
     // Update is called once per frame
@@ -62,6 +73,8 @@ public class FireballSpawner : MonoBehaviour
         //destroy fireball after 5 seconds
         Destroy(fireball, 5f);
     }
+
+    
 }
 
 //Unity Documentation, [s.a.]. Vector3.normalized. [online] Available at: <https://docs.unity3d.com/6000.1/Documentation/ScriptReference/Vector3-normalized.html>[Accessed 01 June 2025].

@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 5300456096273313600}
   - component: {fileID: -2979797930460299857}
   - component: {fileID: 3237398671527148097}
-  - component: {fileID: 4084861619870908631}
   m_Layer: 0
   m_Name: GruntPolyart
   m_TagString: Untagged
@@ -189,22 +188,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4084861619870908631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388476414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e377f22f88c8f9d4584425e5ec91fb2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 8733643688379924376, guid: 3c116b48100e1f14090a328d107ad01a, type: 3}
-  shootSpeed: 10
-  player: {fileID: 0}
-  spawnInterval: 5
 --- !u!1 &408409025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,12 +1009,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6946991685433977838}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e377f22f88c8f9d4584425e5ec91fb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 8733643688379924376, guid: 3c116b48100e1f14090a328d107ad01a, type: 3}
-  shootSpeed: 10
+  shootSpeed: 8
   player: {fileID: 0}
-  spawnInterval: 1
+  spawnInterval: 2
