@@ -18,6 +18,8 @@ public class DatabaseManager : MonoBehaviour
 
     private DatabaseReference dbRef;
 
+    public static DatabaseManager Instance { get; private set; }
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,10 +32,10 @@ public class DatabaseManager : MonoBehaviour
         //playerID = dbRef.Child("players").Push().Key;   //this create new unique ID in the firebase
     }
 
-    //void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void CreatePlayer() 
     {

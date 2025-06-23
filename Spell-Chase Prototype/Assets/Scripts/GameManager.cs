@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        gameNumber = PlayerPrefs.GetInt("GameNumber", 1);   //initialise game number
+        currentGameNumber = PlayerPrefs.GetInt("GameNumber", 0);   //initialise game number
 
     }
 
@@ -116,13 +116,13 @@ public class GameManager : MonoBehaviour
     {
         HandlePickupTimers();
 
-        //if (Death.deathStatus == true) //check flag
-        //{
+        if (Death.deathStatus == true) //check flag
+        {
         //    endGame();
         ////    finalScore.text = "Score: " + score;
-        ////    currentGameNumber++;
+            //currentGameNumber++;
 
-        //}
+        }
 
         if (reset == true)
         {
